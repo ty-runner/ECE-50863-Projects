@@ -12,7 +12,7 @@ if __name__ == "__main__":
     addr = ("127.0.0.1", 3000)
 
     # Before sending the socket is unbound, and hence has no ability to receieve data
-    print(f"Before sending data the socket address is {client_socket.getsockname()}")
+    #print(f"Before sending data the socket address is {client_socket.getsockname()}")
 
     client_socket.sendto(msg, addr)
 

@@ -10,9 +10,9 @@ if __name__ == "__main__":
     print("Creating socket")
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # not SOCK_STREAM, which is for TCP. We want UDP, which requires SOCK_DGRAM
 
-    print(f"Socket address before binding is {server_socket.getsockname()}. The format is (ip_addr, socket #)") 
-    print("You can't send data to port 0 (the OS will kill your program, since that port is reserved) so we need to change the ports in order for people")
-    print("to be able to send us data. That's done by 'binding' the socket to a new port")
+    # print(f"Socket address before binding is {server_socket.getsockname()}. The format is (ip_addr, socket #)") 
+    # print("You can't send data to port 0 (the OS will kill your program, since that port is reserved) so we need to change the ports in order for people")
+    # print("to be able to send us data. That's done by 'binding' the socket to a new port")
 
     print(f"Binding socket to ip_addr {IP_ADDR} and port {PORT}")
     server_socket.bind((IP_ADDR, PORT))
