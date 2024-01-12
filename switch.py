@@ -110,7 +110,7 @@ def main():
     # sixth objective is having switches update their routing tables when a link comes back up (might not be necessary)
     
     self_id = sys.argv[1]
-    hostname = sys.argv[2] #why do we need the hostname?
+    hostname = sys.argv[2] #the hostname directs the socket communication to the controller using the hostname as the IP address
     port = int(sys.argv[3])
     switch_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     address = (hostname, port)
