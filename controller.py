@@ -127,11 +127,13 @@ def main():
     print(f"We've now bound the socket to {server_socket.getsockname()}, so we can now send messages to the server by specifying its address in sendto")
     # Now we need to read the config file and get the switch IDs and ports that the switches are listening on. We'll store this information in a dictionary, where the key is the switch ID and the value is the port number.
     switch_ports = {}
-    # with open(config_file, 'r') as config:
-    #     for line in config:
-    #         switch_id, switch_port = line.split()
-    #         switch_ports[switch_id] = switch_port
-    # print(f"Switch ports: {switch_ports}")
+    with open(config_file, 'r') as config:
+        num_of_switches = config.readline()
+        print(f"Number of switches: {num_of_switches}")
+        for line in config:
+            switch_id, switch_port, cost = line.split()
+            switch_ports[switch_id] = switch_port, cost
+    print(f"Switch ports: {switch_ports}")
     print(f"Waiting on client to send us a message")
     (data, client_addr) = server_socket.recvfrom(1024) # Client address really is a tuple of (ip_addr, port number) from the sender
     print(f"Recieved message from client")
