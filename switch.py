@@ -7,6 +7,7 @@ Last Modified Date: December 9th, 2021
 """
 
 import sys
+import socket
 from datetime import date, datetime
 
 # Please do not modify the name of the log file, otherwise you will lose points because the grader won't be able to find your log file
@@ -101,6 +102,25 @@ def main():
     LOG_FILE = 'switch' + str(my_id) + ".log" 
 
     # Write your code below or elsewhere in this file
+    # first objective is having switches talk with the controller
+    # second objective is having switches talk with each other
+    # third objective is having switches update their routing tables
+    # fourth objective is having switches update their routing tables when a switch goes down
+    # fifth objective is having switches update their routing tables when a link goes down
+    # sixth objective is having switches update their routing tables when a link comes back up (might not be necessary)
+    
+    self_id = sys.argv[1]
+    hostname = sys.argv[2] #why do we need the hostname?
+    port = int(sys.argv[3])
+    switch_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    address = (hostname, port)
+    msg = "Hello there".encode(encoding='UTF-8')
+    switch_socket.sendto(msg, address)
+    print(f"After sending the socket is automatically bound to a free port by the OS, allowing it to recieve data")
+    print(f"The socket is now bound to {switch_socket.getsockname()}")
+    print(f"Recieving data from client")
+    (data, server_addr) = switch_socket.recvfrom(1024)
 
+    print(f"Server data is '{data.decode('utf-8')}'")
 if __name__ == "__main__":
     main()

@@ -7,6 +7,7 @@ Last Modified Date: December 9th, 2021
 """
 
 import sys
+import socket
 from datetime import date, datetime
 
 # Please do not modify the name of the log file, otherwise you will lose points because the grader won't be able to find your log file
@@ -113,8 +114,31 @@ def main():
     if num_args < 3:
         print ("Usage: python controller.py <port> <config file>\n")
         sys.exit(1)
+    port = int(sys.argv[1])
+    config_file = sys.argv[2]
     
     # Write your code below or elsewhere in this file
+    # So the controller is basically our server and the switches are our clients. We need to create a socket for the controller to listen on, and then we need to create a socket for each switch to send data to the controller on.
+    # The controller will listen on the port specified by the user, and the switches will send data to that port. The controller will then send data back to the switches on the port that the switches are listening on.
+    print("Creating socket")
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # not SOCK_STREAM, which is for TCP. We want UDP, which requires SOCK_DGRAM
+    server_socket.bind(('', port)) # Bind to all interfaces on the specified port. The empty string means all interfaces. We could also specify a specific IP address if we wanted to.
+    #what would the IP address be?
+    print(f"We've now bound the socket to {server_socket.getsockname()}, so we can now send messages to the server by specifying its address in sendto")
+    # Now we need to read the config file and get the switch IDs and ports that the switches are listening on. We'll store this information in a dictionary, where the key is the switch ID and the value is the port number.
+    switch_ports = {}
+    # with open(config_file, 'r') as config:
+    #     for line in config:
+    #         switch_id, switch_port = line.split()
+    #         switch_ports[switch_id] = switch_port
+    # print(f"Switch ports: {switch_ports}")
+    print(f"Waiting on client to send us a message")
+    (data, client_addr) = server_socket.recvfrom(1024) # Client address really is a tuple of (ip_addr, port number) from the sender
+    print(f"Recieved message from client")
+    print(f"Client address is {client_addr}")
+    print(f"Client data is '{data.decode('utf-8')}'")
 
+    print(f"Sending message 'thank you' back to client")
+    server_socket.sendto("thank you".encode('UTF-8'), client_addr)
 if __name__ == "__main__":
     main()
