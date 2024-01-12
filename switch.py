@@ -109,18 +109,19 @@ def main():
     # fifth objective is having switches update their routing tables when a link goes down
     # sixth objective is having switches update their routing tables when a link comes back up (might not be necessary)
     
-    self_id = sys.argv[1]
     hostname = sys.argv[2] #the hostname directs the socket communication to the controller using the hostname as the IP address
     port = int(sys.argv[3])
     switch_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    address = (hostname, port)
-    msg = "Hello there".encode(encoding='UTF-8')
-    switch_socket.sendto(msg, address)
-    print(f"After sending the socket is automatically bound to a free port by the OS, allowing it to recieve data")
+    address = (hostname, port) # 1b of bootstrap process, Each switch process is provided with its own id, as well as the hostname and port number, that the controller process runs on, as command line arguments. 
+    
+    #maybe make this into its own function?
+    msg = f"REGISTER_REQUEST {my_id}".encode(encoding='UTF-8')
+    switch_socket.sendto(msg, address) # 2 of bootstrap process, the switch process sends a register request to the controller process, along with its id. The controller learns the host/port info of the switch from this message
+    register_request_sent()
     print(f"The socket is now bound to {switch_socket.getsockname()}")
-    print(f"Recieving data from client")
+    print(f"Recieving data from client") #this would be the register response from the controller
     (data, server_addr) = switch_socket.recvfrom(1024)
-
     print(f"Server data is '{data.decode('utf-8')}'")
+    
 if __name__ == "__main__":
     main()
