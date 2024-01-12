@@ -111,7 +111,7 @@ def write_to_log(log):
 def extract_routing_table(config_file):
     switch_ports = {}
     with open(config_file, 'r') as config:
-        num_of_switches = config.readline()
+        num_of_switches = int(config.readline())
         for line in config:
             switch_id, switch_port, cost = line.split()
             switch_ports[switch_id] = switch_port, cost
@@ -125,6 +125,7 @@ def bootstrap_register(server_socket, switch_ports, num_of_switches):
     print(f"Client data is '{data.decode('utf-8')}'")
     info = data.decode('utf-8').split()
     return info, client_addr
+
 def main():
     #Check for number of arguments and exit if host/port not provided
     num_args = len(sys.argv)
@@ -141,21 +142,22 @@ def main():
     print("Creating socket")
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # not SOCK_STREAM, which is for TCP. We want UDP, which requires SOCK_DGRAM
     server_socket.bind(('', port)) # 1a of bootstrap process, the controller process binds to a well-known port number, specified as a command line argument.
-    #what would the IP address be?
+    
     print(f"We've now bound the socket to {server_socket.getsockname()}, so we can now send messages to the server by specifying its address in sendto")
     # Now we need to read the config file and get the switch IDs and ports that the switches are listening on. We'll store this information in a dictionary, where the key is the switch ID and the value is the port number.
     switch_ports, num_of_switches = extract_routing_table(config_file)
     print(f"Switch ports: {switch_ports}")
     print(f"Number of switches: {num_of_switches}")
-    info, client_addr = bootstrap_register(server_socket, switch_ports, num_of_switches)
-    print(info, client_addr)
+    while(switches_online < num_of_switches):
+        info, client_addr = bootstrap_register(server_socket, switch_ports, num_of_switches)
+        if(info[0] == "REGISTER_REQUEST"):
+            register_request_received(info[1])
+            register_response_sent(info[1])
+            switch_dictionary[info[1]] = client_addr
+            print(f"Switch dictionary: {switch_dictionary}")
+            switches_online+=1
+            print(info, client_addr)
     #although this is a godd start, all switches have to be registered before a register response can be sent back to the client. So we need to keep track of how many switches have registered with the controller. We can do this by incrementing a counter every time a switch registers with the controller, and then sending the register response back to the client once the counter reaches the number of switches specified in the config file.
-    if(info[0] == "REGISTER_REQUEST"):
-        register_request_received(info[1])
-        register_response_sent(info[1])
-        switch_dictionary[info[1]] = client_addr
-        print(f"Switch dictionary: {switch_dictionary}")
-        switches_online+=1
     if(switches_online == num_of_switches):
         print("All switches have registered with the controller. Sending routing table to switches.")
         for switch in switch_dictionary:
