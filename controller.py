@@ -209,7 +209,8 @@ def main():
                     neighbors[node] = [neighbor[0] for neighbor in adjacency_list[node]]
             # response_ds[switch] = [neighbors[switch], 1, switch_dictionary[switch]]
             for index in neighbors.keys():
-                response_ds[index] = [neighbors[index], 1, switch_dictionary[index]]
+                # response_ds[index] = [neighbors[index], 1, switch_dictionary[index]]
+                response_ds[index] = [1, 1, 1]
             server_socket.sendto(f"RESPONSE {response_ds[switch]}".encode('UTF-8'), switch_dictionary[switch]) #so the entire routing table is sent to each switch. This isnt really what we want but its a start
             register_response_sent(switch)
             #routing_table_update(switch_ports)
