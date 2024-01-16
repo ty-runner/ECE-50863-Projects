@@ -152,7 +152,6 @@ def main():
         info, client_addr = bootstrap_register(server_socket, switch_ports, num_of_switches)
         if(info[0] == "REGISTER_REQUEST"):
             register_request_received(info[1])
-            register_response_sent(info[1])
             switch_dictionary[info[1]] = client_addr
             switches_online+=1
             print(info, client_addr)
@@ -160,6 +159,7 @@ def main():
     if(switches_online == num_of_switches):
         print("All switches have registered with the controller. Sending routing table to switches.")
         for switch in switch_dictionary:
+            register_response_sent(switch)
             print(f"Sending routing table to switch {switch}")
             server_socket.sendto(f"ROUTING_TABLE {switch_ports}".encode('UTF-8'), switch_dictionary[switch]) #so the entire routing table is sent to each switch. This isnt really what we want but its a start
             print(f"Switch dictionary: {switch_dictionary}")
