@@ -186,13 +186,14 @@ def main():
         info, client_addr = bootstrap_register(server_socket, switch_ports, num_of_switches)
         if(info[0] == "REGISTER_REQUEST"):
             register_request_received(info[1])
-            switch_dictionary[info[1]] = client_addr
+            switch_dictionary[int(info[1])] = client_addr
             switches_online+=1
             print(info, client_addr)
     if(switches_online == num_of_switches):
         print("All switches have registered with the controller. Sending routing table to switches.")
         response_ds = {}
         neighbors = {}
+        switch_dict_list = []
         for switch in switch_dictionary:
             print(f"Sending routing table to switch {switch}")
             #instead of the routing table being sent to the switch....
@@ -207,19 +208,16 @@ def main():
             for node in adjacency_list:
                 if int(node) == int(switch):
                     neighbors[node] = [neighbor[0] for neighbor in adjacency_list[node]]
-            # response_ds[switch] = [neighbors[switch], 1, switch_dictionary[switch]]
+            for neighbor in neighbors[switch]:
+                if int(neighbor) in switch_dictionary.keys():
+                    switch_dict_list.append(switch_dictionary[int(neighbor)])
             for index in neighbors.keys():
-                # response_ds[index] = [neighbors[index], 1, switch_dictionary[index]]
-                response_ds[index] = [1, 1, 1]
-            server_socket.sendto(f"RESPONSE {response_ds[int(switch)]}".encode('UTF-8'), switch_dictionary[switch]) #so the entire routing table is sent to each switch. This isnt really what we want but its a start
+                index = int(index)
+                response_ds[index] = [neighbors[index], 1, [switch_dictionary[neighbor] for neighbor in neighbors[index]]]
+            server_socket.sendto(f"RESPONSE {response_ds[int(switch)]}".encode('UTF-8'), switch_dictionary[int(switch)]) #so the entire routing table is sent to each switch. This isnt really what we want but its a start
             register_response_sent(switch)
             #routing_table_update(switch_ports)
     #print(switch_dictionary)
-    for index in neighbors.keys():
-        print(index)
-        print(neighbors[index])
-    # Print neighbors for each node
-    for node, neighbors in adjacency_list.items():
-        print(f"Neighbors of node {node}: {neighbors}")
+    #print(response_ds)
 if __name__ == "__main__":
     main()
