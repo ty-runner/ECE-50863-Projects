@@ -154,6 +154,10 @@ def create_adjacency_list(graph):
         else:
             adjacency_list[node2] = [(node1, distance)]
 
+    # Sort neighbors for each node in ascending order
+    for node in adjacency_list:
+        adjacency_list[node] = sorted(adjacency_list[node])
+
     return adjacency_list
 
 def main():
@@ -198,12 +202,16 @@ def main():
 
             #switch_dictionary[switch] is the address of the switch
             #data structure is as follows: list of switch id's that neighbor the respective switch, a flag indicating whether the switch is alive or dead, and the host/port information of that switch process
-            for neighbor in adjacency_list: #neighbor is a tuple of (switch_id, distance)
-                neighbors[neighbor[0]] = neighbor[1]
+
+            #lets fetch the neighbors of the switch
+            for node in adjacency_list:
+                if int(node) == int(switch):
+                    neighbors[node] = [neighbor[0] for neighbor in adjacency_list[node]]
+
             server_socket.sendto(f"ROUTING_TABLE {switch_ports}".encode('UTF-8'), switch_dictionary[switch]) #so the entire routing table is sent to each switch. This isnt really what we want but its a start
             register_response_sent(switch)
             #routing_table_update(switch_ports)
-    print(switch_dictionary)
+    #print(switch_dictionary)
     print(neighbors)
     # Print neighbors for each node
     for node, neighbors in adjacency_list.items():
