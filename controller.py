@@ -112,9 +112,11 @@ def extract_routing_table(config_file):
     switch_ports = {}
     with open(config_file, 'r') as config:
         num_of_switches = int(config.readline())
+        i = 0
         for line in config:
             switch_id, switch_port, cost = line.split()
-            switch_ports[switch_id] = switch_port, cost
+            switch_ports[i] = switch_id, switch_port, cost
+            i+=1
     return switch_ports, num_of_switches
 
 def bootstrap_register(server_socket, switch_ports, num_of_switches):
@@ -147,7 +149,6 @@ def main():
     # Now we need to read the config file and get the switch IDs and ports that the switches are listening on. We'll store this information in a dictionary, where the key is the switch ID and the value is the port number.
     switch_ports, num_of_switches = extract_routing_table(config_file)
     print(f"Switch ports: {switch_ports}")
-    print(f"Number of switches: {num_of_switches}")
     while(switches_online < num_of_switches):
         info, client_addr = bootstrap_register(server_socket, switch_ports, num_of_switches)
         if(info[0] == "REGISTER_REQUEST"):
@@ -157,11 +158,23 @@ def main():
             print(info, client_addr)
     if(switches_online == num_of_switches):
         print("All switches have registered with the controller. Sending routing table to switches.")
+        response_ds = {}
         for switch in switch_dictionary:
-            register_response_sent(switch)
             print(f"Sending routing table to switch {switch}")
+            #instead of the routing table being sent to the switch....
+            #1. The id of each neighboring switch is sent to the switch
+            #2. A flag indicating whether the switch is alive or dead is sent to the switch (all are alive at start)
+            #3. For each live switch, the host/port information of that switch process
+
+            #switch_dictionary[switch] is the address of the switch
+            #data structure is as follows: list of switch id's that neighbor the respective switch, a flag indicating whether the switch is alive or dead, and the host/port information of that switch process
+            for frame in switch_ports:
+                if(frame == switch):
+                    response_ds[switch] = frame[1], 1, switch_dictionary[switch]
+            print(response_ds)
+            print(switch_ports)
             server_socket.sendto(f"ROUTING_TABLE {switch_ports}".encode('UTF-8'), switch_dictionary[switch]) #so the entire routing table is sent to each switch. This isnt really what we want but its a start
-            print(f"Switch dictionary: {switch_dictionary}")
+            register_response_sent(switch)
             #routing_table_update(switch_ports)
 
 if __name__ == "__main__":
