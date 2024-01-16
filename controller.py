@@ -207,12 +207,16 @@ def main():
             for node in adjacency_list:
                 if int(node) == int(switch):
                     neighbors[node] = [neighbor[0] for neighbor in adjacency_list[node]]
-
-            server_socket.sendto(f"ROUTING_TABLE {switch_ports}".encode('UTF-8'), switch_dictionary[switch]) #so the entire routing table is sent to each switch. This isnt really what we want but its a start
+            # response_ds[switch] = [neighbors[switch], 1, switch_dictionary[switch]]
+            for index in neighbors.keys():
+                response_ds[index] = [neighbors[index], 1, switch_dictionary[index]]
+            server_socket.sendto(f"RESPONSE {response_ds[switch]}".encode('UTF-8'), switch_dictionary[switch]) #so the entire routing table is sent to each switch. This isnt really what we want but its a start
             register_response_sent(switch)
             #routing_table_update(switch_ports)
     #print(switch_dictionary)
-    print(neighbors)
+    for index in neighbors.keys():
+        print(index)
+        print(neighbors[index])
     # Print neighbors for each node
     for node, neighbors in adjacency_list.items():
         print(f"Neighbors of node {node}: {neighbors}")
