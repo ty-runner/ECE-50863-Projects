@@ -155,7 +155,6 @@ def main():
             switch_dictionary[info[1]] = client_addr
             switches_online+=1
             print(info, client_addr)
-    #although this is a godd start, all switches have to be registered before a register response can be sent back to the client. So we need to keep track of how many switches have registered with the controller. We can do this by incrementing a counter every time a switch registers with the controller, and then sending the register response back to the client once the counter reaches the number of switches specified in the config file.
     if(switches_online == num_of_switches):
         print("All switches have registered with the controller. Sending routing table to switches.")
         for switch in switch_dictionary:

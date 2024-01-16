@@ -122,6 +122,7 @@ def main():
     print(f"Recieving data from client") #this would be the register response from the controller
     (data, server_addr) = switch_socket.recvfrom(1024)
     print(f"Server data is '{data.decode('utf-8')}'")
+    register_response_received()
     
 if __name__ == "__main__":
     main()
