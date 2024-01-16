@@ -193,7 +193,6 @@ def main():
         print("All switches have registered with the controller. Sending routing table to switches.")
         response_ds = {}
         neighbors = {}
-        switch_dict_list = []
         for switch in switch_dictionary:
             print(f"Sending routing table to switch {switch}")
             #instead of the routing table being sent to the switch....
@@ -208,9 +207,6 @@ def main():
             for node in adjacency_list:
                 if int(node) == int(switch):
                     neighbors[node] = [neighbor[0] for neighbor in adjacency_list[node]]
-            for neighbor in neighbors[switch]:
-                if int(neighbor) in switch_dictionary.keys():
-                    switch_dict_list.append(switch_dictionary[int(neighbor)])
             for index in neighbors.keys():
                 index = int(index)
                 response_ds[index] = [neighbors[index], 1, [switch_dictionary[neighbor] for neighbor in neighbors[index]]]
