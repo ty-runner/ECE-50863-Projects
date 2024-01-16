@@ -128,6 +128,34 @@ def bootstrap_register(server_socket, switch_ports, num_of_switches):
     info = data.decode('utf-8').split()
     return info, client_addr
 
+def create_adjacency_list_from_file(file_path):
+    with open(file_path, 'r') as file:
+        lines = file.readlines()[1:]  # Skip the first line
+
+    graph = [tuple(map(int, line.split())) for line in lines]
+    adjacency_list = create_adjacency_list(graph)
+
+    return adjacency_list
+def create_adjacency_list(graph):
+    adjacency_list = {}
+
+    for edge in graph:
+        node1, node2, distance = edge
+
+        # Add node2 to the neighbors of node1
+        if node1 in adjacency_list:
+            adjacency_list[node1].append((node2, distance))
+        else:
+            adjacency_list[node1] = [(node2, distance)]
+
+        # Add node1 to the neighbors of node2 (because the graph is undirected)
+        if node2 in adjacency_list:
+            adjacency_list[node2].append((node1, distance))
+        else:
+            adjacency_list[node2] = [(node1, distance)]
+
+    return adjacency_list
+
 def main():
     #Check for number of arguments and exit if host/port not provided
     num_args = len(sys.argv)
@@ -148,6 +176,7 @@ def main():
     print(f"We've now bound the socket to {server_socket.getsockname()}, so we can now send messages to the server by specifying its address in sendto")
     # Now we need to read the config file and get the switch IDs and ports that the switches are listening on. We'll store this information in a dictionary, where the key is the switch ID and the value is the port number.
     switch_ports, num_of_switches = extract_routing_table(config_file)
+    adjacency_list = create_adjacency_list_from_file(config_file)
     print(f"Switch ports: {switch_ports}")
     while(switches_online < num_of_switches):
         info, client_addr = bootstrap_register(server_socket, switch_ports, num_of_switches)
@@ -159,6 +188,7 @@ def main():
     if(switches_online == num_of_switches):
         print("All switches have registered with the controller. Sending routing table to switches.")
         response_ds = {}
+        neighbors = {}
         for switch in switch_dictionary:
             print(f"Sending routing table to switch {switch}")
             #instead of the routing table being sent to the switch....
@@ -168,14 +198,15 @@ def main():
 
             #switch_dictionary[switch] is the address of the switch
             #data structure is as follows: list of switch id's that neighbor the respective switch, a flag indicating whether the switch is alive or dead, and the host/port information of that switch process
-            for frame in switch_ports:
-                if(frame == switch):
-                    response_ds[switch] = frame[1], 1, switch_dictionary[switch]
-            print(response_ds)
-            print(switch_ports)
+            for neighbor in adjacency_list: #neighbor is a tuple of (switch_id, distance)
+                neighbors[neighbor[0]] = neighbor[1]
             server_socket.sendto(f"ROUTING_TABLE {switch_ports}".encode('UTF-8'), switch_dictionary[switch]) #so the entire routing table is sent to each switch. This isnt really what we want but its a start
             register_response_sent(switch)
             #routing_table_update(switch_ports)
-
+    print(switch_dictionary)
+    print(neighbors)
+    # Print neighbors for each node
+    for node, neighbors in adjacency_list.items():
+        print(f"Neighbors of node {node}: {neighbors}")
 if __name__ == "__main__":
     main()
