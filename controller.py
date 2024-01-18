@@ -210,7 +210,12 @@ def main():
             for index in neighbors.keys():
                 index = int(index)
                 response_ds[index] = [neighbors[index], 1, [switch_dictionary[neighbor] for neighbor in neighbors[index]]]
-            server_socket.sendto(f"RESPONSE {response_ds[int(switch)]}".encode('UTF-8'), switch_dictionary[int(switch)]) #so the entire routing table is sent to each switch. This isnt really what we want but its a start
+            #neighbors
+            server_socket.sendto(f"RESPONSE_NEIGHBORS {response_ds[int(switch)][0]}".encode('UTF-8'), switch_dictionary[int(switch)]) #so the entire routing table is sent to each switch. This isnt really what we want but its a start
+            #alive flag
+            server_socket.sendto(f"RESPONSE_ALIVE_FLAG {response_ds[int(switch)][1]}".encode('UTF-8'), switch_dictionary[int(switch)]) #so the entire routing table is sent to each switch. This isnt really what we want but its a start
+            #host/port information
+            server_socket.sendto(f"RESPONSE_NEIGHBOR_INFO {response_ds[int(switch)][2]}".encode('UTF-8'), switch_dictionary[int(switch)]) #so the entire routing table is sent to each switch. This isnt really what we want but its a start
             register_response_sent(switch)
             #routing_table_update(switch_ports)
     #print(switch_dictionary)

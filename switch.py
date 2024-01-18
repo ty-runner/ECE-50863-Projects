@@ -10,6 +10,9 @@ import sys
 import socket
 from datetime import date, datetime
 
+import re
+import ast
+
 # Please do not modify the name of the log file, otherwise you will lose points because the grader won't be able to find your log file
 LOG_FILE = "switch#.log" # The log file for switches are switch#.log, where # is the id of that switch (i.e. switch0.log, switch1.log). The code for replacing # with a real number has been given to you in the main function.
 
@@ -119,9 +122,39 @@ def main():
     switch_socket.sendto(msg, address) # 2 of bootstrap process, the switch process sends a register request to the controller process, along with its id. The controller learns the host/port info of the switch from this message
     register_request_sent()
     print(f"The socket is now bound to {switch_socket.getsockname()}")
-    print(f"Recieving data from client") #this would be the register response from the controller
-    (data, server_addr) = switch_socket.recvfrom(1024)
-    print(f"Server data is '{data.decode('utf-8')}'")
+    print(f"Receiving data from client") #this would be the register response from the controller
+    storage = []
+    for _ in range(3):
+        (data, server_addr) = switch_socket.recvfrom(1024)
+        print(f"Server data is '{data.decode('utf-8')}'")
+        storage.append(data.decode('utf-8').split())
+    print(storage[0])
+    #extract neighbors from storage
+    neighbors = []
+    if(storage[0][0] == "RESPONSE_NEIGHBORS"):
+        #find the numbers in the string and preserve only those in a list of neighbors
+        storage[0].pop(0)
+        for item in storage[0]:
+            neighbors.append(int(re.findall(r'\d+', item)[0]))
+    print(neighbors)
+    #extract alive flag from storage
+    alive_flag = 0
+    if(storage[1][0] == "RESPONSE_ALIVE_FLAG"):
+        alive_flag = int(storage[1][1])
+    print(alive_flag)
+    #extract neighbor info from storage
+    ip_port_list = []
+    aux_storage = []
+    if(storage[2][0] == "RESPONSE_NEIGHBOR_INFO"):
+        storage[2].pop(0)
+        for item in storage[2]:
+            aux_storage.append(item.strip('"([]),"').split(', '))
+        print(aux_storage)
+        #STILL NEED TO FORMALIZE BUT EXTRACTED IP AND PORT
+        #this code need to find the ip address as a string
+        #and the port as a number
+
+    #print(neighbor_info)
     register_response_received()
     
 if __name__ == "__main__":
