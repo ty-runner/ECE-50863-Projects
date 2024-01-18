@@ -7,6 +7,7 @@ Last Modified Date: December 9th, 2021
 """
 
 import sys
+import heapq
 import socket
 from datetime import date, datetime
 
@@ -159,7 +160,26 @@ def create_adjacency_list(graph):
         adjacency_list[node] = sorted(adjacency_list[node])
 
     return adjacency_list
+def add_self_to_adjacency_list(adjacency_list, switch_id):
+    adjacency_list[switch_id].append((switch_id, 0))
+    for node in adjacency_list:
+        adjacency_list[node] = sorted(adjacency_list[node])
+    return adjacency_list
 
+def dijkstra(adjacency_list, start_vertex):
+    D = {v: float('inf') for v in adjacency_list}
+    D[start_vertex] = 0
+
+    priority_queue = [(0, start_vertex)]
+    while len(priority_queue) > 0:
+        (dist, current_vertex) = heapq.heappop(priority_queue)
+        for neighbor, neighbor_dist in adjacency_list[current_vertex]:
+            old_cost = D[neighbor]
+            new_cost = D[current_vertex] + neighbor_dist
+            if new_cost < old_cost:
+                D[neighbor] = new_cost
+                heapq.heappush(priority_queue, (new_cost, neighbor))
+    return D
 def main():
     #Check for number of arguments and exit if host/port not provided
     num_args = len(sys.argv)
@@ -217,7 +237,24 @@ def main():
             #host/port information
             server_socket.sendto(f"RESPONSE_NEIGHBOR_INFO {response_ds[int(switch)][2]}".encode('UTF-8'), switch_dictionary[int(switch)]) #so the entire routing table is sent to each switch. This isnt really what we want but its a start
             register_response_sent(switch)
-            #routing_table_update(switch_ports)
+        #that completes the bootstrap process. Now we need to send the initial routing table to each switch. This routing table is of the format src, dest, next hop, distance
+        
+        #the next hop and distance are calculated using dijkstras algorithm
+        for switch in adjacency_list:
+            adjacency_list = add_self_to_adjacency_list(adjacency_list, switch)
+        print(adjacency_list)
+        #we now have an adjacency list with the self entry added to each switch
+        routing_table = []
+        for switch in adjacency_list:
+            print(f"Switch {switch} neighbors: {adjacency_list[switch]}")
+            for neighbor in adjacency_list[switch]:
+                routing_table.append([switch, neighbor[0], neighbor[0], neighbor[1]])
+        #print(routing_table)
+        #issues: the switch was sorted in the wrong order in the adjacency list. 
+        #issues: the routing table sent out does not include all possible destinations, just the immediate neighbors
+        # Test the function
+        print(dijkstra(adjacency_list, 0))
+        routing_table_update(routing_table)
     #print(switch_dictionary)
     #print(response_ds)
 if __name__ == "__main__":

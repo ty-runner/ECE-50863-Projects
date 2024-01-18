@@ -144,17 +144,12 @@ def main():
     print(alive_flag)
     #extract neighbor info from storage
     ip_port_list = []
-    aux_storage = []
     if(storage[2][0] == "RESPONSE_NEIGHBOR_INFO"):
         storage[2].pop(0)
         for item in storage[2]:
-            aux_storage.append(item.strip('"([]),"').split(', '))
-        print(aux_storage)
-        #STILL NEED TO FORMALIZE BUT EXTRACTED IP AND PORT
-        #this code need to find the ip address as a string
-        #and the port as a number
-
-    #print(neighbor_info)
+            ip_port_list.append(item.strip('"([]),"'))
+    print(ip_port_list)
+    print(type(ip_port_list[0]))
     register_response_received()
     
 if __name__ == "__main__":
