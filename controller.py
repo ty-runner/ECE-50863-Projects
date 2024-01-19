@@ -140,20 +140,29 @@ def create_adjacency_list_from_file(file_path):
 def create_adjacency_list(graph):
     adjacency_list = {}
 
+    # Create a set to keep track of all unique nodes
+    nodes = set()
+    for edge in graph:
+        node1, node2, distance = edge
+        nodes.add(node1)
+        nodes.add(node2)
+
+    # Sort the nodes in ascending order
+    sorted_nodes = sorted(nodes)
+
+    # Create the adjacency list with sorted nodes
+    for node in sorted_nodes:
+        adjacency_list[node] = []
+
+    # Add edges to the adjacency list
     for edge in graph:
         node1, node2, distance = edge
 
         # Add node2 to the neighbors of node1
-        if node1 in adjacency_list:
-            adjacency_list[node1].append((node2, distance))
-        else:
-            adjacency_list[node1] = [(node2, distance)]
+        adjacency_list[node1].append((node2, distance))
 
         # Add node1 to the neighbors of node2 (because the graph is undirected)
-        if node2 in adjacency_list:
-            adjacency_list[node2].append((node1, distance))
-        else:
-            adjacency_list[node2] = [(node1, distance)]
+        adjacency_list[node2].append((node1, distance))
 
     # Sort neighbors for each node in ascending order
     for node in adjacency_list:

@@ -126,7 +126,7 @@ def main():
     storage = []
     for _ in range(3):
         (data, server_addr) = switch_socket.recvfrom(1024)
-        print(f"Server data is '{data.decode('utf-8')}'")
+        #print(f"Server data is '{data.decode('utf-8')}'")
         storage.append(data.decode('utf-8').split())
     print(storage[0])
     #extract neighbors from storage
