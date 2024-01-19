@@ -255,14 +255,14 @@ def main():
         #we now have an adjacency list with the self entry added to each switch
         routing_table = []
         for switch in adjacency_list:
+            #instead of appending from the adjacency list, process the dijkstra response and append to routing table
             print(f"Switch {switch} neighbors: {adjacency_list[switch]}")
+            print(dijkstra(adjacency_list, switch))
             for neighbor in adjacency_list[switch]:
                 routing_table.append([switch, neighbor[0], neighbor[0], neighbor[1]])
         #print(routing_table)
-        #issues: the switch was sorted in the wrong order in the adjacency list. 
         #issues: the routing table sent out does not include all possible destinations, just the immediate neighbors
         # Test the function
-        print(dijkstra(adjacency_list, 0))
         routing_table_update(routing_table)
     #print(switch_dictionary)
     #print(response_ds)
