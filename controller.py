@@ -178,6 +178,7 @@ def add_self_to_adjacency_list(adjacency_list, switch_id):
 def dijkstra(adjacency_list, start_vertex):
     D = {v: float('inf') for v in adjacency_list}
     D[start_vertex] = 0
+    next_hop = {v: None for v in adjacency_list}
 
     priority_queue = [(0, start_vertex)]
     while len(priority_queue) > 0:
@@ -187,8 +188,9 @@ def dijkstra(adjacency_list, start_vertex):
             new_cost = D[current_vertex] + neighbor_dist
             if new_cost < old_cost:
                 D[neighbor] = new_cost
+                next_hop[neighbor] = current_vertex
                 heapq.heappush(priority_queue, (new_cost, neighbor))
-    return D
+    return D, next_hop
 def main():
     #Check for number of arguments and exit if host/port not provided
     num_args = len(sys.argv)
@@ -254,14 +256,23 @@ def main():
         print(adjacency_list)
         #we now have an adjacency list with the self entry added to each switch
         routing_table = []
+        dijkstra_entries = {}
         for switch in adjacency_list:
-            #instead of appending from the adjacency list, process the dijkstra response and append to routing table
             print(f"Switch {switch} neighbors: {adjacency_list[switch]}")
-            print(dijkstra(adjacency_list, switch))
-            for neighbor in adjacency_list[switch]:
-                routing_table.append([switch, neighbor[0], neighbor[0], neighbor[1]])
+            dijkstra_result, next_hop_dict = dijkstra(adjacency_list, switch)
+            dijkstra_entries[switch] = dijkstra_result
+            print(f"Dijkstra result for switch {switch} is {dijkstra_result}")
+            print(f"Next hop for switch {switch} is {next_hop_dict}")
+            for destination, distance in dijkstra_result.items():
+                if destination != switch:
+                    print(f"Switch {switch} to {destination} is {distance}")
+                    print(f" {adjacency_list[switch]}")
+                    next_hop = next_hop_dict[destination]
+                    routing_table.append([switch, destination, next_hop, distance])
+                else:
+                    routing_table.append([switch, destination, destination, 0]) #self entry
         #print(routing_table)
-        #issues: the routing table sent out does not include all possible destinations, just the immediate neighbors
+        #issues: the next hop if is the node right before destination, if there are 3 hops, it is incorrect, check dijkstra func
         # Test the function
         routing_table_update(routing_table)
     #print(switch_dictionary)

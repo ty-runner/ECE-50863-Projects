@@ -1,438 +1,281 @@
 
 
-15:49:52.218149
+09:38:40.482546
 Register Request 0
 
 
-15:50:03.232857
+09:38:41.549713
 Register Request 1
 
 
-15:50:34.329591
+09:38:42.843436
 Register Request 2
 
 
-15:51:05.114532
+09:38:43.832842
 Register Request 3
 
 
-15:51:52.014033
+09:38:44.985836
 Register Request 4
 
 
-15:52:06.701665
+09:38:46.112193
 Register Request 5
 
 
-15:52:06.711666
+09:38:46.120477
 Register Response 0
 
 
-15:52:06.717669
+09:38:46.125439
 Register Response 1
 
 
-15:52:06.729668
+09:38:46.136531
 Register Response 2
 
 
-15:52:06.748670
+09:38:46.145621
 Register Response 3
 
 
-15:52:06.759669
+09:38:46.155279
 Register Response 4
 
 
-15:52:06.769672
+09:38:46.165729
 Register Response 5
 
 
-15:52:06.780687
+09:40:04.978377
+Register Request 0
+
+
+09:40:05.835753
+Register Request 1
+
+
+09:40:06.812368
+Register Request 2
+
+
+09:40:07.800966
+Register Request 3
+
+
+09:40:08.768756
+Register Request 4
+
+
+09:40:09.728490
+Register Request 5
+
+
+09:40:09.734497
+Register Response 0
+
+
+09:40:09.741539
+Register Response 1
+
+
+09:40:09.748569
+Register Response 2
+
+
+09:40:09.756654
+Register Response 3
+
+
+09:40:09.763686
+Register Response 4
+
+
+09:40:09.778316
+Register Response 5
+
+
+09:46:03.499939
+Register Request 0
+
+
+09:46:04.556544
+Register Request 1
+
+
+09:46:05.537525
+Register Request 2
+
+
+09:46:06.645447
+Register Request 3
+
+
+09:46:07.796857
+Register Request 4
+
+
+09:46:08.804881
+Register Request 5
+
+
+09:46:08.809906
+Register Response 0
+
+
+09:46:08.816870
+Register Response 1
+
+
+09:46:08.824896
+Register Response 2
+
+
+09:46:08.834545
+Register Response 3
+
+
+09:46:08.843016
+Register Response 4
+
+
+09:46:08.852533
+Register Response 5
+
+
+09:49:53.183562
+Register Request 0
+
+
+09:49:54.117403
+Register Request 1
+
+
+09:49:55.236249
+Register Request 2
+
+
+09:49:56.257939
+Register Request 3
+
+
+09:49:57.227326
+Register Request 4
+
+
+09:49:58.211827
+Register Request 5
+
+
+09:49:58.218828
+Register Response 0
+
+
+09:49:58.227831
+Register Response 1
+
+
+09:49:58.238831
+Register Response 2
+
+
+09:49:58.249830
+Register Response 3
+
+
+09:49:58.264714
+Register Response 4
+
+
+09:49:58.276372
+Register Response 5
+
+
+09:53:02.572566
+Register Request 0
+
+
+09:53:03.503660
+Register Request 1
+
+
+09:53:04.496394
+Register Request 2
+
+
+09:53:05.675761
+Register Request 3
+
+
+09:53:06.686134
+Register Request 4
+
+
+09:53:07.632613
+Register Request 5
+
+
+09:53:07.638613
+Register Response 0
+
+
+09:53:07.648637
+Register Response 1
+
+
+09:53:07.659620
+Register Response 2
+
+
+09:53:07.670615
+Register Response 3
+
+
+09:53:07.680614
+Register Response 4
+
+
+09:53:07.690617
+Register Response 5
+
+
+09:53:07.716814
 Routing Update
 0,0:0,0
-0,1:1,100
-0,3:3,200
-0,5:5,80
-1,0:0,100
+0,1:0,100
+0,2:1,150
+0,3:0,200
+0,4:1,280
+0,5:0,80
+1,0:1,100
 1,1:1,0
-1,2:2,50
-1,4:4,180
-3,0:0,200
-3,2:2,50
-3,3:3,0
-3,4:4,100
-5,0:0,80
-5,2:2,150
-5,5:5,0
-2,1:1,50
+1,2:1,50
+1,3:2,100
+1,4:1,180
+1,5:0,180
+2,0:1,150
+2,1:2,50
 2,2:2,0
-2,3:3,50
-2,5:5,150
-4,1:1,180
-4,3:3,100
-4,4:4,0
-Routing Complete
-
-
-15:53:50.508151
-Register Request 0
-
-
-15:53:52.225927
-Register Request 1
-
-
-15:53:53.827223
-Register Request 2
-
-
-15:53:55.444590
-Register Request 3
-
-
-15:53:57.319650
-Register Request 4
-
-
-15:53:59.284029
-Register Request 5
-
-
-15:53:59.286027
-Register Response 0
-
-
-15:53:59.292021
-Register Response 1
-
-
-15:53:59.300023
-Register Response 2
-
-
-15:53:59.307025
-Register Response 3
-
-
-15:53:59.318034
-Register Response 4
-
-
-15:53:59.327420
-Register Response 5
-
-
-15:53:59.340421
-Routing Update
-0,1:1,100
-0,3:3,200
-0,5:5,80
-1,0:0,100
-1,2:2,50
-1,4:4,180
-3,0:0,200
-3,2:2,50
-3,4:4,100
-5,0:0,80
-5,2:2,150
-2,1:1,50
-2,3:3,50
-2,5:5,150
-4,1:1,180
-4,3:3,100
-Routing Complete
-
-
-16:02:23.914228
-Register Request 0
-
-
-16:02:25.694975
-Register Request 1
-
-
-16:02:27.463550
-Register Request 2
-
-
-16:02:29.209295
-Register Request 3
-
-
-16:02:31.140394
-Register Request 4
-
-
-16:02:32.856905
-Register Request 5
-
-
-16:02:32.858911
-Register Response 0
-
-
-16:02:32.867445
-Register Response 1
-
-
-16:02:32.873444
-Register Response 2
-
-
-16:02:32.884445
-Register Response 3
-
-
-16:02:32.893445
-Register Response 4
-
-
-16:02:32.905443
-Register Response 5
-
-
-16:02:32.920449
-Routing Update
-0,1:1,100
-0,3:3,200
-0,5:5,80
-1,0:0,100
-1,2:2,50
-1,4:4,180
-2,1:1,50
-2,3:3,50
-2,5:5,150
-3,0:0,200
-3,2:2,50
-3,4:4,100
-4,1:1,180
-4,3:3,100
-5,0:0,80
-5,2:2,150
-Routing Complete
-
-
-16:03:12.161151
-Register Request 0
-
-
-16:03:13.926002
-Register Request 1
-
-
-16:03:15.761911
-Register Request 2
-
-
-16:03:17.475641
-Register Request 3
-
-
-16:03:19.131872
-Register Request 4
-
-
-16:03:20.942465
-Register Request 5
-
-
-16:03:20.944411
-Register Response 0
-
-
-16:03:20.951408
-Register Response 1
-
-
-16:03:20.960475
-Register Response 2
-
-
-16:03:20.970994
-Register Response 3
-
-
-16:03:20.983995
-Register Response 4
-
-
-16:03:20.993302
-Register Response 5
-
-
-16:03:21.006327
-Routing Update
-0,0:0,0
-0,1:1,100
-0,3:3,200
-0,5:5,80
-1,0:0,100
-1,1:1,0
-1,2:2,50
-1,4:4,180
-2,1:1,50
-2,2:2,0
-2,3:3,50
-2,5:5,150
-3,0:0,200
-3,2:2,50
+2,3:2,50
+2,4:3,150
+2,5:2,150
+3,0:3,200
+3,1:2,100
+3,2:3,50
 3,3:3,0
-3,4:4,100
-4,1:1,180
-4,3:3,100
+3,4:3,100
+3,5:2,200
+4,0:1,280
+4,1:4,180
+4,2:3,150
+4,3:4,100
 4,4:4,0
-5,0:0,80
-5,2:2,150
-5,5:5,0
-Routing Complete
-
-
-16:09:06.029847
-Register Request 0
-
-
-16:09:07.070222
-Register Request 1
-
-
-16:09:08.223302
-Register Request 2
-
-
-16:09:09.371347
-Register Request 3
-
-
-16:09:10.544318
-Register Request 4
-
-
-16:09:11.677567
-Register Request 5
-
-
-16:09:11.679568
-Register Response 0
-
-
-16:09:11.687568
-Register Response 1
-
-
-16:09:11.697574
-Register Response 2
-
-
-16:09:11.707574
-Register Response 3
-
-
-16:09:11.719573
-Register Response 4
-
-
-16:09:11.729570
-Register Response 5
-
-
-16:09:11.742569
-Routing Update
-0,0:0,0
-0,1:1,100
-0,3:3,200
-0,5:5,80
-1,0:0,100
-1,1:1,0
-1,2:2,50
-1,4:4,180
-2,1:1,50
-2,2:2,0
-2,3:3,50
-2,5:5,150
-3,0:0,200
-3,2:2,50
-3,3:3,0
-3,4:4,100
-4,1:1,180
-4,3:3,100
-4,4:4,0
-5,0:0,80
-5,2:2,150
-5,5:5,0
-Routing Complete
-
-
-16:12:26.384558
-Register Request 0
-
-
-16:12:28.475816
-Register Request 1
-
-
-16:12:30.024877
-Register Request 2
-
-
-16:12:31.064035
-Register Request 3
-
-
-16:12:32.388290
-Register Request 4
-
-
-16:12:33.956362
-Register Request 5
-
-
-16:12:33.958420
-Register Response 0
-
-
-16:12:33.964879
-Register Response 1
-
-
-16:12:33.972305
-Register Response 2
-
-
-16:12:33.978823
-Register Response 3
-
-
-16:12:33.987866
-Register Response 4
-
-
-16:12:33.996955
-Register Response 5
-
-
-16:12:34.007086
-Routing Update
-0,0:0,0
-0,1:1,100
-0,3:3,200
-0,5:5,80
-1,0:0,100
-1,1:1,0
-1,2:2,50
-1,4:4,180
-2,1:1,50
-2,2:2,0
-2,3:3,50
-2,5:5,150
-3,0:0,200
-3,2:2,50
-3,3:3,0
-3,4:4,100
-4,1:1,180
-4,3:3,100
-4,4:4,0
-5,0:0,80
-5,2:2,150
+4,5:2,300
+5,0:5,80
+5,1:0,180
+5,2:5,150
+5,3:2,200
+5,4:3,300
 5,5:5,0
 Routing Complete
