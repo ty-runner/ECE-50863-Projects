@@ -176,29 +176,33 @@ def add_self_to_adjacency_list(adjacency_list, switch_id):
     return adjacency_list
 
 def dijkstra(adjacency_list, start_vertex):
-    D = {v: float('inf') for v in adjacency_list}
-    D[start_vertex] = 0
-    next_hop = {v: None for v in adjacency_list}
+    distances = {vertex: float('infinity') for vertex in adjacency_list}
+    distances[start_vertex] = 0
+    next_hop = {vertex: None for vertex in adjacency_list}
 
     priority_queue = [(0, start_vertex)]
-    while len(priority_queue) > 0:
-        (dist, current_vertex) = heapq.heappop(priority_queue)
-        for neighbor, neighbor_dist in adjacency_list[current_vertex]:
-            old_cost = D[neighbor]
-            new_cost = D[current_vertex] + neighbor_dist
-            if new_cost < old_cost:
-                D[neighbor] = new_cost
-                print(f"Neighbor is {neighbor}")
-                print(f"Current vertex is {current_vertex}")
-                next_hop[neighbor] = neighbor  # Update next_hop to current_vertex instead of start_vertex
-                heapq.heappush(priority_queue, (new_cost, neighbor))
-    return D, next_hop
-def calculate_next_hop(next_hop, start_vertex, destination):
-    path = [destination]
-    while next_hop[destination] is not None:
-        destination = next_hop[destination]
-        path.append(destination)
-    return path[-2] if len(path) >= 2 else start_vertex
+
+    while priority_queue:
+        current_distance, current_vertex = heapq.heappop(priority_queue)
+
+        for neighbor, weight in adjacency_list[current_vertex]:
+            distance = current_distance + weight
+
+            # Update distances and next hop
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                # Update next hop based on the number of hops
+                if distances[neighbor] == weight:
+                    # Single hop path, set next hop as the destination
+                    next_hop[neighbor] = neighbor
+                else:
+                    # Multi-hop path, set next hop as the second node
+                    next_hop[neighbor] = current_vertex
+
+                heapq.heappush(priority_queue, (distance, neighbor))
+
+    return distances, next_hop
+
 def main():
     #Check for number of arguments and exit if host/port not provided
     num_args = len(sys.argv)
@@ -220,14 +224,12 @@ def main():
     # Now we need to read the config file and get the switch IDs and ports that the switches are listening on. We'll store this information in a dictionary, where the key is the switch ID and the value is the port number.
     switch_ports, num_of_switches = extract_routing_table(config_file)
     adjacency_list = create_adjacency_list_from_file(config_file)
-    print(f"Switch ports: {switch_ports}")
     while(switches_online < num_of_switches):
         info, client_addr = bootstrap_register(server_socket, switch_ports, num_of_switches)
         if(info[0] == "REGISTER_REQUEST"):
             register_request_received(info[1])
             switch_dictionary[int(info[1])] = client_addr
             switches_online+=1
-            print(info, client_addr)
     if(switches_online == num_of_switches):
         print("All switches have registered with the controller. Sending routing table to switches.")
         response_ds = {}
@@ -261,22 +263,17 @@ def main():
         #the next hop and distance are calculated using dijkstras algorithm
         for switch in adjacency_list:
             adjacency_list = add_self_to_adjacency_list(adjacency_list, switch)
-        print(adjacency_list)
         #we now have an adjacency list with the self entry added to each switch
         routing_table = []
         dijkstra_entries = {}
         for switch in adjacency_list:
             print(f"Switch {switch} neighbors: {adjacency_list[switch]}")
             dijkstra_result, next_hop_dict = dijkstra(adjacency_list, switch)
-            for destination in next_hop_dict:
-                print(calculate_next_hop(next_hop_dict, switch, destination))
             dijkstra_entries[switch] = dijkstra_result
             print(f"Dijkstra result for switch {switch} is {dijkstra_result}")
             print(f"Next hop for switch {switch} is {next_hop_dict}")
             for destination, distance in dijkstra_result.items():
                 if destination != switch:
-                    print(f"Switch {switch} to {destination} is {distance}")
-                    print(f" {adjacency_list[switch]}")
                     next_hop = next_hop_dict[destination]
                     routing_table.append([switch, destination, next_hop, distance])
                 else:
@@ -285,10 +282,13 @@ def main():
         #issues: the next hop if is the node right before destination, if there are 3 hops, it is incorrect, check dijkstra func
         # Test the function
         routing_table_update(routing_table)
+        routing_table_batch = ""
         for switch in switch_dictionary:
             for entry in routing_table:
                 if entry[0] == switch:
-                    server_socket.sendto(f"RESPONSE_ROUTING_TABLE {entry[0]},{entry[1]}:{entry[2]}".encode('UTF-8'), switch_dictionary[switch])
+                    routing_table_batch += f"{entry[0]},{entry[1]}:{entry[2]}\n"
+        for switch in switch_dictionary:
+            server_socket.sendto(f"RESPONSE_ROUTING_TABLE_BATCH {routing_table_batch}".encode('UTF-8'), switch_dictionary[switch])
     #print(switch_dictionary)
     #print(response_ds)
 if __name__ == "__main__":

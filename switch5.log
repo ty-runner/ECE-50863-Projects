@@ -14,3 +14,82 @@ Routing Update
 5,1:1
 5,2:2
 Routing Complete
+
+
+11:30:18.198134
+Register Request Sent
+
+
+11:30:18.239741
+Register Response received
+
+
+11:30:18.273319
+Routing Update
+5,0:0
+5,1:0
+5,2:2
+Routing Complete
+
+
+11:36:05.384564
+Register Request Sent
+
+
+11:36:05.425631
+Register Response received
+
+
+11:36:05.448303
+Routing Update
+5,0:0
+5,1:0
+5,2:2
+Routing Complete
+
+
+12:27:09.915863
+Register Request Sent
+
+
+12:27:09.977166
+Register Response received
+
+
+12:27:10.003801
+Routing Update
+5,0:0
+5,1:0
+5,2:2
+5,3:2
+5,4:3
+5,5:5
+Routing Complete
+
+
+12:35:55.805687
+Register Request Sent
+
+
+12:35:55.857974
+Register Response received
+
+
+12:35:55.884234
+Routing Update
+5,0:0
+Routing Complete
+
+
+12:36:33.102125
+Register Request Sent
+
+
+12:36:33.145426
+Register Response received
+
+
+12:36:33.177287
+Routing Update
+0,0:0
+Routing Complete

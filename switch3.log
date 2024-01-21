@@ -15,3 +15,78 @@ Routing Update
 3,2:2
 3,3:3
 Routing Complete
+
+
+11:29:57.500023
+Register Request Sent
+
+
+11:30:18.223400
+Register Response received
+
+
+11:30:18.273319
+Routing Update
+3,0:0
+3,1:2
+3,2:2
+3,3:3
+Routing Complete
+
+
+11:36:00.514073
+Register Request Sent
+
+
+11:36:05.411372
+Register Response received
+
+
+11:36:05.448303
+Routing Update
+3,0:0
+3,1:2
+3,2:2
+3,3:3
+Routing Complete
+
+
+12:27:06.774436
+Register Request Sent
+
+
+12:27:09.954412
+Register Response received
+
+
+12:27:10.003292
+Routing Update
+3,0:0
+3,1:2
+3,2:2
+3,3:3
+3,4:4
+3,5:2
+Routing Complete
+
+
+12:35:52.861715
+Register Request Sent
+
+
+12:35:55.838425
+Register Response received
+
+
+12:35:55.883186
+Routing Update
+3,0:0
+Routing Complete
+
+
+12:36:30.192765
+Register Request Sent
+
+
+12:36:33.129161
+Register Response received

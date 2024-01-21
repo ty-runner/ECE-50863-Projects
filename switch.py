@@ -155,13 +155,13 @@ def main():
     i=0
     table = []
     #initial routing table receive
-    while i <= len(neighbors):
-        data, server_addr = switch_socket.recvfrom(1024)
-        i+=1
-        print(f"Server data is '{data.decode('utf-8')}'")
-        content = re.findall(r'\d+', data.decode('utf-8'))
-        content = [int(num) for num in content]  # Convert numbers to integers
-        table.append(content)
+    #there could be more neighbors than the immediate neighbors
+    data, server_addr = switch_socket.recvfrom(1024)
+    i+=1
+    print(f"Server data is '{data.decode('utf-8')}'")
+    content = re.findall(r'\d+', data.decode('utf-8'))
+    content = [int(num) for num in content]  # Convert numbers to integers
+    table.append(content)
     print(table)
     routing_table_update(table)
 
