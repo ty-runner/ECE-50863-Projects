@@ -188,9 +188,17 @@ def dijkstra(adjacency_list, start_vertex):
             new_cost = D[current_vertex] + neighbor_dist
             if new_cost < old_cost:
                 D[neighbor] = new_cost
-                next_hop[neighbor] = current_vertex
+                print(f"Neighbor is {neighbor}")
+                print(f"Current vertex is {current_vertex}")
+                next_hop[neighbor] = neighbor  # Update next_hop to current_vertex instead of start_vertex
                 heapq.heappush(priority_queue, (new_cost, neighbor))
     return D, next_hop
+def calculate_next_hop(next_hop, start_vertex, destination):
+    path = [destination]
+    while next_hop[destination] is not None:
+        destination = next_hop[destination]
+        path.append(destination)
+    return path[-2] if len(path) >= 2 else start_vertex
 def main():
     #Check for number of arguments and exit if host/port not provided
     num_args = len(sys.argv)
@@ -260,6 +268,8 @@ def main():
         for switch in adjacency_list:
             print(f"Switch {switch} neighbors: {adjacency_list[switch]}")
             dijkstra_result, next_hop_dict = dijkstra(adjacency_list, switch)
+            for destination in next_hop_dict:
+                print(calculate_next_hop(next_hop_dict, switch, destination))
             dijkstra_entries[switch] = dijkstra_result
             print(f"Dijkstra result for switch {switch} is {dijkstra_result}")
             print(f"Next hop for switch {switch} is {next_hop_dict}")
@@ -275,6 +285,10 @@ def main():
         #issues: the next hop if is the node right before destination, if there are 3 hops, it is incorrect, check dijkstra func
         # Test the function
         routing_table_update(routing_table)
+        for switch in switch_dictionary:
+            for entry in routing_table:
+                if entry[0] == switch:
+                    server_socket.sendto(f"RESPONSE_ROUTING_TABLE {entry[0]},{entry[1]}:{entry[2]}".encode('UTF-8'), switch_dictionary[switch])
     #print(switch_dictionary)
     #print(response_ds)
 if __name__ == "__main__":

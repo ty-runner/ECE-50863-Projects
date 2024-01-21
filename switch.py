@@ -13,6 +13,7 @@ from datetime import date, datetime
 import re
 import ast
 
+
 # Please do not modify the name of the log file, otherwise you will lose points because the grader won't be able to find your log file
 LOG_FILE = "switch#.log" # The log file for switches are switch#.log, where # is the id of that switch (i.e. switch0.log, switch1.log). The code for replacing # with a real number has been given to you in the main function.
 
@@ -136,7 +137,7 @@ def main():
         storage[0].pop(0)
         for item in storage[0]:
             neighbors.append(int(re.findall(r'\d+', item)[0]))
-    print(neighbors)
+    print(len(neighbors))
     #extract alive flag from storage
     alive_flag = 0
     if(storage[1][0] == "RESPONSE_ALIVE_FLAG"):
@@ -151,6 +152,22 @@ def main():
     print(ip_port_list)
     print(type(ip_port_list[0]))
     register_response_received()
+    i=0
+    table = []
+    #initial routing table receive
+    while i <= len(neighbors):
+        data, server_addr = switch_socket.recvfrom(1024)
+        i+=1
+        print(f"Server data is '{data.decode('utf-8')}'")
+        content = re.findall(r'\d+', data.decode('utf-8'))
+        content = [int(num) for num in content]  # Convert numbers to integers
+        table.append(content)
+    print(table)
+    routing_table_update(table)
+
+# For the parameter "routing_table", it should be a list of lists in the form of [[...], [...], ...]. 
+# Within each list in the outermost list, the first element is <Switch ID>. The second is <Dest ID>, and the third is <Next Hop>.
+    #routing_table_update
     
 if __name__ == "__main__":
     main()

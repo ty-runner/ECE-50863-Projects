@@ -1,40 +1,16 @@
 
 
-09:38:46.111187
+10:59:24.764613
 Register Request Sent
 
 
-09:38:46.166766
+10:59:24.814322
 Register Response received
 
 
-09:40:09.727979
-Register Request Sent
-
-
-09:40:09.779331
-Register Response received
-
-
-09:46:08.803910
-Register Request Sent
-
-
-09:46:08.853543
-Register Response received
-
-
-09:49:58.211827
-Register Request Sent
-
-
-09:49:58.277372
-Register Response received
-
-
-09:53:07.631628
-Register Request Sent
-
-
-09:53:07.692613
-Register Response received
+10:59:24.854229
+Routing Update
+5,0:0
+5,1:1
+5,2:2
+Routing Complete
