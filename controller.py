@@ -282,13 +282,14 @@ def main():
         #issues: the next hop if is the node right before destination, if there are 3 hops, it is incorrect, check dijkstra func
         # Test the function
         routing_table_update(routing_table)
-        routing_table_batch = ""
+        routing_table_entries = {}
         for switch in switch_dictionary:
+            routing_table_entries[switch] = []
             for entry in routing_table:
                 if entry[0] == switch:
-                    routing_table_batch += f"{entry[0]},{entry[1]}:{entry[2]}\n"
+                    routing_table_entries[switch].append(f"{entry[0]},{entry[1]}:{entry[2]}")
         for switch in switch_dictionary:
-            server_socket.sendto(f"RESPONSE_ROUTING_TABLE_BATCH {routing_table_batch}".encode('UTF-8'), switch_dictionary[switch])
+            server_socket.sendto(f"RESPONSE_ROUTING_TABLE_BATCH {routing_table_entries[switch]}".encode('UTF-8'), switch_dictionary[switch])
     #print(switch_dictionary)
     #print(response_ds)
 if __name__ == "__main__":

@@ -152,16 +152,18 @@ def main():
     print(ip_port_list)
     print(type(ip_port_list[0]))
     register_response_received()
-    i=0
     table = []
     #initial routing table receive
     #there could be more neighbors than the immediate neighbors
     data, server_addr = switch_socket.recvfrom(1024)
-    i+=1
     print(f"Server data is '{data.decode('utf-8')}'")
     content = re.findall(r'\d+', data.decode('utf-8'))
     content = [int(num) for num in content]  # Convert numbers to integers
-    table.append(content)
+    
+    # Group every 3 entries together in a list
+    table.append([content[i:i+3] for i in range(0, len(content), 3)])
+    table = table[0]
+    
     print(table)
     routing_table_update(table)
 
