@@ -201,6 +201,12 @@ def dijkstra(adjacency_list, start_vertex):
 
                 heapq.heappush(priority_queue, (distance, neighbor))
 
+    # Set next hop and distance to -1 and 9999 respectively for unreachable destinations
+    for vertex in adjacency_list:
+        if distances[vertex] == float('infinity'):
+            next_hop[vertex] = -1
+            distances[vertex] = 9999
+
     return distances, next_hop
 
 def main():

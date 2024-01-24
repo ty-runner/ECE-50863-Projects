@@ -12,6 +12,8 @@ from datetime import date, datetime
 
 import re
 import ast
+import threading
+import time
 
 
 # Please do not modify the name of the log file, otherwise you will lose points because the grader won't be able to find your log file
@@ -91,7 +93,39 @@ def write_to_log(log):
         log_file.write("\n\n")
         # Write to log
         log_file.writelines(log)
+def keep_alive(switch_socket, neighbors, ip_port_list):
+    # Wait for 5 seconds
+    #this is thread 1
+    #send a keep alive message to each of its neighbors every 5 seconds
+    while True:
+        time.sleep(5)
+        for neighbor in neighbors:
+            msg = f"KEEP_ALIVE {neighbor}".encode(encoding='UTF-8')
+            switch_socket.sendto(msg, ip_port_list[neighbor])
+def topology_update(switch_socket, neighbors, ip_port_list, server_addr):
+    # Wait for 5 seconds
+    #this is thread 2
+    #send a topology update to the controller every 5 seconds
+    while True:
+        time.sleep(5)
+        msg = f"TOPOLOGY_UPDATE {neighbors}".encode(encoding='UTF-8')
+        switch_socket.sendto(msg, server_addr)
+def listen_for_neighbors(switch_socket, neighbors, ip_port_list, server_addr):
+    # Wait for 15 seconds
+    #this is thread 3
+    #if a switch hasn't received a keep alive message from a neighbor for 15 seconds, it should mark that neighbor as dead
+    #immediately, it sends a topology update to the controller with an updated list of alive neighbors
+    while True:
+        time.sleep(15)
+        neighbor_addresses = []
+        for neighbor in neighbors:
+            (data, neighbor_addr) = switch_socket.recvfrom(1024)
+            neighbor_addresses.append(neighbor_addr)
+        if(len(neighbor_addresses) != len(neighbors)):
+            #send topology update to controller with updated list of alive neighbors
 
+            #if no response from neighbor, mark as dead
+            #send topology update to controller with updated list of alive neighbors
 def main():
 
     global LOG_FILE
@@ -166,6 +200,25 @@ def main():
     
     print(table)
     routing_table_update(table)
+    #start thread 1
+    keep_alive_thread = threading.Thread(target=keep_alive, args=(switch_socket, neighbors, ip_port_list))
+    keep_alive_thread.start()
+    #start thread 2
+    topology_update_thread = threading.Thread(target=topology_update, args=(switch_socket, neighbors, ip_port_list, server_addr)) #we might need more in the topology update
+    topology_update_thread.start()
+    #start thread 3
+
+
+
+
+    #Switch periodic operations:
+    #1. Send a keep alive message to each of its neighbors every 5 seconds
+    #2. Send a topology update to the controller every 5 seconds. This update a set of alive neighbors
+    #3. If a switch hasn't received a keep alive message from a neighbor for 15 seconds, it should mark that neighbor as dead
+    #Immediately, it sends a topology update to the controller with an updated list of alive neighbors
+    #4. Once a switch receives a keep alive message from a neighbor that it previously marked as dead, it should mark that neighbor as alive, updates host/port info, and sends a topology update to the controller with an updated list of alive neighbors
+
+
 
 # For the parameter "routing_table", it should be a list of lists in the form of [[...], [...], ...]. 
 # Within each list in the outermost list, the first element is <Switch ID>. The second is <Dest ID>, and the third is <Next Hop>.
