@@ -18,7 +18,8 @@ import time
 
 # Please do not modify the name of the log file, otherwise you will lose points because the grader won't be able to find your log file
 LOG_FILE = "switch#.log" # The log file for switches are switch#.log, where # is the id of that switch (i.e. switch0.log, switch1.log). The code for replacing # with a real number has been given to you in the main function.
-
+K = 5
+TIMEOUT = 15
 # Those are logging functions to help you follow the correct logging standard
 
 # "Register Request" Format is below:
@@ -93,32 +94,32 @@ def write_to_log(log):
         log_file.write("\n\n")
         # Write to log
         log_file.writelines(log)
-def keep_alive(switch_socket, ID, neighbors, ip_port_list):
+def keep_alive(switch_socket, ID, neighbors, ip_port_list, K):
     # Wait for 5 seconds
     #this is thread 1
     #send a keep alive message to each of its neighbors every 5 seconds
-    time.sleep(5)
-    for neighbor in neighbors:
-        print(neighbor)
+    time.sleep(K)
+    for i in range(len(neighbors)):
+        print(i)
         msg = f"KEEP_ALIVE {ID}".encode(encoding='UTF-8')
-        switch_socket.sendto(msg, ip_port_list[neighbor])
+        switch_socket.sendto(msg, ip_port_list[i])
         print("keep alive sent")
-def topology_update(switch_socket, neighbors, ip_port_list, server_addr):
+def topology_update(switch_socket, neighbors, ip_port_list, server_addr, K):
     # Wait for 5 seconds
     #this is thread 2
     #send a topology update to the controller every 5 seconds
-    time.sleep(5)
+    time.sleep(K)
     msg = f"TOPOLOGY_UPDATE {neighbors}".encode(encoding='UTF-8')
     switch_socket.sendto(msg, server_addr)
     print("topology update sent")
-def listen_for_neighbors(switch_socket, neighbors, ip_port_list, server_addr):
+def listen_for_neighbors(switch_socket, neighbors, ip_port_list, server_addr, TIMEOUT):
     # Wait for 15 seconds
     #this is thread 3
     #if a switch hasn't received a keep alive message from a neighbor for 15 seconds, it should mark that neighbor as dead
     #immediately, it sends a topology update to the controller with an updated list of alive neighbors
-    time.sleep(15)
+    time.sleep(TIMEOUT)
     neighbor_addresses = []
-    for neighbor in neighbors:
+    for i in range(len(neighbors)):
         (data, neighbor_addr) = switch_socket.recvfrom(1024)
         neighbor_addresses.append(neighbor_addr)
     if(len(neighbor_addresses) != len(neighbors)):
@@ -181,8 +182,7 @@ def main():
     ip_port_list = []
     if(storage[2][0] == "RESPONSE_NEIGHBOR_INFO"):
         storage[2].pop(0)
-        for item in storage[2]:
-            ip_port_list.append(item.strip('"([]),"'))
+        ip_port_list = [(item.strip("'([,])"), int(port.strip("'([])'"))) for item, port in zip(storage[2][::2], storage[2][1::2])]
     print(ip_port_list)
     print(type(ip_port_list[0]))
     register_response_received()
@@ -211,13 +211,17 @@ def main():
     #1. Each switch sends a Keep Alive message every K seconds to each of the neighboring switches that it thinks is alive
     #2. Each switch sends a Topology Update message every K seconds to the controller. This message contains a list of all the switches that it thinks are alive
     interupt_flag = False
+    i = 0
     while not interupt_flag:
         #start thread 1
-        keep_alive_thread = threading.Thread(target=keep_alive, args=(switch_socket, my_id, all_neighbors, ip_port_list))
+        if i == 5:
+            interupt_flag = True
+        keep_alive_thread = threading.Thread(target=keep_alive, args=(switch_socket, my_id, all_neighbors, ip_port_list, K))
         keep_alive_thread.start()
         #start thread 2
-        topology_update_thread = threading.Thread(target=topology_update, args=(switch_socket, all_neighbors, ip_port_list, server_addr))
+        topology_update_thread = threading.Thread(target=topology_update, args=(switch_socket, all_neighbors, ip_port_list, server_addr, K))
         topology_update_thread.start()
+        i +=1
     #start thread 1
     # keep_alive_thread = threading.Thread(target=keep_alive, args=(switch_socket, neighbors, ip_port_list))
     # keep_alive_thread.start()

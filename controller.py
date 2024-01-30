@@ -13,7 +13,8 @@ from datetime import date, datetime
 
 # Please do not modify the name of the log file, otherwise you will lose points because the grader won't be able to find your log file
 LOG_FILE = "Controller.log"
-
+K = 5
+TIMEOUT = 15
 # Those are logging functions to help you follow the correct logging standard
 
 # "Register Request" Format is below:
@@ -257,6 +258,7 @@ def main():
             for index in neighbors.keys():
                 index = int(index)
                 response_ds[index] = [neighbors[index], 1, [switch_dictionary[neighbor] for neighbor in neighbors[index]]]
+            print(switch_dictionary[int(switch)])
             #neighbors
             server_socket.sendto(f"RESPONSE_NEIGHBORS {response_ds[int(switch)][0]}".encode('UTF-8'), switch_dictionary[int(switch)]) #so the entire routing table is sent to each switch. This isnt really what we want but its a start
             #alive flag
@@ -296,7 +298,6 @@ def main():
                     routing_table_entries[switch].append(f"{entry[0]},{entry[1]}:{entry[2]}")
         for switch in switch_dictionary:
             server_socket.sendto(f"RESPONSE_ROUTING_TABLE_BATCH {routing_table_entries[switch]}".encode('UTF-8'), switch_dictionary[switch])
-    #print(switch_dictionary)
-    #print(response_ds)
+        
 if __name__ == "__main__":
     main()
