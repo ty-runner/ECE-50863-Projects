@@ -93,14 +93,16 @@ def write_to_log(log):
         log_file.write("\n\n")
         # Write to log
         log_file.writelines(log)
-def keep_alive(switch_socket, neighbors, ip_port_list):
+def keep_alive(switch_socket, ID, neighbors, ip_port_list):
     # Wait for 5 seconds
     #this is thread 1
     #send a keep alive message to each of its neighbors every 5 seconds
     time.sleep(5)
     for neighbor in neighbors:
-        msg = f"KEEP_ALIVE {neighbor}".encode(encoding='UTF-8')
+        print(neighbor)
+        msg = f"KEEP_ALIVE {ID}".encode(encoding='UTF-8')
         switch_socket.sendto(msg, ip_port_list[neighbor])
+        print("keep alive sent")
 def topology_update(switch_socket, neighbors, ip_port_list, server_addr):
     # Wait for 5 seconds
     #this is thread 2
@@ -108,6 +110,7 @@ def topology_update(switch_socket, neighbors, ip_port_list, server_addr):
     time.sleep(5)
     msg = f"TOPOLOGY_UPDATE {neighbors}".encode(encoding='UTF-8')
     switch_socket.sendto(msg, server_addr)
+    print("topology update sent")
 def listen_for_neighbors(switch_socket, neighbors, ip_port_list, server_addr):
     # Wait for 15 seconds
     #this is thread 3
@@ -204,6 +207,17 @@ def main():
             neighbor_dead(int(sys.argv[5]))
             all_neighbors[int(sys.argv[5])] = False
     print(all_neighbors)
+
+    #1. Each switch sends a Keep Alive message every K seconds to each of the neighboring switches that it thinks is alive
+    #2. Each switch sends a Topology Update message every K seconds to the controller. This message contains a list of all the switches that it thinks are alive
+    interupt_flag = False
+    while not interupt_flag:
+        #start thread 1
+        keep_alive_thread = threading.Thread(target=keep_alive, args=(switch_socket, my_id, all_neighbors, ip_port_list))
+        keep_alive_thread.start()
+        #start thread 2
+        topology_update_thread = threading.Thread(target=topology_update, args=(switch_socket, all_neighbors, ip_port_list, server_addr))
+        topology_update_thread.start()
     #start thread 1
     # keep_alive_thread = threading.Thread(target=keep_alive, args=(switch_socket, neighbors, ip_port_list))
     # keep_alive_thread.start()

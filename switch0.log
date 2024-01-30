@@ -44,3 +44,33 @@ Routing Update
 0,0:0
 0,1:1
 Routing Complete
+
+
+13:30:55.043715
+Register Request Sent
+
+
+13:31:06.225240
+Register Response received
+
+
+13:31:06.252277
+Routing Update
+0,0:0
+0,1:1
+Routing Complete
+
+
+13:32:44.424126
+Register Request Sent
+
+
+13:32:45.677864
+Register Response received
+
+
+13:32:45.707156
+Routing Update
+0,0:0
+0,1:1
+Routing Complete

@@ -273,11 +273,11 @@ def main():
         routing_table = []
         dijkstra_entries = {}
         for switch in adjacency_list:
-            print(f"Switch {switch} neighbors: {adjacency_list[switch]}")
+            #print(f"Switch {switch} neighbors: {adjacency_list[switch]}")
             dijkstra_result, next_hop_dict = dijkstra(adjacency_list, switch)
             dijkstra_entries[switch] = dijkstra_result
-            print(f"Dijkstra result for switch {switch} is {dijkstra_result}")
-            print(f"Next hop for switch {switch} is {next_hop_dict}")
+            #print(f"Dijkstra result for switch {switch} is {dijkstra_result}")
+            #print(f"Next hop for switch {switch} is {next_hop_dict}")
             for destination, distance in dijkstra_result.items():
                 if destination != switch:
                     next_hop = next_hop_dict[destination]
