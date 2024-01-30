@@ -97,35 +97,33 @@ def keep_alive(switch_socket, neighbors, ip_port_list):
     # Wait for 5 seconds
     #this is thread 1
     #send a keep alive message to each of its neighbors every 5 seconds
-    while True:
-        time.sleep(5)
-        for neighbor in neighbors:
-            msg = f"KEEP_ALIVE {neighbor}".encode(encoding='UTF-8')
-            switch_socket.sendto(msg, ip_port_list[neighbor])
+    time.sleep(5)
+    for neighbor in neighbors:
+        msg = f"KEEP_ALIVE {neighbor}".encode(encoding='UTF-8')
+        switch_socket.sendto(msg, ip_port_list[neighbor])
 def topology_update(switch_socket, neighbors, ip_port_list, server_addr):
     # Wait for 5 seconds
     #this is thread 2
     #send a topology update to the controller every 5 seconds
-    while True:
-        time.sleep(5)
-        msg = f"TOPOLOGY_UPDATE {neighbors}".encode(encoding='UTF-8')
-        switch_socket.sendto(msg, server_addr)
+    time.sleep(5)
+    msg = f"TOPOLOGY_UPDATE {neighbors}".encode(encoding='UTF-8')
+    switch_socket.sendto(msg, server_addr)
 def listen_for_neighbors(switch_socket, neighbors, ip_port_list, server_addr):
     # Wait for 15 seconds
     #this is thread 3
     #if a switch hasn't received a keep alive message from a neighbor for 15 seconds, it should mark that neighbor as dead
     #immediately, it sends a topology update to the controller with an updated list of alive neighbors
-    while True:
-        time.sleep(15)
-        neighbor_addresses = []
-        for neighbor in neighbors:
-            (data, neighbor_addr) = switch_socket.recvfrom(1024)
-            neighbor_addresses.append(neighbor_addr)
-        if(len(neighbor_addresses) != len(neighbors)):
-            #send topology update to controller with updated list of alive neighbors
+    time.sleep(15)
+    neighbor_addresses = []
+    for neighbor in neighbors:
+        (data, neighbor_addr) = switch_socket.recvfrom(1024)
+        neighbor_addresses.append(neighbor_addr)
+    if(len(neighbor_addresses) != len(neighbors)):
+        print("A neighbor is dead")
+        #send topology update to controller with updated list of alive neighbors
 
-            #if no response from neighbor, mark as dead
-            #send topology update to controller with updated list of alive neighbors
+        #if no response from neighbor, mark as dead
+        #send topology update to controller with updated list of alive neighbors
 def main():
 
     global LOG_FILE
@@ -135,10 +133,9 @@ def main():
     if num_args < 4:
         print ("switch.py <Id_self> <Controller hostname> <Controller Port>\n")
         sys.exit(1)
-
+    all_neighbors = {}
     my_id = int(sys.argv[1])
     LOG_FILE = 'switch' + str(my_id) + ".log" 
-
     # Write your code below or elsewhere in this file
     # first objective is having switches talk with the controller
     # second objective is having switches talk with each other
@@ -200,12 +197,19 @@ def main():
     
     print(table)
     routing_table_update(table)
+    for neighbor in neighbors:
+        all_neighbors[int(neighbor)] = True
+    if num_args > 4:
+        if sys.argv[4] == "-f":
+            neighbor_dead(int(sys.argv[5]))
+            all_neighbors[int(sys.argv[5])] = False
+    print(all_neighbors)
     #start thread 1
-    keep_alive_thread = threading.Thread(target=keep_alive, args=(switch_socket, neighbors, ip_port_list))
-    keep_alive_thread.start()
-    #start thread 2
-    topology_update_thread = threading.Thread(target=topology_update, args=(switch_socket, neighbors, ip_port_list, server_addr)) #we might need more in the topology update
-    topology_update_thread.start()
+    # keep_alive_thread = threading.Thread(target=keep_alive, args=(switch_socket, neighbors, ip_port_list))
+    # keep_alive_thread.start()
+    # #start thread 2
+    # topology_update_thread = threading.Thread(target=topology_update, args=(switch_socket, neighbors, ip_port_list, server_addr)) #we might need more in the topology update
+    # topology_update_thread.start()
     #start thread 3
 
 

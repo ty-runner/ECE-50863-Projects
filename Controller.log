@@ -36,3 +36,53 @@ Routing Update
 2,1:1,30
 2,2:2,0
 Routing Complete
+
+
+21:22:26.741820
+Register Request 0
+
+
+21:22:36.694420
+Register Request 1
+
+
+21:22:36.700936
+Register Response 0
+
+
+21:22:36.707503
+Register Response 1
+
+
+21:22:36.715501
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+21:24:03.561715
+Register Request 0
+
+
+21:24:06.731813
+Register Request 1
+
+
+21:24:06.738353
+Register Response 0
+
+
+21:24:06.745404
+Register Response 1
+
+
+21:24:06.751436
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
