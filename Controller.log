@@ -311,3 +311,261 @@ Routing Update
 1,0:0,80
 1,1:1,0
 Routing Complete
+
+
+13:16:58.687207
+Register Request 0
+
+
+13:17:15.591500
+Register Request 1
+
+
+13:17:15.598501
+Register Response 0
+
+
+13:17:15.605552
+Register Response 1
+
+
+13:17:15.611500
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+13:22:09.797618
+Register Request 0
+
+
+13:22:22.759446
+Register Request 0
+
+
+13:23:34.772046
+Register Request 0
+
+
+13:23:43.969750
+Register Request 1
+
+
+13:23:43.975687
+Register Response 0
+
+
+13:23:43.985685
+Register Response 1
+
+
+13:23:43.992741
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+13:32:27.182383
+Register Request 0
+
+
+13:32:36.152459
+Register Request 1
+
+
+13:32:36.158458
+Register Response 0
+
+
+13:32:36.165465
+Register Response 1
+
+
+13:32:36.171460
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+13:36:44.548218
+Register Request 0
+
+
+13:36:54.524356
+Register Request 1
+
+
+13:36:54.531338
+Register Response 0
+
+
+13:36:54.538342
+Register Response 1
+
+
+13:36:54.545427
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+13:38:26.910003
+Register Request 0
+
+
+13:38:35.536165
+Register Request 1
+
+
+13:38:35.544861
+Register Response 0
+
+
+13:38:35.551814
+Register Response 1
+
+
+13:38:35.559866
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+13:42:32.957768
+Register Request 0
+
+
+13:42:40.226968
+Register Request 1
+
+
+13:42:40.232913
+Register Response 0
+
+
+13:42:40.239993
+Register Response 1
+
+
+13:42:40.245986
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+13:46:53.416983
+Register Request 0
+
+
+13:47:05.109794
+Register Request 1
+
+
+13:47:05.115824
+Register Response 0
+
+
+13:47:05.122862
+Register Response 1
+
+
+13:47:05.128875
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+13:49:58.689416
+Register Request 0
+
+
+13:50:05.228966
+Register Request 1
+
+
+13:50:05.234985
+Register Response 0
+
+
+13:50:05.242962
+Register Response 1
+
+
+13:50:05.250063
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+13:57:36.373614
+Register Request 0
+
+
+13:57:44.071530
+Register Request 1
+
+
+13:57:44.077508
+Register Response 0
+
+
+13:57:44.084511
+Register Response 1
+
+
+13:57:44.090513
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+14:06:51.525232
+Register Request 0
+
+
+14:07:01.446094
+Register Request 1
+
+
+14:07:01.451114
+Register Response 0
+
+
+14:07:01.457028
+Register Response 1
+
+
+14:07:01.463127
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete

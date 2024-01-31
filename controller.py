@@ -298,6 +298,6 @@ def main():
                     routing_table_entries[switch].append(f"{entry[0]},{entry[1]}:{entry[2]}")
         for switch in switch_dictionary:
             server_socket.sendto(f"RESPONSE_ROUTING_TABLE_BATCH {routing_table_entries[switch]}".encode('UTF-8'), switch_dictionary[switch])
-        
+        print(len(switch_dictionary))
 if __name__ == "__main__":
     main()

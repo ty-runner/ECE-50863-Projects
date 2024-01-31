@@ -98,7 +98,6 @@ def keep_alive(switch_socket, ID, neighbors, ip_port_list, K):
     # Wait for 5 seconds
     #this is thread 1
     #send a keep alive message to each of its neighbors every 5 seconds
-    time.sleep(K)
     for i in range(len(neighbors)):
         print(i)
         msg = f"KEEP_ALIVE {ID}".encode(encoding='UTF-8')
@@ -108,26 +107,23 @@ def topology_update(switch_socket, neighbors, ip_port_list, server_addr, K):
     # Wait for 5 seconds
     #this is thread 2
     #send a topology update to the controller every 5 seconds
-    time.sleep(K)
     msg = f"TOPOLOGY_UPDATE {neighbors}".encode(encoding='UTF-8')
     switch_socket.sendto(msg, server_addr)
     print("topology update sent")
-def listen_for_neighbors(switch_socket, neighbors, ip_port_list, server_addr, TIMEOUT):
-    # Wait for 15 seconds
-    #this is thread 3
-    #if a switch hasn't received a keep alive message from a neighbor for 15 seconds, it should mark that neighbor as dead
-    #immediately, it sends a topology update to the controller with an updated list of alive neighbors
-    time.sleep(TIMEOUT)
+def listen_for_neighbors(switch_socket, neighbors, ip_port_list, server_addr, failure_flag_list, TIMEOUT):
     neighbor_addresses = []
     for i in range(len(neighbors)):
-        (data, neighbor_addr) = switch_socket.recvfrom(1024)
-        neighbor_addresses.append(neighbor_addr)
-    if(len(neighbor_addresses) != len(neighbors)):
-        print("A neighbor is dead")
-        #send topology update to controller with updated list of alive neighbors
-
-        #if no response from neighbor, mark as dead
-        #send topology update to controller with updated list of alive neighbors
+        try:
+            (data, neighbor_addr) = switch_socket.recvfrom(1024)
+            neighbor_addresses.append(neighbor_addr)
+        except socket.timeout:
+            print(f"No message received from neighbor {i}")
+            failure_flag_list[0] = True
+        except ConnectionResetError:
+            print(f"Connection reset by neighbor {i}")
+            failure_flag_list[0] = True
+            # Handle the connection reset here
+            # You can update the failure_flag or take any other necessary actions
 def main():
 
     global LOG_FILE
@@ -211,25 +207,29 @@ def main():
     #1. Each switch sends a Keep Alive message every K seconds to each of the neighboring switches that it thinks is alive
     #2. Each switch sends a Topology Update message every K seconds to the controller. This message contains a list of all the switches that it thinks are alive
     interupt_flag = False
-    i = 0
     while not interupt_flag:
         #start thread 1
-        if i == 5:
-            interupt_flag = True
+        time.sleep(K)
         keep_alive_thread = threading.Thread(target=keep_alive, args=(switch_socket, my_id, all_neighbors, ip_port_list, K))
         keep_alive_thread.start()
         #start thread 2
-        topology_update_thread = threading.Thread(target=topology_update, args=(switch_socket, all_neighbors, ip_port_list, server_addr, K))
-        topology_update_thread.start()
-        i +=1
-    #start thread 1
-    # keep_alive_thread = threading.Thread(target=keep_alive, args=(switch_socket, neighbors, ip_port_list))
-    # keep_alive_thread.start()
-    # #start thread 2
-    # topology_update_thread = threading.Thread(target=topology_update, args=(switch_socket, neighbors, ip_port_list, server_addr)) #we might need more in the topology update
-    # topology_update_thread.start()
-    #start thread 3
-
+        # topology_update_thread = threading.Thread(target=topology_update, args=(switch_socket, all_neighbors, ip_port_list, server_addr, K))
+        # topology_update_thread.start()
+        #start thread 3
+        time.sleep(TIMEOUT - K)
+        failure_flag_list = [False]
+        listen_for_neighbors_thread = threading.Thread(target=listen_for_neighbors, args=(switch_socket, all_neighbors, ip_port_list, server_addr, failure_flag_list, TIMEOUT))
+        listen_for_neighbors_thread.start()
+        print(failure_flag_list)
+        # Wait for the listen_for_neighbors_thread to finish
+        listen_for_neighbors_thread.join()
+        print(failure_flag_list)
+        # Check if a failure was detected
+        if failure_flag_list[0]:
+            interupt_flag = True
+    keep_alive_thread.join()
+    # topology_update_thread.join()
+    listen_for_neighbors_thread.join()
 
 
 
