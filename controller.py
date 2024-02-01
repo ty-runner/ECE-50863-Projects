@@ -9,6 +9,8 @@ Last Modified Date: December 9th, 2021
 import sys
 import heapq
 import socket
+import time
+import threading
 from datetime import date, datetime
 
 # Please do not modify the name of the log file, otherwise you will lose points because the grader won't be able to find your log file
@@ -209,7 +211,23 @@ def dijkstra(adjacency_list, start_vertex):
             distances[vertex] = 9999
 
     return distances, next_hop
-
+def listen_for_switches(server_socket, switch_dictionary):
+    client_addr = []
+    for switch in switch_dictionary:
+        print(f"Listening for switch {switch}")
+        (data, addr) = server_socket.recvfrom(1024)
+        if addr not in client_addr:
+            client_addr.append(addr)
+        print(data.decode('utf-8'))
+    if len(client_addr) == len(switch_dictionary):
+        print("All switches have sent their routing tables to the controller")
+    else:
+        print("Not all switches have sent their routing tables to the controller")
+        #find what switch hasnt sent their topology
+        for switch in switch_dictionary:
+            if switch_dictionary[switch] not in client_addr:
+                print(f"Switch {switch} has not sent their topology to the controller")
+                topology_update_switch_dead(int(switch))
 def main():
     #Check for number of arguments and exit if host/port not provided
     num_args = len(sys.argv)
@@ -298,6 +316,9 @@ def main():
                     routing_table_entries[switch].append(f"{entry[0]},{entry[1]}:{entry[2]}")
         for switch in switch_dictionary:
             server_socket.sendto(f"RESPONSE_ROUTING_TABLE_BATCH {routing_table_entries[switch]}".encode('UTF-8'), switch_dictionary[switch])
-        print(len(switch_dictionary))
+        #we have now sent the initial routing table to each switch
+        #now we need to listen for updates from the switches
+        listen_for_switches(server_socket, switch_dictionary)
+        
 if __name__ == "__main__":
     main()
