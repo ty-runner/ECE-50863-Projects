@@ -211,23 +211,38 @@ def dijkstra(adjacency_list, start_vertex):
             distances[vertex] = 9999
 
     return distances, next_hop
-def listen_for_switches(server_socket, switch_dictionary):
+
+def listen_for_switches(server_socket, switch_dictionary, alive_list):
     client_addr = []
+    timeout = TIMEOUT  # Replace TIMEOUT with the desired timeout value in seconds
+    
     for switch in switch_dictionary:
         print(f"Listening for switch {switch}")
-        (data, addr) = server_socket.recvfrom(1024)
-        if addr not in client_addr:
-            client_addr.append(addr)
-        print(data.decode('utf-8'))
+        start_time = time.time()
+        
+        while True:
+            current_time = time.time()
+            elapsed_time = current_time - start_time
+            
+            if elapsed_time >= timeout:
+                print(f"Switch {switch} is considered 'dead'")
+                # Update topology for the dead switch
+                topology_update_switch_dead(switch)
+                alive_list[int(switch)] = False
+                break
+            
+            try:
+                (data, addr) = server_socket.recvfrom(1024)
+                if addr not in client_addr:
+                    client_addr.append(addr)
+                data = data.decode('utf-8')
+                alive_list[int(data[0])] = True
+                break  # Exit the loop if a message is received from the switch
+            except socket.timeout:
+                pass  # Continue listening if no message is received within the timeout period
+    
     if len(client_addr) == len(switch_dictionary):
         print("All switches have sent their routing tables to the controller")
-    else:
-        print("Not all switches have sent their routing tables to the controller")
-        #find what switch hasnt sent their topology
-        for switch in switch_dictionary:
-            if switch_dictionary[switch] not in client_addr:
-                print(f"Switch {switch} has not sent their topology to the controller")
-                topology_update_switch_dead(int(switch))
 def main():
     #Check for number of arguments and exit if host/port not provided
     num_args = len(sys.argv)
@@ -318,7 +333,9 @@ def main():
             server_socket.sendto(f"RESPONSE_ROUTING_TABLE_BATCH {routing_table_entries[switch]}".encode('UTF-8'), switch_dictionary[switch])
         #we have now sent the initial routing table to each switch
         #now we need to listen for updates from the switches
-        listen_for_switches(server_socket, switch_dictionary)
+        alive_list = [True for i in range(num_of_switches)]
+        listen_for_switches(server_socket, switch_dictionary, alive_list)
+        print(alive_list)
         
 if __name__ == "__main__":
     main()
