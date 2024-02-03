@@ -1446,3 +1446,228 @@ Routing Update
 1,0:0,80
 1,1:1,0
 Routing Complete
+
+
+09:34:03.564935
+Register Request 0
+
+
+09:34:12.220673
+Register Request 1
+
+
+09:34:12.227687
+Register Response 0
+
+
+09:34:12.235939
+Register Response 1
+
+
+09:34:12.241859
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+09:38:25.306696
+Register Request 0
+
+
+09:38:39.918302
+Register Request 1
+
+
+09:38:39.926321
+Register Response 0
+
+
+09:38:39.933342
+Register Response 1
+
+
+09:38:39.938341
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+09:41:09.447555
+Register Request 0
+
+
+09:41:18.627548
+Register Request 1
+
+
+09:41:18.633895
+Register Response 0
+
+
+09:41:18.641778
+Register Response 1
+
+
+09:41:18.647789
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+09:44:44.012568
+Register Request 0
+
+
+09:44:54.449916
+Register Request 1
+
+
+09:44:54.456427
+Register Response 0
+
+
+09:44:54.462448
+Register Response 1
+
+
+09:44:54.468953
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+09:49:11.993101
+Register Request 0
+
+
+09:49:20.474657
+Register Request 1
+
+
+09:49:20.480822
+Register Response 0
+
+
+09:49:20.487114
+Register Response 1
+
+
+09:49:20.493641
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+09:52:40.996114
+Register Request 0
+
+
+09:52:50.253312
+Register Request 1
+
+
+09:52:50.259755
+Register Response 0
+
+
+09:52:50.267306
+Register Response 1
+
+
+09:52:50.272541
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+09:54:46.996134
+Register Request 0
+
+
+09:54:57.706793
+Register Request 1
+
+
+09:54:57.712872
+Register Response 0
+
+
+09:54:57.719876
+Register Response 1
+
+
+09:54:57.733461
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+09:56:32.344030
+Register Request 0
+
+
+09:56:43.364562
+Register Request 1
+
+
+09:56:43.370588
+Register Response 0
+
+
+09:56:43.378597
+Register Response 1
+
+
+09:56:43.384622
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
+
+
+10:02:28.568980
+Register Request 0
+
+
+10:02:39.994836
+Register Request 1
+
+
+10:02:40.001852
+Register Response 0
+
+
+10:02:40.007857
+Register Response 1
+
+
+10:02:40.014875
+Routing Update
+0,0:0,0
+0,1:1,80
+1,0:0,80
+1,1:1,0
+Routing Complete
