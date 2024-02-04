@@ -121,11 +121,18 @@ def topology_update(switch_socket, neighbors, switch_id, ip_port_list, server_ad
         msg = msg.encode(encoding='UTF-8')
         switch_socket.sendto(msg, server_addr)
         print("Topology update sent")
+def determine_dead_neighbors(all_neighbors, ip_port_list, neighbor_addresses):
+    for item in ip_port_list:
+        if item not in neighbor_addresses:
+            all_neighbors[item] = False
+            print(f"Neighbor {item} is dead")
 def listen_for_neighbors(switch_socket, neighbors, ip_port_list, server_addr, exit_event, TIMEOUT):
+    #need to add capability to not listen to neighbors that start with -f flag
+    print("ip_port_list", ip_port_list)
     while not exit_event.is_set():
         neighbor_addresses = []
         start_time = time.time()
-        for i in range(len(neighbors)):
+        for i in range(len(neighbors)): #need to determine what neighbors didn't send a message
             try:
                 (data, neighbor_addr) = switch_socket.recvfrom(1024)
                 neighbor_addresses.append(neighbor_addr)
@@ -133,12 +140,26 @@ def listen_for_neighbors(switch_socket, neighbors, ip_port_list, server_addr, ex
                 print(f"Server data is '{data.decode('utf-8')}'")
                 print(f"Server address is '{neighbor_addr}'")
                 current_time = time.time()
+                print(neighbor_addresses)
                 if current_time - start_time > TIMEOUT:
                     print(f"No message received from neighbor")
+                    determine_dead_neighbors(neighbors, ip_port_list, neighbor_addresses)
                     exit_event.set()
             except ConnectionError:
-                print("No message received from neighbor")
+                print("No message received from neighbor, connection error")
+                determine_dead_neighbors(neighbors, ip_port_list, neighbor_addresses)
                 exit_event.set()
+
+def log_dead_neighbor(switch_socket, switch_id, server_addr, all_neighbors):
+    for neighbor in all_neighbors:
+        if all_neighbors[neighbor] == False:
+            neighbor_dead(neighbor)
+    msg = f"{switch_id}\n"
+    for neighbor, is_alive in all_neighbors.items():
+        msg += f"{neighbor} {is_alive}\n"
+    msg = msg.encode(encoding='UTF-8')
+    switch_socket.sendto(msg, server_addr)
+    print("Topology update sent")
 def main():
 
     global LOG_FILE
@@ -235,10 +256,14 @@ def main():
     #start thread 3
     listen_for_neighbors_thread = threading.Thread(target=listen_for_neighbors, args=(switch_socket, all_neighbors, neighbor_ip_port_dict, server_addr, exit_event, TIMEOUT))
     listen_for_neighbors_thread.start()
-    # Wait for the listen_for_neighbors_thread to finish
-    listen_for_neighbors_thread.join()
-    topology_update_thread.join()
-    keep_alive_thread.join()
+    if exit_event.is_set():
+        print("Node lost")
+        listen_for_neighbors_thread.join()
+        topology_update_thread.join()
+        keep_alive_thread.join()
+        exit_event.clear()
+        #update topology with dead neighbor
+        log_dead_neighbor(all_neighbors)
 
 
 

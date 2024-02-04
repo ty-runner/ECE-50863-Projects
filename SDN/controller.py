@@ -212,23 +212,22 @@ def dijkstra(adjacency_list, start_vertex):
 
     return distances, next_hop
 
-def listen_for_switches(server_socket, switch_dictionary, alive_list):
+def listen_for_switches(server_socket, switch_dictionary, exit_event, alive_list):
     client_addr = []
     timeout = TIMEOUT  # Replace TIMEOUT with the desired timeout value in seconds
-    
-    for switch in switch_dictionary:
-        print(f"Listening for switch {switch}")
+    while not exit_event.is_set():
         start_time = time.time()
-        
-        while True:
+        for switch in switch_dictionary:
+            print(f"Listening for switch {switch}")
             current_time = time.time()
             elapsed_time = current_time - start_time
-            
+            print(f"Elapsed time: {elapsed_time}")
             if elapsed_time >= timeout:
                 print(f"Switch {switch} is considered 'dead'")
                 # Update topology for the dead switch
                 topology_update_switch_dead(switch)
                 alive_list[int(switch)] = False
+                exit_event.set()
                 break
             
             try:
@@ -237,8 +236,11 @@ def listen_for_switches(server_socket, switch_dictionary, alive_list):
                     client_addr.append(addr)
                 data = data.decode('utf-8')
                 alive_list[int(data[0])] = True
+                print(f"Switch {data[0]} is alive")
+                print(client_addr)
                 break  # Exit the loop if a message is received from the switch
             except socket.timeout:
+                exit_event.set()
                 pass  # Continue listening if no message is received within the timeout period
     
     if len(client_addr) == len(switch_dictionary):
@@ -334,7 +336,9 @@ def main():
         #we have now sent the initial routing table to each switch
         #now we need to listen for updates from the switches
         alive_list = [True for i in range(num_of_switches)]
-        listen_for_switches(server_socket, switch_dictionary, alive_list)
+        exit_event = threading.Event()
+        listen_for_switches(server_socket, switch_dictionary, exit_event, alive_list)
+        #update topology
         print(alive_list)
         
 if __name__ == "__main__":
