@@ -282,6 +282,7 @@ def update_from_topology(topology, alive_list, distances, next_hop, adjacency_li
             print(f"Adjacency list after: {adjacency_list}")
             print(f"Dijkstra result for switch {i} is {dijkstra_result}")
             print(f"Next hop for switch {i} is {next_hop_dict}")
+    return distances, next_hop, adjacency_list
 
 def remove_dead_links(adjacency_list, topology):
     for entry in topology:
@@ -367,9 +368,6 @@ def main():
                     routing_table.append([switch, destination, next_hop, distance])
                 else:
                     routing_table.append([switch, destination, destination, 0]) #self entry
-        #print(routing_table)
-        #issues: the next hop if is the node right before destination, if there are 3 hops, it is incorrect, check dijkstra func
-        # Test the function
         routing_table_update(routing_table)
         routing_table_entries = {}
         for switch in switch_dictionary:
@@ -391,7 +389,23 @@ def main():
         listen_for_switches_thread.join()
         #update topology
         print("Topology: ", topology)
-        update_from_topology(topology, alive_list, dijkstra_entries, next_hop_dict, adjacency_list)
+        distances, next_hop, adjacency_list = update_from_topology(topology, alive_list, dijkstra_entries, next_hop_dict, adjacency_list)
+        print("Adjacency list: ", adjacency_list)
+        routing_table = []
+        for switch in adjacency_list:
+            #print(f"Switch {switch} neighbors: {adjacency_list[switch]}")
+            dijkstra_result, next_hop_dict = dijkstra(adjacency_list, switch)
+            dijkstra_entries[switch] = dijkstra_result
+            #print(f"Dijkstra result for switch {switch} is {dijkstra_result}")
+            #print(f"Next hop for switch {switch} is {next_hop_dict}")
+            for destination, distance in dijkstra_result.items():
+                if destination != switch:
+                    next_hop = next_hop_dict[destination]
+                    routing_table.append([switch, destination, next_hop, distance])
+                    print(f"Switch {switch} to {destination} is {next_hop} with distance {distance}")
+                else:
+                    routing_table.append([switch, destination, destination, 0]) #self entry
+        routing_table_update(routing_table)
         exit_event.clear()
         #update topology
         #print(switch_dictionary)
