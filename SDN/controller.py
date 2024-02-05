@@ -212,25 +212,27 @@ def dijkstra(adjacency_list, start_vertex):
 
     return distances, next_hop
 
-def listen_for_switches(server_socket, switch_dictionary, exit_event, alive_list):
+def listen_for_switches(server_socket, switch_dictionary, exit_event, alive_list, topology):
     client_addr = []
     timeout = TIMEOUT  # Replace TIMEOUT with the desired timeout value in seconds
     while not exit_event.is_set():
         start_time = time.time()
         for switch in switch_dictionary:
+            server_socket.settimeout(timeout)
+            print(switch_dictionary)
             print(f"Listening for switch {switch}")
-            current_time = time.time()
-            elapsed_time = current_time - start_time
-            print(f"Elapsed time: {elapsed_time}")
-            if elapsed_time >= timeout:
-                print(f"Switch {switch} is considered 'dead'")
-                # Update topology for the dead switch
-                topology_update_switch_dead(switch)
-                alive_list[int(switch)] = False
-                exit_event.set()
-                break
-            
             try:
+                current_time = time.time()
+                elapsed_time = current_time - start_time
+                print(f"Elapsed time: {elapsed_time}")
+                if elapsed_time >= timeout:
+                    print(f"Switch {switch} is considered 'dead'")
+                    # Update topology for the dead switch
+                    topology_update_switch_dead(switch)
+                    alive_list[int(switch)] = False
+                    print(alive_list)
+                    exit_event.set()
+                    break
                 (data, addr) = server_socket.recvfrom(1024)
                 if addr not in client_addr:
                     client_addr.append(addr)
@@ -238,6 +240,8 @@ def listen_for_switches(server_socket, switch_dictionary, exit_event, alive_list
                 alive_list[int(data[0])] = True
                 print(f"Switch {data[0]} is alive")
                 print(client_addr)
+                topology = parse_topology_update(data.split("\n"), topology)
+                print(topology)
                 break  # Exit the loop if a message is received from the switch
             except socket.timeout:
                 exit_event.set()
@@ -245,6 +249,47 @@ def listen_for_switches(server_socket, switch_dictionary, exit_event, alive_list
     
     if len(client_addr) == len(switch_dictionary):
         print("All switches have sent their routing tables to the controller")
+    else:
+        exit_event.set()
+def parse_topology_update(data, topology=[]):
+    sender_switch_id = int(data[0])  # Parse the switch ID
+    for line in data[1:]:
+        line = line.strip().split()  # Split the line by whitespace
+        if len(line) == 0:
+            break
+        print(line)
+        switch_id = int(line[0])  # Parse the switch ID
+        is_alive = line[1] == "True"  # Parse the boolean value
+        if switch_id not in [entry[0] for entry in topology] or is_alive != [entry[1] for entry in topology]:
+            topology.append((switch_id, is_alive))    
+    return topology
+def update_from_topology(topology, alive_list, distances, next_hop, adjacency_list):
+    for entry in topology:
+        if not entry[1]:
+            distances[int(entry[0])] = 9999
+            next_hop[int(entry[0])] = -1
+    for i in range(len(alive_list)):
+        if not alive_list[i]:
+            distances[i] = 9999
+            next_hop[i] = -1
+        else:
+            # calculate distance and next hop using dijkstras algorithm
+            #need to update adjacency list
+            print(f"Adjacency list before: {adjacency_list}")
+            adjacency_list = remove_dead_links(adjacency_list, topology)
+            dijkstra_result, next_hop_dict = dijkstra(adjacency_list, i)
+            print(f"Adjacency list after: {adjacency_list}")
+            print(f"Dijkstra result for switch {i} is {dijkstra_result}")
+            print(f"Next hop for switch {i} is {next_hop_dict}")
+
+def remove_dead_links(adjacency_list, topology):
+    for entry in topology:
+        ID = int(entry[0])
+        if not entry[1]:
+            adjacency_list = {node: [(neighbor, weight) for neighbor, weight in neighbors if neighbor != entry[0]] for node, neighbors in adjacency_list.items()}
+            adjacency_list[ID] = []
+    return adjacency_list
+
 def main():
     #Check for number of arguments and exit if host/port not provided
     num_args = len(sys.argv)
@@ -337,9 +382,18 @@ def main():
         #now we need to listen for updates from the switches
         alive_list = [True for i in range(num_of_switches)]
         exit_event = threading.Event()
-        listen_for_switches(server_socket, switch_dictionary, exit_event, alive_list)
+        topology = []
+        #listen_for_switches(server_socket, switch_dictionary, exit_event, alive_list) #here we're listening for topology updates
+        listen_for_switches_thread = threading.Thread(target=listen_for_switches, args=(server_socket, switch_dictionary, exit_event, alive_list, topology))
+        listen_for_switches_thread.start()
+        #print("Topology: ", topology)
+        listen_for_switches_thread.join()
         #update topology
-        print(alive_list)
+        print("Topology: ", topology)
+        update_from_topology(topology, alive_list, dijkstra_entries, next_hop_dict, adjacency_list)
+        exit_event.clear()
+        #update topology
+        #print(switch_dictionary)
         
 if __name__ == "__main__":
     main()
