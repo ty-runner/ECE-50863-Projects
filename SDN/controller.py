@@ -264,32 +264,27 @@ def parse_topology_update(data, topology=[]):
             topology.append((switch_id, is_alive))    
     return topology
 def update_from_topology(topology, alive_list, distances, next_hop, adjacency_list):
-    for entry in topology:
-        if not entry[1]:
-            distances[int(entry[0])] = 9999
-            next_hop[int(entry[0])] = -1
     for i in range(len(alive_list)):
         if not alive_list[i]:
-            distances[i] = 9999
+            distances[i] = 0
             next_hop[i] = -1
             topology_update_switch_dead(i)
         else:
             # calculate distance and next hop using dijkstras algorithm
             #need to update adjacency list
             print(f"Adjacency list before: {adjacency_list}")
-            adjacency_list = remove_dead_links(adjacency_list, topology)
+            adjacency_list = remove_dead_links(adjacency_list, topology, alive_list)
             dijkstra_result, next_hop_dict = dijkstra(adjacency_list, i)
             print(f"Adjacency list after: {adjacency_list}")
             print(f"Dijkstra result for switch {i} is {dijkstra_result}")
             print(f"Next hop for switch {i} is {next_hop_dict}")
     return distances, next_hop, adjacency_list
 
-def remove_dead_links(adjacency_list, topology):
-    for entry in topology:
-        ID = int(entry[0])
-        if not entry[1]:
-            adjacency_list = {node: [(neighbor, weight) for neighbor, weight in neighbors if neighbor != entry[0]] for node, neighbors in adjacency_list.items()}
-            adjacency_list[ID] = []
+def remove_dead_links(adjacency_list, topology, alive_list):
+    for i in range(len(alive_list)):
+        if not alive_list[i]:
+            for node in adjacency_list:
+                adjacency_list[node] = [neighbor for neighbor in adjacency_list[node] if neighbor[0] != i]
     return adjacency_list
 
 def main():
@@ -391,8 +386,12 @@ def main():
         print("Topology: ", topology)
         distances, next_hop, adjacency_list = update_from_topology(topology, alive_list, dijkstra_entries, next_hop_dict, adjacency_list)
         print("Adjacency list: ", adjacency_list)
+        print("Alive list: ", alive_list)
         routing_table = []
         for switch in adjacency_list:
+            #if switch is dead, dont calc anything for those dests
+            if not alive_list[switch]:
+                continue
             #print(f"Switch {switch} neighbors: {adjacency_list[switch]}")
             dijkstra_result, next_hop_dict = dijkstra(adjacency_list, switch)
             dijkstra_entries[switch] = dijkstra_result
@@ -406,6 +405,14 @@ def main():
                 else:
                     routing_table.append([switch, destination, destination, 0]) #self entry
         routing_table_update(routing_table)
+        routing_table_entries = {}
+        for switch in switch_dictionary:
+            routing_table_entries[switch] = []
+            for entry in routing_table:
+                if entry[0] == switch:
+                    routing_table_entries[switch].append(f"{entry[0]},{entry[1]}:{entry[2]}")
+        for switch in switch_dictionary:
+            server_socket.sendto(f"RESPONSE_ROUTING_TABLE_BATCH {routing_table_entries[switch]}".encode('UTF-8'), switch_dictionary[switch])
         exit_event.clear()
         #update topology
         #print(switch_dictionary)
