@@ -15,8 +15,8 @@ from datetime import date, datetime
 
 # Please do not modify the name of the log file, otherwise you will lose points because the grader won't be able to find your log file
 LOG_FILE = "Controller.log"
-K = 5
-TIMEOUT = 15
+K = 2
+TIMEOUT = 3*K
 # Those are logging functions to help you follow the correct logging standard
 
 # "Register Request" Format is below:
@@ -272,6 +272,7 @@ def update_from_topology(topology, alive_list, distances, next_hop, adjacency_li
         if not alive_list[i]:
             distances[i] = 9999
             next_hop[i] = -1
+            topology_update_switch_dead(i)
         else:
             # calculate distance and next hop using dijkstras algorithm
             #need to update adjacency list

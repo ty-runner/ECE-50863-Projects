@@ -18,8 +18,8 @@ import time
 
 # Please do not modify the name of the log file, otherwise you will lose points because the grader won't be able to find your log file
 LOG_FILE = "switch#.log" # The log file for switches are switch#.log, where # is the id of that switch (i.e. switch0.log, switch1.log). The code for replacing # with a real number has been given to you in the main function.
-K = 5
-TIMEOUT = 15
+K = 2
+TIMEOUT = 3*K
 # Those are logging functions to help you follow the correct logging standard
 
 # "Register Request" Format is below:
