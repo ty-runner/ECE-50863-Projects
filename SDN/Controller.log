@@ -987,3 +987,56 @@ Routing Update
 2,1:-1,9999
 2,2:2,0
 Routing Complete
+
+
+13:26:47.040901
+Register Request 0
+
+
+13:26:52.802545
+Register Request 1
+
+
+13:27:03.170153
+Register Request 2
+
+
+13:27:03.172673
+Register Response 0
+
+
+13:27:03.183829
+Register Response 1
+
+
+13:27:03.190881
+Register Response 2
+
+
+13:27:03.197418
+Routing Update
+0,0:0,0
+0,1:1,20
+0,2:2,10
+1,0:0,20
+1,1:1,0
+1,2:2,30
+2,0:0,10
+2,1:1,30
+2,2:2,0
+Routing Complete
+
+
+13:27:23.304770
+Switch Dead 1
+
+
+13:27:23.311796
+Routing Update
+0,0:0,0
+0,1:-1,9999
+0,2:2,10
+2,0:0,10
+2,1:-1,9999
+2,2:2,0
+Routing Complete

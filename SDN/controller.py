@@ -230,7 +230,6 @@ def listen_for_switches(server_socket, switch_dictionary, exit_event, alive_list
                     # Update topology for the dead switch
                     topology_update_switch_dead(switch)
                     alive_list[int(switch)] = False
-                    print(alive_list)
                     exit_event.set()
                     break
                 (data, addr) = server_socket.recvfrom(1024)
@@ -238,10 +237,7 @@ def listen_for_switches(server_socket, switch_dictionary, exit_event, alive_list
                     client_addr.append(addr)
                 data = data.decode('utf-8')
                 alive_list[int(data[0])] = True
-                print(f"Switch {data[0]} is alive")
-                print(client_addr)
                 topology = parse_topology_update(data.split("\n"), topology)
-                print(topology)
                 break  # Exit the loop if a message is received from the switch
             except socket.timeout:
                 exit_event.set()
@@ -264,11 +260,12 @@ def parse_topology_update(data, topology=[]):
             topology.append((switch_id, is_alive))    
     return topology
 def update_from_topology(topology, alive_list, distances, next_hop, adjacency_list):
+    print("Alive list: ", alive_list)
     for i in range(len(alive_list)):
         if not alive_list[i]:
             distances[i] = 0
             next_hop[i] = -1
-            topology_update_switch_dead(i)
+            #topology_update_switch_dead(i)
         else:
             # calculate distance and next hop using dijkstras algorithm
             #need to update adjacency list
