@@ -1,76 +1,76 @@
 
 
-13:47:11.523023
+13:46:47.230140
 Register Request Sent
 
 
-13:47:11.593890
+13:47:11.581039
 Register Response received
 
 
-13:47:11.613127
+13:47:11.612126
 Routing Update
-2,0:1
-2,1:2
-2,2:2
-2,3:2
-2,4:3
-2,5:2
+5,0:5
+5,1:0
+5,2:5
+5,3:2
+5,4:2
+5,5:5
 Routing Complete
 
 
-13:49:54.426191
+13:50:20.320006
 Register Request Sent
 
 
-13:50:20.343762
+13:50:20.385992
 Register Response received
 
 
 13:50:20.410086
 Routing Update
-2,0:1
-2,1:2
-2,2:2
-2,3:2
-2,4:3
-2,5:2
+5,0:5
+5,1:0
+5,2:5
+5,3:2
+5,4:2
+5,5:5
 Routing Complete
 
 
-13:52:35.811953
+13:53:06.282648
 Register Request Sent
 
 
-13:53:06.304015
+13:53:06.333000
 Register Response received
 
 
-13:53:06.352272
+13:53:06.351258
 Routing Update
-2,0:1
-2,1:2
-2,2:2
-2,3:2
-2,4:3
-2,5:2
+5,0:5
+5,1:0
+5,2:5
+5,3:2
+5,4:2
+5,5:5
 Routing Complete
 
 
-14:03:21.825312
+14:03:56.394096
 Register Request Sent
 
 
-14:03:56.414293
+14:03:56.457201
 Register Response received
 
 
 14:03:56.479879
 Routing Update
-2,0:1
-2,1:1
-2,2:2
-2,3:3
-2,4:3
-2,5:5
+5,0:0
+5,1:0
+5,2:2
+5,3:2
+5,4:3
+5,5:5
 Routing Complete

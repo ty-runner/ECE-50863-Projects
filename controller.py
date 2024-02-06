@@ -194,15 +194,20 @@ def dijkstra(adjacency_list, start_vertex):
             # Update distances and next hop
             if distance < distances[neighbor]:
                 distances[neighbor] = distance
-                # Update next hop based on the number of hops
-                if distances[neighbor] == weight:
-                    # Single hop path, set next hop as the destination
-                    next_hop[neighbor] = neighbor
-                else:
-                    # Multi-hop path, set next hop as the second node
-                    next_hop[neighbor] = current_vertex
+                next_hop[neighbor] = current_vertex  # Update next hop
 
                 heapq.heappush(priority_queue, (distance, neighbor))
+
+    # Trace back shortest paths to determine next hops
+    for vertex in adjacency_list:
+        if next_hop[vertex] is not None and next_hop[vertex] != start_vertex:
+            path = [vertex]
+            while path[-1] != start_vertex:
+                path.append(next_hop[path[-1]])
+            if len(path) > 2:  # Check if the path is longer than two hops
+                next_hop[vertex] = path[-2]  # Set next hop to the second last node on the path
+            else:
+                next_hop[vertex] = path[-1]  # Set next hop to the last node before start_vertex
 
     # Set next hop and distance to -1 and 9999 respectively for unreachable destinations
     for vertex in adjacency_list:
@@ -210,7 +215,13 @@ def dijkstra(adjacency_list, start_vertex):
             next_hop[vertex] = -1
             distances[vertex] = 9999
 
+    # Set next hop for single hop destinations
+    for neighbor, weight in adjacency_list[start_vertex]:
+        if neighbor not in next_hop or weight < distances[neighbor]:
+            next_hop[neighbor] = start_vertex
+
     return distances, next_hop
+
 
 def listen_for_switches(server_socket, switch_dictionary, exit_event, alive_list, topology):
     client_addr = []
@@ -357,6 +368,8 @@ def main():
             for destination, distance in dijkstra_result.items():
                 if destination != switch:
                     next_hop = next_hop_dict[destination]
+                    if switch == next_hop:
+                        next_hop = destination
                     routing_table.append([switch, destination, next_hop, distance])
                 else:
                     routing_table.append([switch, destination, destination, 0]) #self entry
@@ -402,7 +415,7 @@ def main():
                 else:
                     routing_table.append([switch, destination, destination, 0]) #self entry
         print("Routing table: ", routing_table)
-        #routing_table_update(routing_table)
+        routing_table_update(routing_table)
         update_routing_table = {}
         for switch in switch_dictionary:
             if not alive_list[switch]:
