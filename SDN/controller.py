@@ -401,17 +401,21 @@ def main():
                     print(f"Switch {switch} to {destination} is {next_hop} with distance {distance}")
                 else:
                     routing_table.append([switch, destination, destination, 0]) #self entry
+        print("Routing table: ", routing_table)
         routing_table_update(routing_table)
-        routing_table_entries = {}
+        update_routing_table = {}
         for switch in switch_dictionary:
-            routing_table_entries[switch] = []
+            if not alive_list[switch]:
+                continue
+            update_routing_table[switch] = []
             for entry in routing_table:
                 if entry[0] == switch:
-                    routing_table_entries[switch].append(f"{entry[0]},{entry[1]}:{entry[2]}")
+                    update_routing_table[switch].append(f"{entry[0]},{entry[1]}:{entry[2]}")
+                    print(f"Switch {switch} to {entry[1]} is {entry[2]} with distance {entry[3]}")
         for switch in switch_dictionary:
-            server_socket.sendto(f"RESPONSE_ROUTING_TABLE_BATCH {routing_table_entries[switch]}".encode('UTF-8'), switch_dictionary[switch])
-        exit_event.clear()
-        #update topology
+            if alive_list[switch]:
+                print(f"Sending routing table update to switch {switch}")
+                server_socket.sendto(f"RESPONSE_ROUTING_TABLE_UPDATE {update_routing_table[switch]}".encode('UTF-8'), switch_dictionary[switch])
         #print(switch_dictionary)
         
 if __name__ == "__main__":

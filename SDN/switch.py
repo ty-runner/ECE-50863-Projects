@@ -16,6 +16,7 @@ import threading
 import time
 
 
+
 # Please do not modify the name of the log file, otherwise you will lose points because the grader won't be able to find your log file
 LOG_FILE = "switch#.log" # The log file for switches are switch#.log, where # is the id of that switch (i.e. switch0.log, switch1.log). The code for replacing # with a real number has been given to you in the main function.
 K = 2
@@ -160,6 +161,29 @@ def log_dead_neighbor(switch_socket, switch_id, server_addr, all_neighbors):
     msg = msg.encode(encoding='UTF-8')
     switch_socket.sendto(msg, server_addr)
     print("Topology update sent")
+def listen_for_updates(switch_socket, all_neighbors, neighbor_ip_port_dict, server_addr, exit_event, TIMEOUT):
+    while not exit_event.is_set():
+        (data, addr) = switch_socket.recvfrom(1024)
+        message = data.decode('utf-8')
+        print(f"Server data is '{message}'")
+        table = []
+        # Process the routing table update message
+        if message.startswith("RESPONSE_ROUTING_TABLE_UPDATE"):
+            content = re.findall(r'-?\d+', message)  # Modify the regular expression pattern to include the negative sign
+            content = [int(num) if num.isdigit() or (num[0] == '-' and num[1:].isdigit()) else num for num in content]  # Convert numbers to integers while preserving negative signs
+            print(f"Server data is '{content}'")
+            table.append([content[i:i+3] for i in range(0, len(content), 3)])
+            table = table[0]
+            routing_table = table
+            print("Routing table:",routing_table)
+            routing_table_update(routing_table)
+            print("Routing table updated")
+            exit_event.set()
+                
+        else:
+            print("Error receiving routing table update message from controller")
+            exit_event.set()
+    
 def main():
 
     global LOG_FILE
@@ -246,6 +270,8 @@ def main():
 
     #1. Each switch sends a Keep Alive message every K seconds to each of the neighboring switches that it thinks is alive
     #2. Each switch sends a Topology Update message every K seconds to the controller. This message contains a list of all the switches that it thinks are alive
+    # start_time = time.time()
+    # while True:
     exit_event = threading.Event()
         #start thread 1
     keep_alive_thread = threading.Thread(target=keep_alive, args=(switch_socket, my_id, all_neighbors, neighbor_ip_port_dict, exit_event, K))
@@ -256,29 +282,18 @@ def main():
     #start thread 3
     listen_for_neighbors_thread = threading.Thread(target=listen_for_neighbors, args=(switch_socket, all_neighbors, neighbor_ip_port_dict, server_addr, exit_event, TIMEOUT))
     listen_for_neighbors_thread.start()
-    if exit_event.is_set():
-        print("Node lost")
-        listen_for_neighbors_thread.join()
-        topology_update_thread.join()
-        keep_alive_thread.join()
-        exit_event.clear()
-        #update topology with dead neighbor
-        log_dead_neighbor(all_neighbors)
-
-
-
-    #Switch periodic operations:
-    #1. Send a keep alive message to each of its neighbors every 5 seconds
-    #2. Send a topology update to the controller every 5 seconds. This update a set of alive neighbors
-    #3. If a switch hasn't received a keep alive message from a neighbor for 15 seconds, it should mark that neighbor as dead
-    #Immediately, it sends a topology update to the controller with an updated list of alive neighbors
-    #4. Once a switch receives a keep alive message from a neighbor that it previously marked as dead, it should mark that neighbor as alive, updates host/port info, and sends a topology update to the controller with an updated list of alive neighbors
-
-
-
-# For the parameter "routing_table", it should be a list of lists in the form of [[...], [...], ...]. 
-# Within each list in the outermost list, the first element is <Switch ID>. The second is <Dest ID>, and the third is <Next Hop>.
-    #routing_table_update
+    print("Node lost")
+    listen_for_neighbors_thread.join()
+    topology_update_thread.join()
+    keep_alive_thread.join()
+    exit_event.clear()
+    #update topology with dead neighbor
+    log_dead_neighbor(switch_socket, my_id, server_addr, all_neighbors)
+    listen_for_updates_thread = threading.Thread(target=listen_for_updates, args=(switch_socket, all_neighbors, neighbor_ip_port_dict, server_addr, exit_event, TIMEOUT))
+    listen_for_updates_thread.start()
+    listen_for_updates_thread.join()
+        # if time.time() - start_time >= 60:
+        #     break
     
 if __name__ == "__main__":
     main()
