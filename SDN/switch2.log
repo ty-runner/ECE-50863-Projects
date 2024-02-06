@@ -701,3 +701,219 @@ Routing Update
 2,1:-1
 2,2:2
 Routing Complete
+
+
+09:40:59.598455
+Register Request Sent
+
+
+09:40:59.626111
+Register Response received
+
+
+09:40:59.638626
+Routing Update
+2,0:0
+2,1:1
+2,2:2
+Routing Complete
+
+
+09:41:09.694616
+Neighbor Dead 0
+
+
+09:41:09.704971
+Neighbor Dead 1
+
+
+09:41:15.770084
+Routing Update
+2,0:0
+2,1:-1
+2,2:2
+Routing Complete
+
+
+09:42:25.529087
+Register Request Sent
+
+
+09:42:25.552767
+Register Response received
+
+
+09:42:25.566793
+Routing Update
+2,0:0
+2,1:1
+2,2:2
+Routing Complete
+
+
+09:42:37.642361
+Neighbor Dead 0
+
+
+09:42:37.654414
+Neighbor Dead 1
+
+
+09:42:43.685236
+Routing Update
+2,0:0
+2,1:-1
+2,2:2
+Routing Complete
+
+
+09:44:12.582379
+Register Request Sent
+
+
+09:44:12.610632
+Register Response received
+
+
+09:44:12.638322
+Routing Update
+2,0:0
+2,1:1
+2,2:2
+Routing Complete
+
+
+09:44:22.712671
+Neighbor Dead 0
+
+
+09:44:22.727257
+Neighbor Dead 1
+
+
+09:44:28.766927
+Routing Update
+2,0:0
+2,1:-1
+2,2:2
+Routing Complete
+
+
+09:45:16.428766
+Register Request Sent
+
+
+09:45:16.455563
+Register Response received
+
+
+09:45:16.478144
+Routing Update
+2,0:0
+2,1:1
+2,2:2
+Routing Complete
+
+
+09:46:34.256691
+Register Request Sent
+
+
+09:46:34.277863
+Register Response received
+
+
+09:46:34.297440
+Routing Update
+2,0:0
+2,1:1
+2,2:2
+Routing Complete
+
+
+09:47:04.256705
+Register Request Sent
+
+
+09:47:04.280777
+Register Response received
+
+
+09:47:04.296634
+Routing Update
+2,0:0
+2,1:1
+2,2:2
+Routing Complete
+
+
+09:49:18.144858
+Register Request Sent
+
+
+09:49:18.179132
+Register Response received
+
+
+09:49:18.201190
+Routing Update
+2,0:0
+2,1:1
+2,2:2
+Routing Complete
+
+
+09:50:33.778062
+Register Request Sent
+
+
+09:50:33.800600
+Register Response received
+
+
+09:50:33.815641
+Routing Update
+2,0:0
+2,1:1
+2,2:2
+Routing Complete
+
+
+09:52:27.578077
+Register Request Sent
+
+
+09:52:27.604207
+Register Response received
+
+
+09:52:27.617785
+Routing Update
+2,0:0
+2,1:1
+2,2:2
+Routing Complete
+
+
+09:53:22.495425
+Register Request Sent
+
+
+09:53:22.520417
+Register Response received
+
+
+09:53:22.535579
+Routing Update
+2,0:0
+2,1:1
+2,2:2
+Routing Complete
+
+
+09:53:38.659875
+Routing Update
+2,0:0
+2,1:-1
+2,2:2
+Routing Complete

@@ -123,8 +123,10 @@ def topology_update(switch_socket, neighbors, switch_id, ip_port_list, server_ad
         switch_socket.sendto(msg, server_addr)
         print("Topology update sent")
 def determine_dead_neighbors(all_neighbors, ip_port_list, neighbor_addresses):
-    for item in ip_port_list:
-        if item not in neighbor_addresses:
+    print("This is all neighbors", neighbor_addresses)
+    print("This is all neighbors", ip_port_list)
+    for item in neighbor_addresses:
+        if item not in ip_port_list.values():
             all_neighbors[item] = False
             print(f"Neighbor {item} is dead")
 def listen_for_neighbors(switch_socket, neighbors, ip_port_list, server_addr, exit_event, TIMEOUT):
@@ -137,11 +139,8 @@ def listen_for_neighbors(switch_socket, neighbors, ip_port_list, server_addr, ex
             try:
                 (data, neighbor_addr) = switch_socket.recvfrom(1024)
                 neighbor_addresses.append(neighbor_addr)
-                print("LISTENING\n")
-                print(f"Server data is '{data.decode('utf-8')}'")
-                print(f"Server address is '{neighbor_addr}'")
+                print("This is all neighbors", neighbor_addresses)
                 current_time = time.time()
-                print(neighbor_addresses)
                 if current_time - start_time > TIMEOUT:
                     print(f"No message received from neighbor")
                     determine_dead_neighbors(neighbors, ip_port_list, neighbor_addresses)
@@ -163,10 +162,14 @@ def log_dead_neighbor(switch_socket, switch_id, server_addr, all_neighbors):
     print("Topology update sent")
 def listen_for_updates(switch_socket, all_neighbors, neighbor_ip_port_dict, server_addr, exit_event, TIMEOUT):
     while not exit_event.is_set():
-        (data, addr) = switch_socket.recvfrom(1024)
-        message = data.decode('utf-8')
-        print(f"Server data is '{message}'")
-        table = []
+        try:
+            (data, addr) = switch_socket.recvfrom(1024)
+            message = data.decode('utf-8')
+            print(f"Server data is '{message}'")
+            table = []
+        except ConnectionResetError:
+            print("Connection reset by remote host")
+            continue
         # Process the routing table update message
         if message.startswith("RESPONSE_ROUTING_TABLE_UPDATE"):
             content = re.findall(r'-?\d+', message)  # Modify the regular expression pattern to include the negative sign
@@ -179,11 +182,6 @@ def listen_for_updates(switch_socket, all_neighbors, neighbor_ip_port_dict, serv
             routing_table_update(routing_table)
             print("Routing table updated")
             exit_event.set()
-                
-        else:
-            print("Error receiving routing table update message from controller")
-            exit_event.set()
-    
 def main():
 
     global LOG_FILE
@@ -282,11 +280,11 @@ def main():
     #start thread 3
     listen_for_neighbors_thread = threading.Thread(target=listen_for_neighbors, args=(switch_socket, all_neighbors, neighbor_ip_port_dict, server_addr, exit_event, TIMEOUT))
     listen_for_neighbors_thread.start()
-    print("Node lost")
     listen_for_neighbors_thread.join()
     topology_update_thread.join()
     keep_alive_thread.join()
     exit_event.clear()
+    print("Node lost")
     #update topology with dead neighbor
     log_dead_neighbor(switch_socket, my_id, server_addr, all_neighbors)
     listen_for_updates_thread = threading.Thread(target=listen_for_updates, args=(switch_socket, all_neighbors, neighbor_ip_port_dict, server_addr, exit_event, TIMEOUT))

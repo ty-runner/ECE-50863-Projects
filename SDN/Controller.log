@@ -2100,3 +2100,423 @@ Routing Update
 2,1:-1,9999
 2,2:2,0
 Routing Complete
+
+
+09:40:43.803242
+Register Request 0
+
+
+09:40:51.961294
+Register Request 1
+
+
+09:40:59.598455
+Register Request 2
+
+
+09:40:59.607023
+Register Response 0
+
+
+09:40:59.614537
+Register Response 1
+
+
+09:40:59.624111
+Register Response 2
+
+
+09:40:59.632115
+Routing Update
+0,0:0,0
+0,1:1,20
+0,2:2,10
+1,0:0,20
+1,1:1,0
+1,2:2,30
+2,0:0,10
+2,1:1,30
+2,2:2,0
+Routing Complete
+
+
+09:41:15.753581
+Switch Dead 1
+
+
+09:42:14.362849
+Register Request 0
+
+
+09:42:18.216571
+Register Request 1
+
+
+09:42:25.530112
+Register Request 2
+
+
+09:42:25.536684
+Register Response 0
+
+
+09:42:25.543245
+Register Response 1
+
+
+09:42:25.551260
+Register Response 2
+
+
+09:42:25.559295
+Routing Update
+0,0:0,0
+0,1:1,20
+0,2:2,10
+1,0:0,20
+1,1:1,0
+1,2:2,30
+2,0:0,10
+2,1:1,30
+2,2:2,0
+Routing Complete
+
+
+09:42:43.674784
+Switch Dead 1
+
+
+09:43:59.661130
+Register Request 0
+
+
+09:44:02.765081
+Register Request 1
+
+
+09:44:12.582379
+Register Request 2
+
+
+09:44:12.589510
+Register Response 0
+
+
+09:44:12.597071
+Register Response 1
+
+
+09:44:12.609633
+Register Response 2
+
+
+09:44:12.622732
+Routing Update
+0,0:0,0
+0,1:1,20
+0,2:2,10
+1,0:0,20
+1,1:1,0
+1,2:2,30
+2,0:0,10
+2,1:1,30
+2,2:2,0
+Routing Complete
+
+
+09:44:28.752609
+Switch Dead 1
+
+
+09:45:01.261081
+Register Request 0
+
+
+09:45:04.758118
+Register Request 1
+
+
+09:45:16.429787
+Register Request 2
+
+
+09:45:16.437341
+Register Response 0
+
+
+09:45:16.445484
+Register Response 1
+
+
+09:45:16.454557
+Register Response 2
+
+
+09:45:16.469586
+Routing Update
+0,0:0,0
+0,1:1,20
+0,2:2,10
+1,0:0,20
+1,1:1,0
+1,2:2,30
+2,0:0,10
+2,1:1,30
+2,2:2,0
+Routing Complete
+
+
+09:45:32.560690
+Switch Dead 1
+
+
+09:46:16.323854
+Register Request 0
+
+
+09:46:19.777301
+Register Request 1
+
+
+09:46:34.256691
+Register Request 2
+
+
+09:46:34.262340
+Register Response 0
+
+
+09:46:34.270348
+Register Response 1
+
+
+09:46:34.276866
+Register Response 2
+
+
+09:46:34.286387
+Routing Update
+0,0:0,0
+0,1:1,20
+0,2:2,10
+1,0:0,20
+1,1:1,0
+1,2:2,30
+2,0:0,10
+2,1:1,30
+2,2:2,0
+Routing Complete
+
+
+09:46:44.334579
+Switch Dead 1
+
+
+09:47:02.193922
+Register Request 0
+
+
+09:47:03.280145
+Register Request 1
+
+
+09:47:04.257700
+Register Request 2
+
+
+09:47:04.265236
+Register Response 0
+
+
+09:47:04.272755
+Register Response 1
+
+
+09:47:04.280777
+Register Response 2
+
+
+09:47:04.288443
+Routing Update
+0,0:0,0
+0,1:1,20
+0,2:2,10
+1,0:0,20
+1,1:1,0
+1,2:2,30
+2,0:0,10
+2,1:1,30
+2,2:2,0
+Routing Complete
+
+
+09:47:30.444527
+Switch Dead 1
+
+
+09:49:04.171039
+Register Request 0
+
+
+09:49:08.221203
+Register Request 1
+
+
+09:49:18.144858
+Register Request 2
+
+
+09:49:18.151835
+Register Response 0
+
+
+09:49:18.161084
+Register Response 1
+
+
+09:49:18.178148
+Register Response 2
+
+
+09:49:18.189652
+Routing Update
+0,0:0,0
+0,1:1,20
+0,2:2,10
+1,0:0,20
+1,1:1,0
+1,2:2,30
+2,0:0,10
+2,1:1,30
+2,2:2,0
+Routing Complete
+
+
+09:49:34.296642
+Switch Dead 1
+
+
+09:50:19.638695
+Register Request 0
+
+
+09:50:23.436958
+Register Request 1
+
+
+09:50:33.779052
+Register Request 2
+
+
+09:50:33.784559
+Register Response 0
+
+
+09:50:33.792560
+Register Response 1
+
+
+09:50:33.799598
+Register Response 2
+
+
+09:50:33.807121
+Routing Update
+0,0:0,0
+0,1:1,20
+0,2:2,10
+1,0:0,20
+1,1:1,0
+1,2:2,30
+2,0:0,10
+2,1:1,30
+2,2:2,0
+Routing Complete
+
+
+09:50:47.879711
+Switch Dead 1
+
+
+09:52:12.911333
+Register Request 0
+
+
+09:52:17.394656
+Register Request 1
+
+
+09:52:27.578949
+Register Request 2
+
+
+09:52:27.585567
+Register Response 0
+
+
+09:52:27.594045
+Register Response 1
+
+
+09:52:27.602056
+Register Response 2
+
+
+09:52:27.611217
+Routing Update
+0,0:0,0
+0,1:1,20
+0,2:2,10
+1,0:0,20
+1,1:1,0
+1,2:2,30
+2,0:0,10
+2,1:1,30
+2,2:2,0
+Routing Complete
+
+
+09:52:49.711374
+Switch Dead 1
+
+
+09:53:09.894313
+Register Request 0
+
+
+09:53:13.387282
+Register Request 1
+
+
+09:53:22.496425
+Register Request 2
+
+
+09:53:22.504068
+Register Response 0
+
+
+09:53:22.511115
+Register Response 1
+
+
+09:53:22.518452
+Register Response 2
+
+
+09:53:22.526053
+Routing Update
+0,0:0,0
+0,1:1,20
+0,2:2,10
+1,0:0,20
+1,1:1,0
+1,2:2,30
+2,0:0,10
+2,1:1,30
+2,2:2,0
+Routing Complete
+
+
+09:53:38.643102
+Switch Dead 1

@@ -905,3 +905,227 @@ Routing Update
 0,1:-1
 0,2:2
 Routing Complete
+
+
+09:40:33.567727
+Register Request Sent
+
+
+09:40:38.760490
+Register Request Sent
+
+
+09:40:43.802279
+Register Request Sent
+
+
+09:40:59.608024
+Register Response received
+
+
+09:40:59.638626
+Routing Update
+0,0:0
+0,1:1
+0,2:2
+Routing Complete
+
+
+09:41:09.709950
+Neighbor Dead 1
+
+
+09:41:09.724086
+Neighbor Dead 2
+
+
+09:41:15.769079
+Routing Update
+0,0:0
+0,1:-1
+0,2:2
+Routing Complete
+
+
+09:42:14.362849
+Register Request Sent
+
+
+09:42:25.537683
+Register Response received
+
+
+09:42:25.566793
+Routing Update
+0,0:0
+0,1:1
+0,2:2
+Routing Complete
+
+
+09:42:37.642361
+Neighbor Dead 1
+
+
+09:42:37.657521
+Neighbor Dead 2
+
+
+09:42:43.685236
+Routing Update
+0,0:0
+0,1:-1
+0,2:2
+Routing Complete
+
+
+09:43:59.661130
+Register Request Sent
+
+
+09:44:12.590496
+Register Response received
+
+
+09:44:12.638322
+Routing Update
+0,0:0
+0,1:1
+0,2:2
+Routing Complete
+
+
+09:44:22.711095
+Neighbor Dead 1
+
+
+09:44:22.726261
+Neighbor Dead 2
+
+
+09:44:28.765924
+Routing Update
+0,0:0
+0,1:-1
+0,2:2
+Routing Complete
+
+
+09:45:01.260081
+Register Request Sent
+
+
+09:45:16.439341
+Register Response received
+
+
+09:45:16.478144
+Routing Update
+0,0:0
+0,1:1
+0,2:2
+Routing Complete
+
+
+09:46:16.323854
+Register Request Sent
+
+
+09:46:34.263347
+Register Response received
+
+
+09:46:34.297440
+Routing Update
+0,0:0
+0,1:1
+0,2:2
+Routing Complete
+
+
+09:47:02.193922
+Register Request Sent
+
+
+09:47:04.266241
+Register Response received
+
+
+09:47:04.296634
+Routing Update
+0,0:0
+0,1:1
+0,2:2
+Routing Complete
+
+
+09:49:04.169996
+Register Request Sent
+
+
+09:49:18.152835
+Register Response received
+
+
+09:49:18.201190
+Routing Update
+0,0:0
+0,1:1
+0,2:2
+Routing Complete
+
+
+09:50:19.637669
+Register Request Sent
+
+
+09:50:33.785560
+Register Response received
+
+
+09:50:33.815641
+Routing Update
+0,0:0
+0,1:1
+0,2:2
+Routing Complete
+
+
+09:52:12.911333
+Register Request Sent
+
+
+09:52:27.586635
+Register Response received
+
+
+09:52:27.617785
+Routing Update
+0,0:0
+0,1:1
+0,2:2
+Routing Complete
+
+
+09:53:09.892858
+Register Request Sent
+
+
+09:53:22.505074
+Register Response received
+
+
+09:53:22.535579
+Routing Update
+0,0:0
+0,1:1
+0,2:2
+Routing Complete
+
+
+09:53:38.658880
+Routing Update
+0,0:0
+0,1:-1
+0,2:2
+Routing Complete
