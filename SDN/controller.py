@@ -402,7 +402,7 @@ def main():
                 else:
                     routing_table.append([switch, destination, destination, 0]) #self entry
         print("Routing table: ", routing_table)
-        routing_table_update(routing_table)
+        #routing_table_update(routing_table)
         update_routing_table = {}
         for switch in switch_dictionary:
             if not alive_list[switch]:
