@@ -20,18 +20,17 @@ if __name__ == '__main__':
     receiver_id = int(cfg.get('receiver', 'id'))
     file_to_send = cfg.get('nodes', 'file_to_send')
     max_packet_size = int(cfg.get('network', 'MAX_PACKET_SIZE'))
+    max_packet_size -= 8  # Account for the header size
 
     # Exchange messages!
-    print('Sender: Sending "Hello, World!" to receiver.')
-    send_monitor.send(receiver_id, b'Hello, World!')
-    addr, data = send_monitor.recv(max_packet_size)
-    print(f'Sender: Got response from id {addr}: {data}')
+    print(f'Sender: Sending file {file_to_send} to receiver.')
     #send the file in max_packet_size chunks
     with open(file_to_send, 'rb') as f:
         send_count = 0
         while True:
             chunk = f.read(max_packet_size)
             if not chunk:
+                send_monitor.send(receiver_id, b'')
                 break
             if send_count == 0:
                 send_monitor.send(receiver_id, chunk)
@@ -56,5 +55,5 @@ if __name__ == '__main__':
     print(f'Sender: File {file_to_send} sent to receiver.')
     f.close()
     # Exit! Make sure the receiver ends before the sender. send_end will stop the emulator.
-    time.sleep(1)
+    time.sleep(5)
     send_monitor.send_end(receiver_id)
