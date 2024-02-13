@@ -23,7 +23,6 @@ if __name__ == '__main__':
     max_packet_size -= 8  # Account for the header size
 
     # Exchange messages!
-    print(f'Sender: Sending file {file_to_send} to receiver.')
     #send the file in max_packet_size chunks
     with open(file_to_send, 'rb') as f:
         send_count = 0
@@ -35,7 +34,6 @@ if __name__ == '__main__':
             if send_count == 0:
                 send_monitor.send(receiver_id, chunk)
             else:
-                print(f'Sender: Sending file {file_to_send} to receiver.')
                 # receive ACK from receiver
                 ack_received = False
                 start_time = time.time()
@@ -55,5 +53,5 @@ if __name__ == '__main__':
     print(f'Sender: File {file_to_send} sent to receiver.')
     f.close()
     # Exit! Make sure the receiver ends before the sender. send_end will stop the emulator.
-    time.sleep(5)
+    time.sleep(2)
     send_monitor.send_end(receiver_id)
