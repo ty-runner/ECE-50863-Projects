@@ -7,6 +7,9 @@ import time
 
 timeout = 2  # Timeout period in seconds
 
+async def listen(send_monitor, max_packet_size):
+    addr, data = await send_monitor.recv(max_packet_size)
+    return addr, data
 if __name__ == '__main__':
     print("Sender starting up!")
     config_path = sys.argv[1]
@@ -21,6 +24,7 @@ if __name__ == '__main__':
     file_to_send = cfg.get('nodes', 'file_to_send')
     max_packet_size = int(cfg.get('network', 'MAX_PACKET_SIZE'))
     max_packet_size -= 8  # Account for the header size
+    #addr, data = send_monitor.recv(max_packet_size)
 
     # Exchange messages!
     #send the file in max_packet_size chunks
@@ -38,7 +42,7 @@ if __name__ == '__main__':
                 ack_received = False
                 start_time = time.time()
                 while not ack_received:
-                    addr, data = send_monitor.recv(max_packet_size)
+                    addr, data = listen(send_monitor, max_packet_size)
                     print(time.time() - start_time)
                     if data == b'ACK':
                         print(f'Sender: Got ACK from id {addr}: {data}')
