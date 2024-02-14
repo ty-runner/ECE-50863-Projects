@@ -5,7 +5,7 @@ import sys
 import configparser
 import time
 
-timeout = 5  # Timeout period in seconds
+timeout = 2  # Timeout period in seconds
 
 if __name__ == '__main__':
     print("Sender starting up!")
@@ -39,6 +39,7 @@ if __name__ == '__main__':
                 start_time = time.time()
                 while not ack_received:
                     addr, data = send_monitor.recv(max_packet_size)
+                    print(time.time() - start_time)
                     if data == b'ACK':
                         print(f'Sender: Got ACK from id {addr}: {data}')
                         print(f'Sender: Sending file {file_to_send} to receiver.')
@@ -53,5 +54,5 @@ if __name__ == '__main__':
     print(f'Sender: File {file_to_send} sent to receiver.')
     f.close()
     # Exit! Make sure the receiver ends before the sender. send_end will stop the emulator.
-    time.sleep(2)
+    time.sleep(1.5)
     send_monitor.send_end(receiver_id)
