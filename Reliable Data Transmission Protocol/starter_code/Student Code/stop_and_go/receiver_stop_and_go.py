@@ -33,5 +33,5 @@ if __name__ == '__main__':
             print(f'Receiver: Sending ACK to id {addr}.')
             recv_monitor.send(sender_id, b'ACK')
     f.close()
+    recv_monitor.recv_end('output.txt', sender_id)
     # Exit! Make sure the receiver ends before the sender. send_end will stop the emulator.
-    recv_monitor.recv_end('received_file', sender_id)

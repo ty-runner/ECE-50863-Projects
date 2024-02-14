@@ -220,6 +220,7 @@ class Monitor:
 			match = False
 		else:
 			with open(self.file) as orig:
+				print(f'Original file: {self.file}')
 				with open(recvfile) as recv:
 					lines1 = orig.readlines()
 					lines2 = recv.readlines()
