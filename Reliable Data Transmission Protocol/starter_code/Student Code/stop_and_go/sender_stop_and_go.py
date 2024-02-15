@@ -4,7 +4,7 @@ import sys
 # Config File
 import configparser
 import time
-
+import socket
 timeout = 2  # Timeout period in seconds
 
 async def listen(send_monitor, max_packet_size):
@@ -16,7 +16,8 @@ if __name__ == '__main__':
 
     # Initialize sender monitor
     send_monitor = Monitor(config_path, 'sender')
-    
+    send_monitor.socketfd.settimeout(timeout)
+    #send_monitor.socketfd.setblocking(False)
     # Parse config file
     cfg = configparser.RawConfigParser(allow_no_value=True)
     cfg.read(config_path)
@@ -42,7 +43,12 @@ if __name__ == '__main__':
                 ack_received = False
                 start_time = time.time()
                 while not ack_received:
-                    addr, data = listen(send_monitor, max_packet_size)
+                    try:
+                        addr, data = send_monitor.recv(max_packet_size)
+                    except socket.timeout:
+                        print(f'Sender: Timeout occurred. Retransmitting packet...')
+                        send_monitor.send(receiver_id, chunk)
+                        start_time = time.time()
                     print(time.time() - start_time)
                     if data == b'ACK':
                         print(f'Sender: Got ACK from id {addr}: {data}')
