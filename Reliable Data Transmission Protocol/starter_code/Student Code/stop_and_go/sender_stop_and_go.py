@@ -48,16 +48,17 @@ if __name__ == '__main__':
                     except socket.timeout:
                         print(f'Sender: Timeout occurred. Retransmitting packet...')
                         send_monitor.send(receiver_id, chunk)
+                        print("chunk of data sent: ", chunk)
                         start_time = time.time()
-                    print(time.time() - start_time)
                     if data == b'ACK':
-                        print(f'Sender: Got ACK from id {addr}: {data}')
-                        print(f'Sender: Sending file {file_to_send} to receiver.')
+                        #print(f'Sender: Got ACK from id {addr}: {data}')
+                        #print(f'Sender: Sending file {file_to_send} to receiver.')
                         send_monitor.send(receiver_id, chunk)
                         ack_received = True
                     elif time.time() - start_time >= timeout:
                         print(f'Sender: Timeout occurred. Retransmitting packet...')
                         send_monitor.send(receiver_id, chunk)
+                        print("chunk of data sent: ", chunk)
                         start_time = time.time()
             #wait TIMEOUT seconds for ACK
             send_count += 1

@@ -1033,29 +1033,6 @@ The Problem
       “And then you will say nothing to him at all until I have made up
       my mind about the matter.”
 
-      “How long will it take I might go the length of saying that there is some
-      evidence that this may be so.”
-
-      “Exactly. But surely, if your supernatural theory be correct, it
-      could work the young man evil in London as easily as in
-      Devonshire. A devil with merely local powers like a parish vestry
-      would be too inconceivable a thing.”
-
-      “You put the matter more flippantly, Mr. Holmes, than you would
-      probably do if you were brought into personal contact with these
-      things. Your advice, then, as I understand it, is that the young
-      man will be as safe in Devonshire as in London. He comes in fifty
-      minutes. What would you recommend?”
-
-      “I recommend, sir, that you take a cab, call off your spaniel who
-      is scratching at my front door, and proceed to Waterloo to meet
-      Sir Henry Baskerville.”
-
-      “And then?”
-
-      “And then you will say nothing to him at all until I have made up
-      my mind about the matter.”
-
       “How long will it take you to make up your mind?”
 
       “Twenty-four hours. At ten o’clock tomorrow, Dr. Mortimer, I will
@@ -1572,7 +1549,30 @@ Sir Henry Baskerville
       attention and with an occasional exclamation of surprise.
 
       “Well, I seem to have come into an inheritance with a vengeance,”
-      said he when the long narra introducing me to a problem which
+      said he when the long narrative was finished. “Of course, I’ve
+      heard of the hound ever since I was in the nursery. It’s the pet
+      story of the family, though I never thought of taking it
+      seriously before. But as to my uncle’s death—well, it all seems
+      boiling up in my head, and I can’t get it clear yet. You don’t
+      seem quite to have made up your mind whether it’s a case for a
+      policeman or a clergyman.”
+
+      “Precisely.”
+
+      “And now there’s this affair of the letter to me at the hotel. I
+      suppose that fits into its place.”
+
+      “It seems to show that someone knows more than we do about what
+      goes on upon the moor,” said Dr. Mortimer.
+
+      “And also,” said Holmes, “that someone is not ill-disposed
+      towards you, since they warn you of danger.”
+
+      “Or it may be that they wish, for their own purposes, to scare me
+      away.”
+
+      “Well, of course, that is possible also. I am very much indebted
+      to you, Dr. Mortimer, for introducing me to a problem which
       presents several interesting alternatives. But the practical
       point which we now have to decide, Sir Henry, is whether it is or
       is not advisable for you to go to Baskerville Hall.”
@@ -1618,25 +1618,6 @@ Sir Henry Baskerville
       languid dreamer to the man of action.
 
       “Your hat and boots, Watson, quick! Not a moment to lose!” He
-      rushed into his room in his dressing-gown and was back again in a
-      few seconds in a frock-coat. We hurried together down the stairs
-      and into the street. Dr. Mortimer and Baskerville were still
-      visible about two hundred yards ahead of us in the direction of
-      Oxford Street.
-
-      “Shall I run on and stop them?”
-
-      “Not for the world, my dear Watson. I am perfectly satisfied with
-      your company if you will tolerate mine. Our friends are wise, for
-      it is certainly a very fine morning for a walk.”
-
-      He quickened his pace until we had decreased the distance which
-      divided us by about half. Then, still keeping a hundred yards
-      behind, we followed into Oxford Street and so down Regent Street.
-      Once our friends stopped and stared into a shop window, upon
-      which Holmes did the same. An instant afterwards he gave a little
-      cry of satisfaction, and, following the direction of his eager
-      eyes, I saw thaNot a moment to lose!” He
       rushed into his room in his dressing-gown and was back again in a
       few seconds in a frock-coat. We hurried together down the stairs
       and into the street. Dr. Mortimer and Baskerville were still
@@ -2322,7 +2303,26 @@ Baskerville Hall
 
       Sir Henry Baskerville and Dr. Mortimer were ready upon the
       appointed day, and we started as arranged for Devonshire. Mr.
-      Sherlock Holmes drove with me to the station and gave me hisnd
+      Sherlock Holmes drove with me to the station and gave me his last
+      parting injunctions and advice.
+
+      “I will not bias your mind by suggesting theories or suspicions,
+      Watson,” said he; “I wish you simply to report facts in the
+      fullest possible manner to me, and you can leave me to do the
+      theorizing.”
+
+      “What sort of facts?” I asked.
+
+      “Anything which may seem to have a bearing however indirect upon
+      the case, and especially the relations between young Baskerville
+      and his neighbours or any fresh particulars concerning the death
+      of Sir Charles. I have made some inquiries myself in the last few
+      days, but the results have, I fear, been negative. One thing only
+      appears to be certain, and that is that Mr. James Desmond, who is
+      the next heir, is an elderly gentleman of a very amiable
+      disposition, so that this persecution does not arise from him. I
+      really think that we may eliminate him entirely from our
+      calculations. There remain the people who will actually surround
       Sir Henry Baskerville upon the moor.”
 
       “Would it not be well in the first place to get rid of this
@@ -2344,32 +2344,6 @@ Baskerville Hall
       “I will do my best.”
 
       “You have arms, I suppose?”
-
-      “Yes, I thought it as well to take them.”
-
-      “Most certainly. Keep your revolver near you night and day, and
-      never relax your precautions.”
-
-      Our friends had already secured a first-class carriage and were
-      waiting for us upon the platform.
-
-      “No, we have no news of any kind,” said Dr. Mortimer in answer to
-      my friend’s questions. “I can swear to one thing, and that is
-      that we have not been shadowed during the last two days. We have
-      never gone out without keeping a sharp watch, and no one could
-      have escaped our notice.”
-
-      “You have always kept together, I presume?”
-
-      “Except yesterday afternoon. I usually give up one day to pure
-      amusement when I come to town, so I spent it at the Museum of the
-      College of Surgeons.”
-
-      “And I went to look at the folk in the park,” said Baskerville.
-
-      “But we had no trouble of any kind.”
-
-      “It was imprudent, all the same,” said Holsuppose?”
 
       “Yes, I thought it as well to take them.”
 

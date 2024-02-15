@@ -20,7 +20,7 @@ if __name__ == '__main__':
     max_packet_size = int(cfg.get('network', 'MAX_PACKET_SIZE'))
     max_packet_size -= 8  # Account for the header size
     write_location = cfg.get('receiver', 'write_location')
-    print('Receiver: Waiting for file contents...')
+    #print('Receiver: Waiting for file contents...')
     #listen for contents of file and sending ACKs
     #open file to write to
     with open(write_location, 'wb') as f:
@@ -28,11 +28,13 @@ if __name__ == '__main__':
             addr, data = recv_monitor.recv(max_packet_size)
             if data == b'':
                 break
-            print(f'Receiver: Received {len(data)} bytes from id {addr}.')
-            print("Data is: ", data)
-            f.write(data)
-            print(f'Receiver: Sending ACK to id {addr}.')
-            recv_monitor.send(sender_id, b'ACK')
+            if 'data_copy' not in locals() or data_copy != data:
+                #print(f'Receiver: Received {len(data)} bytes from id {addr}.')
+                #print("Data is: ", data)
+                f.write(data)
+                print(f'Receiver: Sending ACK to id {addr}.')
+                recv_monitor.send(sender_id, b'ACK')
+                data_copy = data
     f.close()
-    recv_monitor.recv_end(write_location, sender_id)
+    recv_monitor.recv_end('outputs.txt', sender_id)
     # Exit! Make sure the receiver ends before the sender. send_end will stop the emulator.
