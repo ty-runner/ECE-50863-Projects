@@ -346,32 +346,6 @@ Mr. Sherlock Holmes
 
 
 
-Cha
-      doing that as well. I came to you, Mr. Holmes, because I
-      recognized that I am myself an unpractical man and because I am
-      suddenly confronted with a most serious and extraordinary
-      problem. Recognizing, as I do, that you are the second highest
-      expert in Europe—”
-
-      “Indeed, sir! May I inquire who has the honour to be the first?”
-      asked Holmes with some asperity.
-
-      “To the man of precisely scientific mind the work of Monsieur
-      Bertillon must always appeal strongly.”
-
-      “Then had you not better consult him?”
-
-      “I said, sir, to the precisely scientific mind. But as a
-      practical man of affairs it is acknowledged that you stand alone.
-      I trust, sir, that I have not inadvertently—”
-
-      “Just a little,” said Holmes. “I think, Dr. Mortimer, you would
-      do wisely if without more ado you would kindly tell me plainly
-      what the exact nature of the problem is in which you demand my
-      assistance.”
-
-
-
 Chapter 2.
 
 The Curse of the Baskervilles
@@ -637,7 +611,22 @@ The Curse of the Baskervilles
             Dr. James Mortimer, the friend and medical attendant of the
             deceased, has given evidence to the same effect.
 
-            “The facts of           stood for some little time here.  He then proceeded down
+            “The facts of the case are simple.  Sir Charles Baskerville
+            was in the habit every night before going to bed of walking
+            down the famous yew alley of Baskerville Hall.  The
+            evidence of the Barrymores shows that this had been his
+            custom. On the fourth of May Sir Charles had declared his
+            intention of starting next day for London, and had ordered
+            Barrymore to prepare his luggage.  That night he went out
+            as usual for his nocturnal walk, in the course of which he
+            was in the habit of smoking a cigar.  He never returned. 
+            At twelve o’clock Barrymore, finding the hall door still
+            open, became alarmed, and, lighting a lantern, went in
+            search of his master.  The day had been wet, and Sir
+            Charles’s footmarks were easily traced down the alley. 
+            Halfway down this walk there is a gate which leads out on
+            to the moor. There were indications that Sir Charles had
+            stood for some little time here.  He then proceeded down
             the alley, and it was at the far end of it that his body
             was discovered. One fact which has not been explained is
             the statement of Barrymore that his master’s footprints
@@ -1022,6 +1011,29 @@ The Problem
       unsafe abode for a Baskerville—that is your opinion?”
 
       “At least I might go the length of saying that there is some
+      evidence that this may be so.”
+
+      “Exactly. But surely, if your supernatural theory be correct, it
+      could work the young man evil in London as easily as in
+      Devonshire. A devil with merely local powers like a parish vestry
+      would be too inconceivable a thing.”
+
+      “You put the matter more flippantly, Mr. Holmes, than you would
+      probably do if you were brought into personal contact with these
+      things. Your advice, then, as I understand it, is that the young
+      man will be as safe in Devonshire as in London. He comes in fifty
+      minutes. What would you recommend?”
+
+      “I recommend, sir, that you take a cab, call off your spaniel who
+      is scratching at my front door, and proceed to Waterloo to meet
+      Sir Henry Baskerville.”
+
+      “And then?”
+
+      “And then you will say nothing to him at all until I have made up
+      my mind about the matter.”
+
+      “How long will it take I might go the length of saying that there is some
       evidence that this may be so.”
 
       “Exactly. But surely, if your supernatural theory be correct, it
@@ -1434,28 +1446,22 @@ Sir Henry Baskerville
       “There are one or two indications, and yet the utmost pains have
       been taken to remove all clues. The address, you observe is
       printed in rough characters. But the _Times_ is a paper which is
-      seldom found in any hands      from whom?”
-
-      “We are coming now rather into the region of guesswork,” said Dr.
-      Mortimer.
-
-      “Say, rather, into the region where we balance probabilities and
-      choose the most likely. It is the scientific use of the
-      imagination, but we have always some material basis on which to
-      start our speculation. Now, you would call it a guess, no doubt,
-      but I am almost certain that this address has been written in a
-      hotel.”
-
-      “How in the world can you say that?”
-
-      “If you examine it carefully you will see that both the pen and
-      the ink have given the writer trouble. The pen has spluttered
-      twice in a single word and has run dry three times in a short
-      address, showing that there was very little ink in the bottle.
-      Now, a private pen or ink-bottle is seldom allowed to be in such
-      a state, and the combination of the two must be quite rare. But
-      you know the hotel ink and the hotel pen, where it is rare to get
-       from whom?”
+      seldom found in any hands but those of the highly educated. We
+      may take it, therefore, that the letter was composed by an
+      educated man who wished to pose as an uneducated one, and his
+      effort to conceal his own writing suggests that that writing
+      might be known, or come to be known, by you. Again, you will
+      observe that the words are not gummed on in an accurate line, but
+      that some are much higher than others. ‘Life,’ for example is
+      quite out of its proper place. That may point to carelessness or
+      it may point to agitation and hurry upon the part of the cutter.
+      On the whole I incline to the latter view, since the matter was
+      evidently important, and it is unlikely that the composer of such
+      a letter would be careless. If he were in a hurry it opens up the
+      interesting question why he should be in a hurry, since any
+      letter posted up to early morning would reach Sir Henry before he
+      would leave his hotel. Did the composer fear an interruption—and
+      from whom?”
 
       “We are coming now rather into the region of guesswork,” said Dr.
       Mortimer.
@@ -1566,30 +1572,7 @@ Sir Henry Baskerville
       attention and with an occasional exclamation of surprise.
 
       “Well, I seem to have come into an inheritance with a vengeance,”
-      said he when the long narrative was finished. “Of course, I’ve
-      heard of the hound ever since I was in the nursery. It’s the pet
-      story of the family, though I never thought of taking it
-      seriously before. But as to my uncle’s death—well, it all seems
-      boiling up in my head, and I can’t get it clear yet. You don’t
-      seem quite to have made up your mind whether it’s a case for a
-      policeman or a clergyman.”
-
-      “Precisely.”
-
-      “And now there’s this affair of the letter to me at the hotel. I
-      suppose that fits into its place.”
-
-      “It seems to show that someone knows more than we do about what
-      goes on upon the moor,” said Dr. Mortimer.
-
-      “And also,” said Holmes, “that someone is not ill-disposed
-      towards you, since they warn you of danger.”
-
-      “Or it may be that they wish, for their own purposes, to scare me
-      away.”
-
-      “Well, of course, that is possible also. I am very much indebted
-      to you, Dr. Mortimer, for introducing me to a problem which
+      said he when the long narra introducing me to a problem which
       presents several interesting alternatives. But the practical
       point which we now have to decide, Sir Henry, is whether it is or
       is not advisable for you to go to Baskerville Hall.”
@@ -1635,6 +1618,25 @@ Sir Henry Baskerville
       languid dreamer to the man of action.
 
       “Your hat and boots, Watson, quick! Not a moment to lose!” He
+      rushed into his room in his dressing-gown and was back again in a
+      few seconds in a frock-coat. We hurried together down the stairs
+      and into the street. Dr. Mortimer and Baskerville were still
+      visible about two hundred yards ahead of us in the direction of
+      Oxford Street.
+
+      “Shall I run on and stop them?”
+
+      “Not for the world, my dear Watson. I am perfectly satisfied with
+      your company if you will tolerate mine. Our friends are wise, for
+      it is certainly a very fine morning for a walk.”
+
+      He quickened his pace until we had decreased the distance which
+      divided us by about half. Then, still keeping a hundred yards
+      behind, we followed into Oxford Street and so down Regent Street.
+      Once our friends stopped and stared into a shop window, upon
+      which Holmes did the same. An instant afterwards he gave a little
+      cry of satisfaction, and, following the direction of his eager
+      eyes, I saw thaNot a moment to lose!” He
       rushed into his room in his dressing-gown and was back again in a
       few seconds in a frock-coat. We hurried together down the stairs
       and into the street. Dr. Mortimer and Baskerville were still
@@ -2078,7 +2080,29 @@ Three Broken Threads
       person; but you can understand that, with my extensive consulting
       practice and with the constant appeals which reach me from many
       quarters, it is impossible for me to be absent from London for an
-      indefinite time. At the present in by the eagerness with
+      indefinite time. At the present instant one of the most revered
+      names in England is being besmirched by a blackmailer, and only I
+      can stop a disastrous scandal. You will see how impossible it is
+      for me to go to Dartmoor.”
+
+      “Whom would you recommend, then?”
+
+      Holmes laid his hand upon my arm. “If my friend would undertake
+      it there is no man who is better worth having at your side when
+      you are in a tight place. No one can say so more confidently than
+      I.”
+
+      The proposition took me completely by surprise, but before I had
+      time to answer, Baskerville seized me by the hand and wrung it
+      heartily.
+
+      “Well, now, that is real kind of you, Dr. Watson,” said he. “You
+      see how it is with me, and you know just as much about the matter
+      as I do. If you will come down to Baskerville Hall and see me
+      through I’ll never forget it.”
+
+      The promise of adventure had always a fascination for me, and I
+      was complimented by the words of Holmes and by the eagerness with
       which the baronet hailed me as a companion.
 
       “I will come, with pleasure,” said I. “I do not know how I could
@@ -2298,26 +2322,7 @@ Baskerville Hall
 
       Sir Henry Baskerville and Dr. Mortimer were ready upon the
       appointed day, and we started as arranged for Devonshire. Mr.
-      Sherlock Holmes drove with me to the station and gave me his last
-      parting injunctions and advice.
-
-      “I will not bias your mind by suggesting theories or suspicions,
-      Watson,” said he; “I wish you simply to report facts in the
-      fullest possible manner to me, and you can leave me to do the
-      theorizing.”
-
-      “What sort of facts?” I asked.
-
-      “Anything which may seem to have a bearing however indirect upon
-      the case, and especially the relations between young Baskerville
-      and his neighbours or any fresh particulars concerning the death
-      of Sir Charles. I have made some inquiries myself in the last few
-      days, but the results have, I fear, been negative. One thing only
-      appears to be certain, and that is that Mr. James Desmond, who is
-      the next heir, is an elderly gentleman of a very amiable
-      disposition, so that this persecution does not arise from him. I
-      really think that we may eliminate him entirely from our
-      calculations. There remain the people who will actually surround
+      Sherlock Holmes drove with me to the station and gave me hisnd
       Sir Henry Baskerville upon the moor.”
 
       “Would it not be well in the first place to get rid of this
@@ -2339,6 +2344,32 @@ Baskerville Hall
       “I will do my best.”
 
       “You have arms, I suppose?”
+
+      “Yes, I thought it as well to take them.”
+
+      “Most certainly. Keep your revolver near you night and day, and
+      never relax your precautions.”
+
+      Our friends had already secured a first-class carriage and were
+      waiting for us upon the platform.
+
+      “No, we have no news of any kind,” said Dr. Mortimer in answer to
+      my friend’s questions. “I can swear to one thing, and that is
+      that we have not been shadowed during the last two days. We have
+      never gone out without keeping a sharp watch, and no one could
+      have escaped our notice.”
+
+      “You have always kept together, I presume?”
+
+      “Except yesterday afternoon. I usually give up one day to pure
+      amusement when I come to town, so I spent it at the Museum of the
+      College of Surgeons.”
+
+      “And I went to look at the folk in the park,” said Baskerville.
+
+      “But we had no trouble of any kind.”
+
+      “It was imprudent, all the same,” said Holsuppose?”
 
       “Yes, I thought it as well to take them.”
 
@@ -2455,23 +2486,25 @@ Baskerville Hall
       either side, heavy with dripping moss and fleshy hart’s-tongue
       ferns. Bronzing bracken and mottled bramble gleamed in the light
       of the sinking sun. Still steadily rising, we passed over a
-      narrow granite bridge and skirted a noisy streamtwo soldierly
-      men in dark uniforms who leaned upon their short rifles and
-      glanced keenly at us as we passed. The coachman, a hard-faced,
-      gnarled little fellow, saluted Sir Henry Baskerville, and in a
-      few minutes we were flying swiftly down the broad, white road.
-      Rolling pasture lands curved upward on either side of us, and old
-      gabled houses peeped out from amid the thick green foliage, but
-      behind the peaceful and sunlit countryside there rose ever, dark
-      against the evening sky, the long, gloomy curve of the moor,
-      broken by the jagged and sinister hills.
+      narrow granite bridge and skirted a noisy stream which gushed
+      swiftly down, foaming and roaring amid the grey boulders. Both
+      road and stream wound up through a valley dense with scrub oak
+      and fir. At every turn Baskerville gave an exclamation of
+      delight, looking eagerly about him and asking countless
+      questions. To his eyes all seemed beautiful, but to me a tinge of
+      melancholy lay upon the countryside, which bore so clearly the
+      mark of the waning year. Yellow leaves carpeted the lanes and
+      fluttered down upon us as we passed. The rattle of our wheels
+      died away as we drove through drifts of rotting vegetation—sad
+      gifts, as it seemed to me, for Nature to throw before the
+      carriage of the returning heir of the Baskervilles.
 
-      The wagonette swung round into a side road, and we curved upward
-      through deep lanes worn by centuries of wheels, high banks on
-      either side, heavy with dripping moss and fleshy hart’s-tongue
-      ferns. Bronzing bracken and mottled bramble gleamed in the light
-      of the sinking sun. Still steadily rising, we passed over a
-      narrow granite bridge and skirted a noisy stream     and stern, his rifle poised ready over his forearm. He was
+      “Halloa!” cried Dr. Mortimer, “what is this?”
+
+      A steep curve of heath-clad land, an outlying spur of the moor,
+      lay in front of us. On the summit, hard and clear like an
+      equestrian statue upon its pedestal, was a mounted soldier, dark
+      and stern, his rifle poised ready over his forearm. He was
       watching the road along which we travelled.
 
       “What is this, Perkins?” asked Dr. Mortimer.

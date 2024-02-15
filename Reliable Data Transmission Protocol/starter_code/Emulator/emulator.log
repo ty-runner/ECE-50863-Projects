@@ -1,44 +1,41 @@
-1708006529.7753732
+1708007331.8097026
 Configuration File Parsed.
-1708006529.780873
+1708007331.8172214
 Starting network emulator on  8000.
 
-1708006534.785578
-Current Average Incoming Traffic: 1642.2404048937378 bytes/sec
+1708007336.8220842
+Current Average Incoming Traffic: 1026.2561299414756 bytes/sec
 
-1708006537.2528903
+1708007341.8310497
+Current Average Incoming Traffic: 2771.785716136588 bytes/sec
+
+1708007346.7216702
 Dropped Packet from ('127.0.0.1', 8002)
 
-1708006539.7967505
-Current Average Incoming Traffic: 2667.6078679590933 bytes/sec
+1708007346.8359103
+Current Average Incoming Traffic: 3284.0178372377077 bytes/sec
 
-1708006543.2114947
+1708007351.3821185
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708007351.8428802
+Current Average Incoming Traffic: 3899.10988227943 bytes/sec
+
+1708007351.9074981
 Dropped Packet from ('127.0.0.1', 8002)
 
-1708006543.9595554
+1708007356.8527102
+Current Average Incoming Traffic: 4309.019859207803 bytes/sec
+
+1708007357.1390398
 Dropped Packet from ('127.0.0.1', 8001)
 
-1708006544.801705
-Current Average Incoming Traffic: 3966.855436301128 bytes/sec
+1708007357.3634367
+Dropped Packet from ('127.0.0.1', 8002)
 
-1708006546.2078927
-Dropped Packet from ('127.0.0.1', 8001)
+1708007361.8589697
+Current Average Incoming Traffic: 4367.838068966439 bytes/sec
 
-1708006549.813209
-Current Average Incoming Traffic: 4000.350703764025 bytes/sec
-
-1708006550.7996483
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708006554.8250406
-Current Average Incoming Traffic: 4183.54190347222 bytes/sec
-
-1708006557.4080443
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708006559.8135989
+1708007362.7999299
 Test Complete. Terminating...
-
-1708006559.8363757
-Current Average Incoming Traffic: 4365.943249955773 bytes/sec
 
