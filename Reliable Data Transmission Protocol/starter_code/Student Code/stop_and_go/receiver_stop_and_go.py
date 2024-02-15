@@ -36,5 +36,5 @@ if __name__ == '__main__':
                 recv_monitor.send(sender_id, b'ACK')
                 data_copy = data
     f.close()
-    recv_monitor.recv_end('outputs.txt', sender_id)
+    recv_monitor.recv_end(write_location, sender_id)
     # Exit! Make sure the receiver ends before the sender. send_end will stop the emulator.
