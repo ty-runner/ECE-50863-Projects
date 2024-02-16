@@ -12,7 +12,7 @@ if __name__ == '__main__':
 
     # Initialize sender monitor
     recv_monitor = Monitor(config_path, 'receiver')
-    recv_monitor.socketfd.settimeout(timeout)
+    #recv_monitor.socketfd.settimeout(timeout)
     # Parse config file
     cfg = configparser.RawConfigParser(allow_no_value=True)
     cfg.read(config_path)
@@ -28,12 +28,7 @@ if __name__ == '__main__':
         data_dict = {}
         past_id = 0
         while True:
-            try:
-                addr, data = recv_monitor.recv(max_packet_size)
-            except socket.timeout:
-                print(f'Receiver: Timeout occurred. Retransmitting packet...')
-                recv_monitor.send(sender_id, b'ACK ' + past_id.to_bytes(4, 'big'))
-                continue
+            addr, data = recv_monitor.recv(max_packet_size)
             id = int.from_bytes(data[:4], 'big')
             stripped_data = data[4:]
             if stripped_data == b'':
