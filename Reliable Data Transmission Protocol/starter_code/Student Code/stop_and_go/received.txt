@@ -346,32 +346,30 @@ Mr. Sherlock Holmes
 
 
 
-Chapter 2.
+Cha shrewd, practical, and as
+      unimaginative as I am myself. Yet he took this document very
+      seriously, and his mind was prepared for just such an end as did
+      eventually overtake him.”
 
-The Curse of the Baskervilles
+      Holmes stretched out his hand for the manuscript and flattened it
+      upon his knee. “You will observe, Watson, the alternative use of
+      the long _s_ and the short. It is one of several indications
+      which enabled me to fix the date.”
 
-      “I have in my pocket a manuscript,” said Dr. James Mortimer.
+      I looked over his shoulder at the yellow paper and the faded
+      script. At the head was written: “Baskerville Hall,” and below in
+      large, scrawling figures: “1742.”
 
-      “I observed it as you entered the room,” said Holmes.
+      “It appears to be a statement of some sort.”
 
-      “It is an old manuscript.”
+      “Yes, it is a statement of a certain legend which runs in the
+      Baskerville family.”
 
-      “Early eighteenth century, unless it is a forgery.”
+      “But I understand that it is something more modern and practical
+      upon which you wish to consult me?”
 
-      “How can you say that, sir?”
-
-      “You have presented an inch or two of it to my examination all
-      the time that you have been talking. It would be a poor expert
-      who could not give the date of a document within a decade or so.
-      You may possibly have read my little monograph upon the subject.
-      I put that at 1730.”
-
-      “The exact date is 1742.” Dr. Mortimer drew it from his
-      breast-pocket. “This family paper was committed to my care by Sir
-      Charles Baskerville, whose sudden and tragic death some three
-      months ago created so much excitement in Devonshire. I may say
-      that I was his personal friend as well as his medical attendant.
-      He was a strong-minded man, sir, shrewd, practical, and as
+      “Most modern. A most practical, pressing matter, which must be
+      decided within twenty shrewd, practical, and as
       unimaginative as I am myself. Yet he took this document very
       seriously, and his mind was prepared for just such an end as did
       eventually overtake him.”
@@ -1010,30 +1008,7 @@ The Problem
       opinion there is a diabolical agency which makes Dartmoor an
       unsafe abode for a Baskerville—that is your opinion?”
 
-      “At least I might go the length of saying that there is some
-      evidence that this may be so.”
-
-      “Exactly. But surely, if your supernatural theory be correct, it
-      could work the young man evil in London as easily as in
-      Devonshire. A devil with merely local powers like a parish vestry
-      would be too inconceivable a thing.”
-
-      “You put the matter more flippantly, Mr. Holmes, than you would
-      probably do if you were brought into personal contact with these
-      things. Your advice, then, as I understand it, is that the young
-      man will be as safe in Devonshire as in London. He comes in fifty
-      minutes. What would you recommend?”
-
-      “I recommend, sir, that you take a cab, call off your spaniel who
-      is scratching at my front door, and proceed to Waterloo to meet
-      Sir Henry Baskerville.”
-
-      “And then?”
-
-      “And then you will say nothing to him at all until I have made up
-      my mind about the matter.”
-
-      “How long will it take you to make up your mind?”
+      “At least you to make up your mind?”
 
       “Twenty-four hours. At ten o’clock tomorrow, Dr. Mortimer, I will
       be much obliged to you if you will call upon me here, and it will
@@ -1314,6 +1289,26 @@ Sir Henry Baskerville
 
       “What business?” asked Sir Henry sharply. “It seems to me that
       all you gentlemen know a great deal more than I do about my own
+      affairs.”
+
+      “You shall share our knowledge before you leave this room, Sir
+      Henry. I promise you that,” said Sherlock Holmes. “We will
+      confine ourselves for the present with your permission to this
+      very interesting document, which must have been put together and
+      posted yesterday evening. Have you yesterday’s _Times_, Watson?”
+
+      “It is here in the corner.”
+
+      “Might I trouble you for it—the inside page, please, with the
+      leading articles?” He glanced swiftly over it, running his eyes
+      up and down the columns. “Capital article this on free trade.
+      Permit me to give you an extract from it.
+
+     ‘You may be cajoled into imagining that your own special trade or
+     your own industry will be encouraged by a protective tariff, but
+     it stands to reason that such legislation must in the long run
+     keep away wealth from the country, diminish the value of our
+     imports, and lower the gener more than I do about my own
       affairs.”
 
       “You shall share our knowledge before you leave this room, Sir
@@ -2112,25 +2107,7 @@ Three Broken Threads
       “But it is a very singular thing,” Dr. Mortimer remarked. “I
       searched this room carefully before lunch.”
 
-      “And so did I,” said Baskerville. “Every inch of it.”
-
-      “There was certainly no boot in it then.”
-
-      “In that case the waiter must have placed it there while we were
-      lunching.”
-
-      The German was sent for but professed to know nothing of the
-      matter, nor could any inquiry clear it up. Another item had been
-      added to that constant and apparently purposeless series of small
-      mysteries which had succeeded each other so rapidly. Setting
-      aside the whole grim story of Sir Charles’s death, we had a line
-      of inexplicable incidents all within the limits of two days,
-      which included the receipt of the printed letter, the
-      black-bearded spy in the hansom, the loss of the new brown boot,
-      the loss of the old black boot, and now the return of the new
-      brown boot. Holmes sat in silence in the cab as we drove back to
-      Baker Street, and I knew from his drawn brows and keen face that
-      his mind, like my own, was busy in endeavouring to frame some
+      “And so die some
       scheme into which all these strange and apparently disconnected
       episodes could be fitted. All afternoon and late into the evening
       he sat lost in tobacco and thought.
@@ -2231,6 +2208,28 @@ Three Broken Threads
       here.”
 
       “This very door,” said Holmes.
+
+      “Well, I couldn’t be sure of that, but I dare say my fare knew
+      all about it. We pulled up halfway down the street and waited an
+      hour and a half. Then the two gentlemen passed us, walking, and
+      we followed down Baker Street and along—”
+
+      “I know,” said Holmes.
+
+      “Until we got three-quarters down Regent Street. Then my
+      gentleman threw up the trap, and he cried that I should drive
+      right away to Waterloo Station as hard as I could go. I whipped
+      up the mare and we were there under the ten minutes. Then he paid
+      up his two guineas, like a good one, and away he went into the
+      station. Only just as he was leaving he turned round and he said:
+      ‘It might interest you to know that you have been driving Mr.
+      Sherlock Holmes.’ That’s how I come to know the name.”
+
+      “I see. And you saw no more of him?”
+
+      “Not after he went into the station.”
+
+      “And how would you des�This very door,” said Holmes.
 
       “Well, I couldn’t be sure of that, but I dare say my fare knew
       all about it. We pulled up halfway down the street and waited an
@@ -2597,6 +2596,27 @@ Baskerville Hall
       to it, for we were numb from our long drive. Then we gazed round
       us at the high, thin window of old stained glass, the oak
       panelling, the stags’ heads, the coats of arms upon the walls,
+      all dim and sombre in the subdued light of the central lamp.
+
+      “It’s just as I imagined it,” said Sir Henry. “Is it not the very
+      picture of an old family home? To think that this should be the
+      same hall in which for five hundred years my people have lived.
+      It strikes me solemn to think of it.”
+
+      I saw his dark face lit up with a boyish enthusiasm as he gazed
+      about him. The light beat upon him where he stood, but long
+      shadows trailed down the walls and hung like a black canopy above
+      him. Barrymore had returned from taking our luggage to our rooms.
+      He stood in front of us now with the subdued manner of a
+      well-trained servant. He was a remarkable-looking man, tall,
+      handsome, with a square black beard and pale, distinguished
+      features.
+
+      “Would you wish dinner to be served at once, sir?”
+
+      “Is it ready?”
+
+      “In a very few minutes, sir. You will fhe stags’ heads, the coats of arms upon the walls,
       all dim and sombre in the subdued light of the central lamp.
 
       “It’s just as I imagined it,” said Sir Henry. “Is it not the very
