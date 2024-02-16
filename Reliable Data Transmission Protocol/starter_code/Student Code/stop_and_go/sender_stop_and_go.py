@@ -5,7 +5,7 @@ import sys
 import configparser
 import time
 import socket
-timeout = 1  # Timeout period in seconds
+timeout = 2  # Timeout period in seconds
 
 async def listen(send_monitor, max_packet_size):
     addr, data = await send_monitor.recv(max_packet_size)
@@ -57,7 +57,7 @@ if __name__ == '__main__':
                         print("send count: ", send_count)
                         print("chunk of data sent: ", chunk)
                         start_time = time.time()
-                    if data == b'ACK':
+                    if data == b'ACK ' + send_count.to_bytes(4, 'big'):
                         #print(f'Sender: Got ACK from id {addr}: {data}')
                         #print(f'Sender: Sending file {file_to_send} to receiver.')
                         header = send_count.to_bytes(4, 'big')  # Convert send_count to 4-byte header
