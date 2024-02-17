@@ -5,7 +5,7 @@ import sys
 import configparser
 import time
 import socket
-timeout = 1  # Timeout period in seconds
+timeout = 0.5  # Timeout period in seconds
 
 if __name__ == '__main__':
     print("Sender starting up!")
@@ -41,6 +41,7 @@ if __name__ == '__main__':
                 send_monitor.send(receiver_id, header + chunk)
                 send_count += 1
                 first_packet = False
+                chunk_copy = chunk
             else:
                 # receive ACK from receiver
                 ack_received = False
@@ -49,22 +50,22 @@ if __name__ == '__main__':
                     try:
                         addr, data = send_monitor.recv(max_packet_size)
                     except socket.timeout:
-                        print(f'Sender: Timeout occurred. Retransmitting packet...')
+                        #print(f'Sender: Timeout occurred. Retransmitting packet...')
                         header = (send_count-1).to_bytes(4, byteorder='big')
-                        print(f'Sender: Sending header issue {send_count-1}...')
+                        #print(f'Sender: Sending header issue {send_count-1}...')
                         send_monitor.send(receiver_id, header + chunk_copy)
-                        print(f'Retransmitting  {chunk_copy}...')
+                        #print(f'Retransmitting  {chunk_copy}...')
                         start_time = time.time()
                     if data == b'ACK' + (send_count-1).to_bytes(4, byteorder='big'):
-                        print(f'Sender: Got ACK from id {addr}: {data}')
-                        print(f'Sender: Sending header true {send_count}...')
+                        #print(f'Sender: Got ACK from id {addr}: {data}')
+                        #print(f'Sender: Sending header true {send_count}...')
                         header = send_count.to_bytes(4, byteorder='big')
                         send_monitor.send(receiver_id, header + chunk)
                         ack_received = True
                         send_count += 1
                         chunk_copy = chunk
                     else:
-                        print(send_count)
+                        #print(send_count)
                         print(f'Sender: Got unexpected data from id: {int.from_bytes(data[3:7], byteorder="big")}. expected: {send_count-1}...')
                         #print(send_count, int(data[3:7]))
                         chunk_copy = chunk
