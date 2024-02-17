@@ -25,6 +25,8 @@ if __name__ == '__main__':
     #open file to write to
     with open(write_location, 'wb') as f:
         received_count = 0
+        received_list = []
+        data_list = []
         while True:
             addr, data = recv_monitor.recv(max_packet_size)
             if data == b'':
@@ -33,14 +35,30 @@ if __name__ == '__main__':
             id = int.from_bytes(data[:4], byteorder='big')
             print(f'Receiver: Received id {id}.')
             data = data[4:]
-            print("Data is: ", data)
-            if received_count > id:
+            if received_count == id + 1:
+                print(f'Receiver: POSSIBLE DESCREPANCY.')
+                print(f'Receiver: Received id {id} but expected id {received_count}.')
                 received_count = id
+            if id in received_list:
+                print(f'Receiver: Duplicate tag from id {id}.')
+                if data not in data_list:
+                    f.write(data)
+                    #received_list.append(id)
+                    data_list.append(data)
+                    print(f'Receiver: Duplicate data from id {id}.')
+            elif data in data_list:
+                print(f'Receiver: Duplicate data from id {data}.')
+                #received_count = id
             else:
                 f.write(data)
-            #print(f'Receiver: Sending ACK to id {addr}.')
+                print(f'Receiver: Writing data {data}.')
+                received_list.append(id)
+                data_list.append(data)
             recv_monitor.send(sender_id, b'ACK' + received_count.to_bytes(4, byteorder='big'))
-            received_count += 1
+            if id == received_count: 
+                received_count += 1
+    print(received_list)
+    print(len(received_list))
     f.close()
     recv_monitor.recv_end("write_location", sender_id)
     # Exit! Make sure the receiver ends before the sender. send_end will stop the emulator.

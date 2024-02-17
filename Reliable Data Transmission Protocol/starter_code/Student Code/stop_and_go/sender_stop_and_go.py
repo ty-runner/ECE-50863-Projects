@@ -7,9 +7,6 @@ import time
 import socket
 timeout = 1  # Timeout period in seconds
 
-async def listen(send_monitor, max_packet_size):
-    addr, data = await send_monitor.recv(max_packet_size)
-    return addr, data
 if __name__ == '__main__':
     print("Sender starting up!")
     config_path = sys.argv[1]
@@ -32,6 +29,7 @@ if __name__ == '__main__':
     with open(file_to_send, 'rb') as f:
         send_count = 0
         first_packet = True
+        chunk_copy = b''
         while True:
             chunk = f.read(max_packet_size)
             if not chunk:
@@ -41,6 +39,7 @@ if __name__ == '__main__':
             if first_packet:
                 header = send_count.to_bytes(4, byteorder='big')
                 send_monitor.send(receiver_id, header + chunk)
+                send_count += 1
                 first_packet = False
             else:
                 # receive ACK from receiver
@@ -51,26 +50,24 @@ if __name__ == '__main__':
                         addr, data = send_monitor.recv(max_packet_size)
                     except socket.timeout:
                         print(f'Sender: Timeout occurred. Retransmitting packet...')
-                        header = send_count.to_bytes(4, byteorder='big')
-                        send_monitor.send(receiver_id, header + chunk)
+                        header = (send_count-1).to_bytes(4, byteorder='big')
+                        print(f'Sender: Sending header issue {send_count-1}...')
+                        send_monitor.send(receiver_id, header + chunk_copy)
+                        print(f'Retransmitting  {chunk_copy}...')
                         start_time = time.time()
-                    print(time.time() - start_time)
-                    if data == b'ACK' + send_count.to_bytes(4, byteorder='big'):
+                    if data == b'ACK' + (send_count-1).to_bytes(4, byteorder='big'):
                         print(f'Sender: Got ACK from id {addr}: {data}')
-                        print(f'Sender: Sending file {file_to_send} to receiver.')
+                        print(f'Sender: Sending header true {send_count}...')
                         header = send_count.to_bytes(4, byteorder='big')
                         send_monitor.send(receiver_id, header + chunk)
                         ack_received = True
                         send_count += 1
-                    elif time.time() - start_time >= timeout:
-                        print(f'Sender: Timeout occurred. Retransmitting packet...')
-                        header = send_count.to_bytes(4, byteorder='big')
-                        send_monitor.send(receiver_id, header + chunk)
-                        start_time = time.time()
+                        chunk_copy = chunk
                     else:
                         print(send_count)
-                        print(f'Sender: Got unexpected data from id {addr}: {data}')
+                        print(f'Sender: Got unexpected data from id: {int.from_bytes(data[3:7], byteorder="big")}. expected: {send_count-1}...')
                         #print(send_count, int(data[3:7]))
+                        chunk_copy = chunk
             #wait TIMEOUT seconds for ACK
     print(f'Sender: File {file_to_send} sent to receiver.')
     f.close()
