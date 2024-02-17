@@ -1,7 +1,7 @@
-1708118198.5858152
+1708140357.554176
 Id:2 | Starting monitor on ('localhost', 8002).
 
 File transmission correct	: False
-Number of Packets Received	: 126
-Total Bytes Transmitted		: 127751
-Total Time					: 29.39 secs
+Number of Packets Received	: 254
+Total Bytes Transmitted		: 256510
+Total Time					: 188.15 secs
