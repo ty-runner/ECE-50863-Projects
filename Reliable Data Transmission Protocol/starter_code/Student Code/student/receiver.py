@@ -32,6 +32,7 @@ if __name__ == '__main__':
 			
 			# Check if packet is the end signal
 			if packet == b'':
+				print('Receiver: End signal received from sender')
 				break
 			
 			# Extract sequence number and data from packet
@@ -40,7 +41,7 @@ if __name__ == '__main__':
 			data = packet[4:]
 			
 			# Check if packet is in the window
-			if seq_num >= received_count and seq_num < received_count + max_packet_size:
+			if seq_num >= received_count:
 				# Check if packet has already been received
 				if seq_num not in received_list:
 					# Write data to file
@@ -53,6 +54,7 @@ if __name__ == '__main__':
 					# Send ACK to sender
 					ack_packet = seq_num.to_bytes(4, byteorder='big')
 					recv_monitor.send(sender_id, b'ACK' + packet[:4])
+					print(f'Receiver: ACK{seq_num} sent to sender')
 				else:
 					print(f'Receiver: Duplicate packet received with sequence number {seq_num}')
 			else:
@@ -60,5 +62,6 @@ if __name__ == '__main__':
 		
 	# Send end signal to sender
 	f.close()
-	recv_monitor.recv_end(write_location, sender_id)
+	time.sleep(1)
+	recv_monitor.recv_end("write_location", sender_id)
 	# Exit! Make sure the receiver ends before the sender. send_end will stop the emulator.

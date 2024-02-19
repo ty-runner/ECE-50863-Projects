@@ -41,41 +41,45 @@ if __name__ == '__main__':
 	max_packet_size = int(cfg.get('network', 'MAX_PACKET_SIZE'))
 	max_packet_size -= 12  # Account for the header size
 	window_size = int(cfg.get('sender', 'window_size'))
+	window_size = 5
 	#addr, data = send_monitor.recv(max_packet_size)
-	print(f'window_size: {window_size}')
-	print(f'receiver_id: {type(receiver_id)}')
 	data = create_data_array(file_to_send, max_packet_size)
-	print(f'size of data: {len(data)}')
+	print(len(data))
 	window_start = 0  # Start index of the window
-	window_end = window_start + window_size  # End index of the window
+	window_end = window_start + window_size - 1  # End index of the window
 	# For sliding window, we send packets in the window and wait for acks, as we receive acks, we slide the window
-	while window_start < len(data):
+	while window_start < len(data)-1:
 		# Send packets within the window
 		if window_end > len(data):
-			window_end = len(data)
+			window_end = len(data) - 1
 		for i in range(window_start, window_end):
 			packet = data[i]
+			#print(i)
 			#print(f'Packet is {packet}.')
 			#print(f'type of packet is {type(packet)}.')
 			if type(packet) != bytes:
-				print(f'Packet is not bytes.')
 				packet = packet.to_bytes(4, byteorder='big')
 			elif packet == b'' or packet != None:
 				send_monitor.send(receiver_id, packet)
 
 		# Wait for acknowledgements
 		for i in range(window_start, window_end):
+			if window_start == len(data)-1:
+				break
+			if window_end > len(data):
+				window_end = len(data) - 1
 			try:
-				addr, data = send_monitor.recv(max_packet_size)
+				addr, packet = send_monitor.recv(max_packet_size)
 			except socket.timeout:
 				print(f'Sender: Timeout occurred. Retransmitting packet...')
-			if data is not None:
+			if packet is not None:
 				# Process the acknowledgement
-				ack_seq_num = extract_seq_num(data)
+				ack_seq_num = extract_seq_num(packet)
 				if ack_seq_num == window_start:
 					# Move the window forward
 					window_start += 1
 					window_end += 1
+					print(f'window_start is {window_start}.')
 					break
 
 	print(f'Sender: File {file_to_send} sent to receiver.')
