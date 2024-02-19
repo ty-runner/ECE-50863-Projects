@@ -2,8 +2,8 @@
 PYTHON = python3
 
 # Paths to student scripts
-SENDER_PATH = "./sender_stop_and_go.py"
-RECEIVER_PATH = "./receiver_stop_and_go.py"
+SENDER_PATH = "./sender.py"
+RECEIVER_PATH = "./receiver.py"
 
 # Ports to clear
 # These ports are currently hardcoded in the config file. 
