@@ -56,6 +56,7 @@ if __name__ == '__main__':
                         send_monitor.send(receiver_id, header + chunk_copy)
                         #print(f'Retransmitting  {chunk_copy}...')
                         start_time = time.time()
+                        data = b''
                     if data == b'ACK' + (send_count-1).to_bytes(4, byteorder='big'):
                         #print(f'Sender: Got ACK from id {addr}: {data}')
                         #print(f'Sender: Sending header true {send_count}...')
