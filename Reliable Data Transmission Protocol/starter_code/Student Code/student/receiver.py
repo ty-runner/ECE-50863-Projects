@@ -67,5 +67,5 @@ if __name__ == '__main__':
 	# Send end signal to sender
 	f.close()
 	time.sleep(1)
-	recv_monitor.recv_end("write_location", sender_id)
+	recv_monitor.recv_end(write_location, sender_id)
 	# Exit! Make sure the receiver ends before the sender. send_end will stop the emulator.
