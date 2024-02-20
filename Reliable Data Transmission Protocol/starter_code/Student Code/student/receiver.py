@@ -36,7 +36,7 @@ if __name__ == '__main__':
 				break
 			
 			# Extract sequence number and data from packet
-			print(f'Packet is {packet}.')
+			# print(f'Packet is {packet}.')
 			seq_num = int.from_bytes(packet[:4], byteorder='big')
 			data = packet[4:]
 			
@@ -54,18 +54,18 @@ if __name__ == '__main__':
 					# Send ACK to sender
 					ack_packet = seq_num.to_bytes(4, byteorder='big')
 					recv_monitor.send(sender_id, b'ACK' + packet[:4])
-					print(f'Receiver: ACK{seq_num} sent to sender')
+					# print(f'Receiver: ACK{seq_num} sent to sender')
 				else:
-					print(f'Receiver: Duplicate packet received with sequence number {seq_num}')
+					# print(f'Receiver: Duplicate packet received with sequence number {seq_num}')
 					recv_monitor.send(sender_id, b'ACK' + packet[:4])
 			else:
-				print(f'Receiver: Packet received with sequence number {seq_num} is not in the window')
-				print(received_count)
-				print(received_list)
+				# print(f'Receiver: Packet received with sequence number {seq_num} is not in the window')
+				# print(received_count)
+				# print(received_list)
 				recv_monitor.send(sender_id, b'ACK' + packet[:4])
 		
 	# Send end signal to sender
 	f.close()
-	time.sleep(1)
-	recv_monitor.recv_end(write_location, sender_id)
+	time.sleep(0.25)
+	recv_monitor.recv_end("write_location", sender_id)
 	# Exit! Make sure the receiver ends before the sender. send_end will stop the emulator.

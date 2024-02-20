@@ -5,7 +5,7 @@ import sys
 import configparser
 import time
 import socket
-timeout = 2  # Timeout period in seconds
+timeout = 0.6  # Timeout period in seconds
 
 def create_data_array(file_to_send, max_packet_size):
 	""" Creates an array of data packets from the file to send """
@@ -51,7 +51,7 @@ if __name__ == '__main__':
 	max_packet_size = int(cfg.get('network', 'MAX_PACKET_SIZE'))
 	max_packet_size -= 12  # Account for the header size
 	window_size = int(cfg.get('sender', 'window_size'))
-	window_size = 5
+	window_size = 6
 	#addr, data = send_monitor.recv(max_packet_size)
 	data = create_data_array(file_to_send, max_packet_size)
 	print(len(data))
@@ -82,7 +82,7 @@ if __name__ == '__main__':
 			try:
 				addr, packet = send_monitor.recv(max_packet_size)
 			except socket.timeout:
-				print(f'Sender: Timeout occurred. Retransmitting packet...')
+				#print(f'Sender: Timeout occurred. Retransmitting packet...')
 				retransmit_packets(send_monitor, receiver_id, window_start, window_end, data, ack_nums)
 			if packet is not None:
 				# Process the acknowledgement
@@ -91,11 +91,11 @@ if __name__ == '__main__':
 					# Move the window forward
 					window_start += 1
 					window_end += 1
-					print(f'window_start is {window_start}.')
+					# print(f'window_start is {window_start}.')
 					ack_nums.append(ack_seq_num)
 					break
-	print(ack_nums)
-	print(f'Sender: File {file_to_send} sent to receiver.')
+	# print(ack_nums)
+	# print(f'Sender: File {file_to_send} sent to receiver.')
 	# Exit! Make sure the receiver ends before the sender. send_end will stop the emulator.
-	time.sleep(1.5)
+	time.sleep(0.5)
 	send_monitor.send_end(receiver_id)
