@@ -5,7 +5,7 @@ import sys
 import configparser
 import time
 import socket
-timeout = 0.6  # Timeout period in seconds
+timeout = 0.75  # Timeout period in seconds
 
 def create_data_array(file_to_send, max_packet_size):
 	""" Creates an array of data packets from the file to send """
