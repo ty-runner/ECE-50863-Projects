@@ -25,10 +25,19 @@ def create_data_array(file_to_send, max_packet_size):
 def extract_seq_num(data):
 	""" Extracts the sequence number from the packet """
 	return int.from_bytes(data[3:7], byteorder='big')
+
+def retransmit_window(send_monitor, receiver_id, window_start, window_end, data):
+	""" Retransmits packets in the window """
+	for i in range(window_start, window_end):
+		packet = data[i]
+		if type(packet) != bytes:
+			packet = packet.to_bytes(4, byteorder='big')
+		elif packet == b'' or packet != None:
+			send_monitor.send(receiver_id, packet)
 if __name__ == '__main__':
 	print("Sender starting up!")
 	config_path = sys.argv[1]
-
+	ack_nums = []
 	# Initialize sender monitor
 	send_monitor = Monitor(config_path, 'sender')
 	send_monitor.socketfd.settimeout(timeout)
@@ -52,6 +61,7 @@ if __name__ == '__main__':
 		# Send packets within the window
 		if window_end > len(data):
 			window_end = len(data) - 1
+		#send all packets in the window
 		for i in range(window_start, window_end):
 			packet = data[i]
 			#print(i)
@@ -72,6 +82,7 @@ if __name__ == '__main__':
 				addr, packet = send_monitor.recv(max_packet_size)
 			except socket.timeout:
 				print(f'Sender: Timeout occurred. Retransmitting packet...')
+				retransmit_window(send_monitor, receiver_id, window_start, window_end, data)
 			if packet is not None:
 				# Process the acknowledgement
 				ack_seq_num = extract_seq_num(packet)
@@ -80,8 +91,9 @@ if __name__ == '__main__':
 					window_start += 1
 					window_end += 1
 					print(f'window_start is {window_start}.')
+					ack_nums.append(ack_seq_num)
 					break
-
+	print(ack_nums)
 	print(f'Sender: File {file_to_send} sent to receiver.')
 	# Exit! Make sure the receiver ends before the sender. send_end will stop the emulator.
 	time.sleep(1.5)

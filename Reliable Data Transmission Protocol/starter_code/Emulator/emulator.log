@@ -1,14 +1,113 @@
-1708380439.4832287
+1708433882.6131248
 Configuration File Parsed.
-1708380439.4882014
+1708433882.620615
 Starting network emulator on  8000.
 
-1708380444.494198
-Current Average Incoming Traffic: 10638.698162441247 bytes/sec
+1708433887.626039
+Current Average Incoming Traffic: 15655.399829911705 bytes/sec
 
-1708380449.503833
-Current Average Incoming Traffic: 38850.040732378424 bytes/sec
+1708433888.2622633
+Dropped Packet from ('127.0.0.1', 8001)
 
-1708380452.9941766
+1708433888.4606137
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708433888.7760456
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433888.9170809
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708433889.0051174
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433889.1411364
+Reordered Packet from ('127.0.0.1', 8001) to index 3
+
+1708433889.1526508
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708433889.2762306
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708433889.3967218
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433889.7312272
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433889.8536763
+Reordered Packet from ('127.0.0.1', 8001) to index 1
+
+1708433889.8652
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433890.0796366
+Reordered Packet from ('127.0.0.1', 8001) to index 1
+
+1708433890.2771163
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708433890.6184654
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433890.6590073
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708433890.9671323
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708433891.1298397
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433891.2256756
+Reordered Packet from ('127.0.0.1', 8001) to index 2
+
+1708433891.3804173
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433891.5061038
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433891.5488667
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433891.5794656
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433891.8420334
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433892.0730097
+Reordered Packet from ('127.0.0.1', 8001) to index 2
+
+1708433892.1993546
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708433892.632186
+Current Average Incoming Traffic: 56455.06790874157 bytes/sec
+
+1708433892.7579226
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433892.7825267
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433892.8656652
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708433893.4500108
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433893.6363318
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433893.690204
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708433893.9269903
+Reordered Packet from ('127.0.0.1', 8001) to index 1
+
+1708433895.5810642
 Test Complete. Terminating...
 
