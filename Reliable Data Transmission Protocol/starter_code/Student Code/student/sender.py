@@ -26,14 +26,15 @@ def extract_seq_num(data):
 	""" Extracts the sequence number from the packet """
 	return int.from_bytes(data[3:7], byteorder='big')
 
-def retransmit_window(send_monitor, receiver_id, window_start, window_end, data):
+def retransmit_packets(send_monitor, receiver_id, window_start, window_end, data, ack_nums):
 	""" Retransmits packets in the window """
-	for i in range(window_start, window_end):
-		packet = data[i]
-		if type(packet) != bytes:
-			packet = packet.to_bytes(4, byteorder='big')
-		elif packet == b'' or packet != None:
-			send_monitor.send(receiver_id, packet)
+	for i in range(	window_start, window_end):
+		if i not in ack_nums:
+			packet = data[i]
+			if type(packet) != bytes:
+				packet = packet.to_bytes(4, byteorder='big')
+			elif packet == b'' or packet != None:
+				send_monitor.send(receiver_id, packet)
 if __name__ == '__main__':
 	print("Sender starting up!")
 	config_path = sys.argv[1]
@@ -82,7 +83,7 @@ if __name__ == '__main__':
 				addr, packet = send_monitor.recv(max_packet_size)
 			except socket.timeout:
 				print(f'Sender: Timeout occurred. Retransmitting packet...')
-				retransmit_window(send_monitor, receiver_id, window_start, window_end, data)
+				retransmit_packets(send_monitor, receiver_id, window_start, window_end, data, ack_nums)
 			if packet is not None:
 				# Process the acknowledgement
 				ack_seq_num = extract_seq_num(packet)
