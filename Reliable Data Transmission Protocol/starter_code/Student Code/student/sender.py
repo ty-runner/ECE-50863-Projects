@@ -20,7 +20,6 @@ def create_data_array(file_to_send, max_packet_size):
 			header = header_count.to_bytes(4, byteorder='big')
 			data.append(header + chunk)
 			header_count += 1
-	f.close()
 	return data
 def extract_seq_num(data):
 	""" Extracts the sequence number from the packet """
