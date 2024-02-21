@@ -101,5 +101,4 @@ if __name__ == '__main__':
 	# print(ack_nums)
 	# print(f'Sender: File {file_to_send} sent to receiver.')
 	# Exit! Make sure the receiver ends before the sender. send_end will stop the emulator.
-	time.sleep(0.5)
 	send_monitor.send_end(receiver_id)

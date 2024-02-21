@@ -65,7 +65,7 @@ if __name__ == '__main__':
 				recv_monitor.send(sender_id, b'ACK' + packet[:4])
 		
 	# Send end signal to sender
-	f.close()
+	# f.close()
 	time.sleep(0.5)
 	recv_monitor.recv_end(write_location, sender_id)
 	# Exit! Make sure the receiver ends before the sender. send_end will stop the emulator.

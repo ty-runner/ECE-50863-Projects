@@ -1,176 +1,176 @@
-1708476929.868249
+1708477566.0498357
 Configuration File Parsed.
-1708476929.8734312
+1708477566.054882
 Starting network emulator on  8000.
 
-1708476933.2530775
+1708477571.05916
+Current Average Incoming Traffic: 1031.4867851597178 bytes/sec
+
+1708477571.2623804
 Dropped Packet from ('127.0.0.1', 8001)
 
-1708476933.433627
-Reordered Packet from ('127.0.0.1', 8001) to index 1
-
-1708476933.5246615
+1708477571.444669
 Dropped Packet from ('127.0.0.1', 8002)
 
-1708476933.7484922
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476933.761799
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476934.4208367
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708476934.453689
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476934.832947
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476934.8449435
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476934.8828368
-Current Average Incoming Traffic: 54597.65857461964 bytes/sec
-
-1708476934.942888
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708476935.0936816
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476935.1082058
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708476935.1856692
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476935.298561
-Reordered Packet from ('127.0.0.1', 8001) to index 1
-
-1708476935.3110604
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476935.5037632
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476935.6591806
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476935.6651661
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476935.744969
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708476935.922714
-Reordered Packet from ('127.0.0.1', 8001) to index 6
-
-1708476935.9307024
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708476936.0405226
-Reordered Packet from ('127.0.0.1', 8001) to index 1
-
-1708476936.071413
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708476936.165026
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476936.1776438
-Reordered Packet from ('127.0.0.1', 8001) to index 1
-
-1708476936.3454075
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476936.4494007
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708476936.4643986
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708476936.5294805
+1708477571.5868156
 Reordered Packet from ('127.0.0.1', 8001) to index 4
 
-1708476936.6088893
+1708477571.7262628
 Dropped Packet from ('127.0.0.1', 8002)
 
-1708476936.62933
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476936.6824472
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708476936.8652306
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476937.1257002
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708476937.1784549
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476937.4625647
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476937.5226939
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708476937.6847732
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708476937.85812
+1708477571.853915
 Reordered Packet from ('127.0.0.1', 8001) to index 1
 
-1708476937.9437783
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476937.970715
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708476938.2110932
-Reordered Packet from ('127.0.0.1', 8001) to index 2
-
-1708476938.2242484
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476938.4514952
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476938.4955099
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708476938.5471208
-Reordered Packet from ('127.0.0.1', 8001) to index 2
-
-1708476938.5912216
-Reordered Packet from ('127.0.0.1', 8001) to index 3
-
-1708476938.6021295
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476938.671711
+1708477571.8608227
 Reordered Packet from ('127.0.0.1', 8001) to index 1
 
-1708476938.7133281
-Reordered Packet from ('127.0.0.1', 8001) to index 3
+1708477572.0614667
+Reordered Packet from ('127.0.0.1', 8001) to index 2
 
-1708476938.779595
+1708477572.1154659
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708477572.151048
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708477572.2894156
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708477572.7266922
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708477572.887859
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708477573.0825205
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708477573.116573
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708477573.4394848
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708477573.897841
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708477574.0324907
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708477574.20888
+Reordered Packet from ('127.0.0.1', 8001) to index 1
+
+1708477574.383072
+Reordered Packet from ('127.0.0.1', 8001) to index 2
+
+1708477574.550743
+Reordered Packet from ('127.0.0.1', 8001) to index 1
+
+1708477574.5585117
+Reordered Packet from ('127.0.0.1', 8001) to index 1
+
+1708477574.7146366
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708477574.7526932
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708477574.8609293
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708477575.1256387
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708477575.1537464
+Reordered Packet from ('127.0.0.1', 8001) to index 1
+
+1708477575.1584244
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708477575.3231752
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708477575.4617834
+Reordered Packet from ('127.0.0.1', 8001) to index 1
+
+1708477575.5984557
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708477575.8270633
+Reordered Packet from ('127.0.0.1', 8001) to index 2
+
+1708477575.890916
+Reordered Packet from ('127.0.0.1', 8001) to index 1
+
+1708477576.0098903
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708477576.0677016
+Current Average Incoming Traffic: 73153.09782961401 bytes/sec
+
+1708477576.0996938
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708477576.2121892
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708477576.2433717
+Reordered Packet from ('127.0.0.1', 8001) to index 4
+
+1708477576.257775
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708477576.2925148
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708477576.3334756
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708477576.370948
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708477576.4009454
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708477576.4587486
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708477576.5098555
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708477576.5995371
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708477576.679983
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708477576.693987
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708477576.7375205
+Reordered Packet from ('127.0.0.1', 8001) to index 2
+
+1708477576.7855477
 Reordered Packet from ('127.0.0.1', 8001) to index 5
 
-1708476938.7916613
+1708477576.8485458
+Reordered Packet from ('127.0.0.1', 8001) to index 5
+
+1708477576.8546767
+Reordered Packet from ('127.0.0.1', 8001) to index 3
+
+1708477576.9033153
+Reordered Packet from ('127.0.0.1', 8001) to index 6
+
+1708477576.9795775
 Dropped Packet from ('127.0.0.1', 8001)
 
-1708476938.981337
+1708477577.0125773
 Dropped Packet from ('127.0.0.1', 8002)
 
-1708476939.0591152
-Dropped Packet from ('127.0.0.1', 8001)
+1708477577.1411653
+Dropped Packet from ('127.0.0.1', 8002)
 
-1708476939.1755717
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708476939.7565625
+1708477577.164749
 Test Complete. Terminating...
 
