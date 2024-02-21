@@ -20,7 +20,7 @@ if __name__ == '__main__':
 	max_packet_size = int(cfg.get('network', 'MAX_PACKET_SIZE'))
 	max_packet_size -= 12  # Account for the header size
 	write_location = cfg.get('receiver', 'write_location')
-	print('Receiver: Waiting for file contents...')
+	#print('Receiver: Waiting for file contents...')
 	#listen for contents of file and sending ACKs
 	#open file to write to
 	with open(write_location, 'wb') as f:
@@ -32,7 +32,7 @@ if __name__ == '__main__':
 			
 			# Check if packet is the end signal
 			if packet == b'':
-				print('Receiver: End signal received from sender')
+				#print('Receiver: End signal received from sender')
 				break
 			
 			# Extract sequence number and data from packet

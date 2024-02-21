@@ -53,7 +53,7 @@ if __name__ == '__main__':
 	window_size = 6
 	#addr, data = send_monitor.recv(max_packet_size)
 	data = create_data_array(file_to_send, max_packet_size)
-	print(len(data))
+	#print(len(data))
 	window_start = 0  # Start index of the window
 	window_end = window_start + window_size - 1  # End index of the window
 	# For sliding window, we send packets in the window and wait for acks, as we receive acks, we slide the window
@@ -81,7 +81,7 @@ if __name__ == '__main__':
 			try:
 				addr, packet = send_monitor.recv(max_packet_size)
 			except socket.timeout:
-				print(f'Sender: Timeout occurred. Retransmitting packet...')
+				#print(f'Sender: Timeout occurred. Retransmitting packet...')
 				# timeout = 0.3
 				retransmit_packets(send_monitor, receiver_id, window_start, window_end, data, ack_nums)
 			if packet is not None:
