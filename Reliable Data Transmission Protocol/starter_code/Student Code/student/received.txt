@@ -76,29 +76,7 @@ Mr. Sherlock Holmes
       the back of your head.”
 
       “I have, at least, a well-polished, silver-plated coffee-pot in
-      front of me,” said he. “But, tell me, Watson, what do you make of
-      our visitor’s stick? Since we have been so unfortunate as to miss
-      him and have no notion of his errand, this accidental souvenir
-      becomes of importance. Let me hear you reconstruct the man by an
-      examination of it.”
-
-      “I think,” said I, following as far as I could the methods of my
-      companion, “that Dr. Mortimer is a successful, elderly medical
-      man, well-esteemed since those who know him give him this mark of
-      their appreciation.”
-
-      “Good!” said Holmes. “Excellent!”
-
-      “I think also that the probability is in favour of his being a
-      country practitioner who does a great deal of his visiting on
-      foot.”
-
-      “Why so?”
-
-      “Because this stick, though originally a very handsome one has
-      been so knocked about that I can hardly imagine a town
-      practitioner carrying it. The thick-iron ferrule is worn down, so
-      it is evident that he has done a great amount of walking with
+      front of me,” said t amount of walking with
       it.”
 
       “Perfectly sound!” said Holmes.
@@ -608,7 +586,21 @@ The Curse of the Baskervilles
             impaired, and points especially to some affection of the
             heart, manifesting itself in changes of colour,
             breathlessness, and acute attacks of nervous depression.
-            Dr. James Mortimer, the friend and medical attendant of the
+            Dr. James Mortimer, the frienway down this walk there is a gate which leads out on
+            to the moor. There were indications that Sir Charles had
+            stood for some little time here.  He then proceeded down
+            the alley, and it was at the far end of it that his body
+            was discovered. One fact which has not been explained is
+            the statement of Barrymore that his master’s footprints
+            altered their character from the time that he passed the
+            moor-gate, and that he appeared from thence onward to have
+            been walking upon his toes.  One Murphy, a gipsy
+            horse-dealer, was on the moor at no great distance at the
+            time, but he appears by his own confession to have been the
+            worse for drink. He declares that he heard cries but is
+            unable to state from what direction they came.  No signs of
+            violence were to be discovered upon Sir Charles’s person,
+            and though the doctor’s evidence pointed tod and medical attendant of the
             deceased, has given evidence to the same effect.
 
             “The facts of the case are simple.  Sir Charles Baskerville
@@ -624,36 +616,7 @@ The Curse of the Baskervilles
             open, became alarmed, and, lighting a lantern, went in
             search of his master.  The day had been wet, and Sir
             Charles’s footmarks were easily traced down the alley. 
-            Halfway down this walk there is a gate which leads out on
-            to the moor. There were indications that Sir Charles had
-            stood for some little time here.  He then proceeded down
-            the alley, and it was at the far end of it that his body
-            was discovered. One fact which has not been explained is
-            the statement of Barrymore that his master’s footprints
-            altered their character from the time that he passed the
-            moor-gate, and that he appeared from thence onward to have
-            been walking upon his toes.  One Murphy, a gipsy
-            horse-dealer, was on the moor at no great distance at the
-            time, but he appears by his own confession to have been the
-            worse for drink. He declares that he heard cries but is
-            unable to state from what direction they came.  No signs of
-            violence were to be discovered upon Sir Charles’s person,
-            and though the doctor’s evidence pointed to an almost
-            incredible facial distortion—so great that Dr. Mortimer
-            refused at first to believe that it was indeed his friend
-            and patient who lay before him—it was explained that that
-            is a symptom which is not unusual in cases of dyspnœa and
-            death from cardiac exhaustion.  This explanation was borne
-            out by the post-mortem examination, which showed
-            long-standing organic disease, and the coroner’s jury
-            returned a verdict in accordance with the medical evidence.
-             It is well that this is so, for it is obviously of the
-            utmost importance that Sir Charles’s heir should settle at
-            the Hall and continue the good work which has been so sadly
-            interrupted.  Had the prosaic finding of the coroner not
-            finally put an end to the romantic stories which have been
-            whispered in connection with the affair, it might have been
-            difficult to find a tenant for Baskerville Hall.  It is
+            Half to find a tenant for Baskerville Hall.  It is
             understood that the next of kin is Mr. Henry Baskerville,
             if he be still alive, the son of Sir Charles Baskerville’s
             younger brother.  The young man when last heard of was in
@@ -670,7 +633,22 @@ The Curse of the Baskervilles
       I was exceedingly preoccupied by that little affair of the
       Vatican cameos, and in my anxiety to oblige the Pope I lost touch
       with several interesting English cases. This article, you say,
-      contains all the public facts?”
+      contains all the public  an almost
+            incredible facial distortion—so great that Dr. Mortimer
+            refused at first to believe that it was indeed his friend
+            and patient who lay before him—it was explained that that
+            is a symptom which is not unusual in cases of dyspnœa and
+            death from cardiac exhaustion.  This explanation was borne
+            out by the post-mortem examination, which showed
+            long-standing organic disease, and the coroner’s jury
+            returned a verdict in accordance with the medical evidence.
+             It is well that this is so, for it is obviously of the
+            utmost importance that Sir Charles’s heir should settle at
+            the Hall and continue the good work which has been so sadly
+            interrupted.  Had the prosaic finding of the coroner not
+            finally put an end to the romantic stories which have been
+            whispered in connection with the affair, it might have been
+            difficultfacts?”
 
       “It does.”
 
@@ -1150,7 +1128,31 @@ The Problem
       here is the hamlet of Grimpen, where our friend Dr. Mortimer has
       his headquarters. Within a radius of five miles there are, as you
       see, only a very few scattered dwellings. Here is Lafter Hall,
-      which was mentioned in the narrative. There is a house indicated
+      which was mentio    portion of the alley.”
+
+      “He only repeated what some fool had said at the inquest. Why
+      should a man walk on tiptoe down the alley?”
+
+      “What then?”
+
+      “He was running, Watson—running desperately, running for his
+      life, running until he burst his heart—and fell dead upon his
+      face.”
+
+      “Running from what?”
+
+      “There lies our problem. There are indications that the man was
+      crazed with fear before ever he began to run.”
+
+      “How can you say that?”
+
+      “I am presuming that the cause of his fears came to him across
+      the moor. If that were so, and it seems most probable, only a man
+      who had lost his wits would have run _from_ the house instead of
+      towards it. If the gipsy’s evidence may be taken as true, he ran
+      with cries for help in the direction where help was least likely
+      to be. Then, again, whom was he waiting for that night, and why
+      was he waiting for him in the yew alley rather tned in the narrative. There is a house indicated
       here which may be the residence of the naturalist—Stapleton, if I
       remember right, was his name. Here are two moorland farmhouses,
       High Tor and Foulmire. Then fourteen miles away the great convict
@@ -1192,31 +1194,7 @@ The Problem
       What do you make of that?”
 
       “Mortimer said that the man had walked on tiptoe down that
-      portion of the alley.”
-
-      “He only repeated what some fool had said at the inquest. Why
-      should a man walk on tiptoe down the alley?”
-
-      “What then?”
-
-      “He was running, Watson—running desperately, running for his
-      life, running until he burst his heart—and fell dead upon his
-      face.”
-
-      “Running from what?”
-
-      “There lies our problem. There are indications that the man was
-      crazed with fear before ever he began to run.”
-
-      “How can you say that?”
-
-      “I am presuming that the cause of his fears came to him across
-      the moor. If that were so, and it seems most probable, only a man
-      who had lost his wits would have run _from_ the house instead of
-      towards it. If the gipsy’s evidence may be taken as true, he ran
-      with cries for help in the direction where help was least likely
-      to be. Then, again, whom was he waiting for that night, and why
-      was he waiting for him in the yew alley rather than in his own
+  han in his own
       house?”
 
       “You think that he was waiting for someone?”

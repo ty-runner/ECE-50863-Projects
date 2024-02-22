@@ -50,7 +50,7 @@ if __name__ == '__main__':
 	max_packet_size = int(cfg.get('network', 'MAX_PACKET_SIZE'))
 	max_packet_size -= 12  # Account for the header size
 	window_size = int(cfg.get('sender', 'window_size'))
-	window_size = 6
+	window_size = 10
 	#addr, data = send_monitor.recv(max_packet_size)
 	data = create_data_array(file_to_send, max_packet_size)
 	#print(len(data))
@@ -67,10 +67,11 @@ if __name__ == '__main__':
 			#print(i)
 			#print(f'Packet is {packet}.')
 			#print(f'type of packet is {type(packet)}.')
-			if type(packet) != bytes:
-				packet = packet.to_bytes(4, byteorder='big')
-			elif packet == b'' or packet != None:
-				send_monitor.send(receiver_id, packet)
+			if i not in ack_nums:
+				if type(packet) != bytes:
+					packet = packet.to_bytes(4, byteorder='big')
+				elif packet == b'' or packet != None:
+					send_monitor.send(receiver_id, packet)
 
 		# Wait for acknowledgements
 		for i in range(window_start, window_end):

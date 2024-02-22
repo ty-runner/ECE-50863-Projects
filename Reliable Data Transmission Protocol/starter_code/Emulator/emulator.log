@@ -1,230 +1,1679 @@
-1708478123.8752973
+1708479000.0295746
 Configuration File Parsed.
-1708478123.8813043
+1708479000.036576
 Starting network emulator on  8000.
 
-1708478128.892833
+1708479005.0456934
 Current Average Incoming Traffic: 0.0 bytes/sec
 
-1708478129.6261992
+1708479005.196074
 Dropped Packet from ('127.0.0.1', 8001)
 
-1708478129.6525517
-Reordered Packet from ('127.0.0.1', 8001) to index 2
+1708479005.658734
+Dropped 1 packet for 2 due to full buffer.
 
-1708478129.7145936
+1708479005.6667266
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.677677
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.6837308
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.693678
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.699759
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.7122133
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.717273
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.730213
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.7367866
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.7425392
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.7515473
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.7565248
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.7675118
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.777491
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.792872
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.8059356
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.8175054
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.825526
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.8355353
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.8434498
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.8557682
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.8641188
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.87854
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.8865376
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.8987286
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.9119058
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.9209216
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.9345276
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.9444966
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.9575162
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.9634984
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.9705024
+Dropped 1 packet for 2 due to full buffer.
+
+1708479005.9814997
 Dropped Packet from ('127.0.0.1', 8002)
 
-1708478130.284736
-Reordered Packet from ('127.0.0.1', 8001) to index 1
-
-1708478130.3682866
+1708479006.059405
 Dropped Packet from ('127.0.0.1', 8001)
 
-1708478130.6332693
+1708479006.0691202
 Dropped Packet from ('127.0.0.1', 8001)
 
-1708478130.8864589
-Dropped Packet from ('127.0.0.1', 8001)
+1708479006.0817425
+Reordered Packet from ('127.0.0.1', 8001) to index 6
 
-1708478130.9034715
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708478131.0436347
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708478131.210885
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708478131.3673413
-Reordered Packet from ('127.0.0.1', 8001) to index 1
-
-1708478131.4183989
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708478131.7359908
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708478131.7808456
-Reordered Packet from ('127.0.0.1', 8001) to index 2
-
-1708478131.8686986
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708478131.9902372
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708478132.0972748
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708478132.4109182
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708478132.4326181
-Reordered Packet from ('127.0.0.1', 8001) to index 3
-
-1708478132.4537108
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708478132.5187368
-Reordered Packet from ('127.0.0.1', 8001) to index 1
-
-1708478132.5754538
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708478132.7861497
-Reordered Packet from ('127.0.0.1', 8001) to index 5
-
-1708478132.8287187
-Reordered Packet from ('127.0.0.1', 8001) to index 3
-
-1708478133.0204053
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708478133.252245
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708478133.2852302
+1708479006.2543488
 Reordered Packet from ('127.0.0.1', 8001) to index 4
 
-1708478133.3648527
-Dropped Packet from ('127.0.0.1', 8001)
+1708479006.3405373
+Reordered Packet from ('127.0.0.1', 8001) to index 5
 
-1708478133.4968333
-Dropped Packet from ('127.0.0.1', 8001)
+1708479006.3515334
+Reordered Packet from ('127.0.0.1', 8002) to index 1
 
-1708478133.5208151
+1708479006.4304855
+Reordered Packet from ('127.0.0.1', 8001) to index 6
+
+1708479006.4375415
 Dropped Packet from ('127.0.0.1', 8002)
 
-1708478133.6622226
+1708479006.4445274
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479006.498994
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.51183
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.5173836
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.530726
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.5368257
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.5492995
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.5573783
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.5644345
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.5714426
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.583535
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.591516
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.5984514
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.6054502
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.6349635
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.6432617
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.6502495
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.6612494
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.67232
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.6783211
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.685319
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.6976168
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.7102487
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.7184324
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.7304366
+Reordered Packet from ('127.0.0.1', 8002) to index 1
+
+1708479006.7594361
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.76544
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.77744
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.8066533
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708479006.847854
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.854805
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.8688056
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.8803635
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.8853605
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.897595
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.9106588
+Reordered Packet from ('127.0.0.1', 8001) to index 6
+
+1708479006.9181614
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.9262145
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.934666
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.9426224
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.9596622
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.9706786
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.9866886
+Dropped 1 packet for 2 due to full buffer.
+
+1708479006.9966755
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.0086849
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479007.1936538
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708479007.2193713
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479007.315248
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479007.3611999
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479007.4362352
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479007.4929903
+Reordered Packet from ('127.0.0.1', 8001) to index 4
+
+1708479007.5088003
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.5246243
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.5365
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.5505838
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.5565712
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.5665715
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.5765169
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.5850127
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.59177
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.6026812
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.613684
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.6271622
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.6412122
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.6478167
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.654342
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.6602085
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.6780825
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.6902199
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.6987085
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.7107375
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.717248
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.7313147
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.7374349
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.7513943
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.765391
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.7733421
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.7873952
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.7973707
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.8103485
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.8170075
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.8319926
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.8430023
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.8540704
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.8679554
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.8739395
+Dropped 1 packet for 2 due to full buffer.
+
+1708479007.9833326
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479007.9942074
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479008.0751421
+Reordered Packet from ('127.0.0.1', 8001) to index 3
+
+1708479008.081148
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708479008.3112297
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708479008.3461008
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.3581033
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.365135
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.373177
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.3866494
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.3936803
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.4101684
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.418865
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.4324203
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.442898
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.4539654
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.4619493
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.475583
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.4815128
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.4944808
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.502585
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.5145879
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.526164
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.5333347
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.5410538
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.554519
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.5619562
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.568955
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.5816548
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.5917826
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.601913
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.613873
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.623189
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.6390781
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.6520863
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.6640913
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.6730912
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.6810784
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.691108
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.704027
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.714028
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.7226188
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.730708
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.7624044
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.7723525
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.7803974
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.8484063
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.855372
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.8634226
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.8716965
+Dropped 1 packet for 2 due to full buffer.
+
+1708479008.882704
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.0439234
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479009.1073556
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708479009.1970694
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479009.2133625
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479009.2779875
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.2881906
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.2991178
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.3100889
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.3207452
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.326729
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.3356829
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.3436782
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.3547556
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.3647819
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.3717916
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.3807437
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.3947475
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.4017465
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.408865
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.4159157
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.4226038
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.4369867
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.4484215
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.4564736
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.4744318
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.4844673
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.4980683
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.509087
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.525347
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.5343814
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.5423942
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.5552685
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.5617387
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.5757551
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.58774
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.5967412
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.60377
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.6183558
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.6323557
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.645958
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.6589582
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.6669505
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.6759589
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.6839702
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.6909707
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.7030034
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.7129893
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.7271278
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.7371075
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.7501428
+Dropped 1 packet for 2 due to full buffer.
+
+1708479009.8635623
+Reordered Packet from ('127.0.0.1', 8001) to index 6
+
+1708479009.920912
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708479010.0521362
+Current Average Incoming Traffic: 72974.9090712696 bytes/sec
+
+1708479010.1072943
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479010.1460614
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479010.1911936
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708479010.2284052
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479010.237408
+Reordered Packet from ('127.0.0.1', 8001) to index 5
+
+1708479010.2643402
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.277545
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.2895703
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.2954042
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.3117015
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.3241034
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.3311248
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.345117
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.3521066
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.3600843
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.3750834
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.389107
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.399102
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.4121406
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.4193308
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.431856
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.4458575
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.4518752
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.4648778
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.477857
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.488877
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.495876
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.511896
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.5254889
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.5355005
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.5504699
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.5619106
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.570912
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.582979
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.5973694
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.6044292
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.6189382
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.6329715
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.6469781
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.653952
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.661957
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.6769643
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.6899743
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.702972
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.717012
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.7326145
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.7486734
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.756695
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.7656772
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.7746985
+Dropped 1 packet for 2 due to full buffer.
+
+1708479010.9848018
 Reordered Packet from ('127.0.0.1', 8001) to index 2
 
-1708478133.821796
-Dropped Packet from ('127.0.0.1', 8001)
+1708479011.0152197
+Reordered Packet from ('127.0.0.1', 8001) to index 2
 
-1708478133.8313718
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708478133.9043832
-Current Average Incoming Traffic: 76147.26993472746 bytes/sec
-
-1708478133.9143429
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708478133.9700437
+1708479011.1972742
 Reordered Packet from ('127.0.0.1', 8001) to index 5
 
-1708478134.1542041
-Dropped Packet from ('127.0.0.1', 8001)
+1708479011.225868
+Reordered Packet from ('127.0.0.1', 8001) to index 6
 
-1708478134.2359595
-Dropped Packet from ('127.0.0.1', 8001)
+1708479011.2398577
+Dropped 1 packet for 2 due to full buffer.
 
-1708478134.3454754
+1708479011.2528584
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.2682965
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.2824712
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.2971745
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.3133168
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.3198876
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.3328876
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.3388863
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.35135
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.3569374
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.3749404
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.3877552
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.3937755
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.4037886
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.4128163
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.4243824
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.4373977
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.4443994
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.4544005
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.4664202
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.478518
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.4893897
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.5023856
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.5154064
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.5281532
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.5356903
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.5501504
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.5602498
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.5772321
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.5918465
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.6054258
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.6199868
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.634545
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.6413407
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.6558917
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.6694176
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.6744545
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.6844547
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.6924345
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.7044506
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.7144468
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.726998
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.7369995
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.7429802
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.757492
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.7634215
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.7754204
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.7920973
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.8071325
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.8222048
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.8383017
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.8484266
+Dropped 1 packet for 2 due to full buffer.
+
+1708479011.8689275
+Reordered Packet from ('127.0.0.1', 8002) to index 1
+
+1708479012.188742
 Dropped Packet from ('127.0.0.1', 8002)
 
-1708478134.357429
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708478134.4541452
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708478134.495067
-Reordered Packet from ('127.0.0.1', 8001) to index 1
-
-1708478134.513035
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708478134.5516777
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708478134.654566
-Reordered Packet from ('127.0.0.1', 8001) to index 1
-
-1708478134.823378
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708478134.8909016
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708478134.9416106
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708478134.9814987
+1708479012.2929947
 Reordered Packet from ('127.0.0.1', 8001) to index 4
 
-1708478135.0720723
+1708479012.3019314
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.3129215
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.319945
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.3337357
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.3387136
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.3529608
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.3622723
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.372301
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.384747
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.3957794
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.4017963
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.4148238
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.4233682
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.447022
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.460913
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.4729092
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.484895
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.4959152
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.5089293
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.5235033
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.537106
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.551633
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.5581608
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.5681946
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.5781794
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.5921738
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.598194
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.6082573
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.6202428
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.6345801
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.6485791
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.6605577
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.671189
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.681208
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.6932058
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.7002084
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.71122
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.7226436
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.733643
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.7426424
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.7596617
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.7706702
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.7846591
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.7966914
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.8106961
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.825106
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.8410938
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.850111
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.8630953
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.875779
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.8827815
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.896779
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.9037714
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.9187932
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.9302015
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.9442012
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.9601798
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.9662004
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.9791994
+Dropped 1 packet for 2 due to full buffer.
+
+1708479012.9931827
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.0022008
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.0172114
 Dropped Packet from ('127.0.0.1', 8002)
 
-1708478135.1154068
+1708479013.0305426
 Dropped Packet from ('127.0.0.1', 8002)
 
-1708478135.1294158
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708478135.2576609
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708478135.2986205
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708478135.3392584
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708478135.4558034
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708478135.518202
-Dropped Packet from ('127.0.0.1', 8002)
-
-1708478135.5529335
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708478135.5769372
-Dropped Packet from ('127.0.0.1', 8001)
-
-1708478135.626034
-Reordered Packet from ('127.0.0.1', 8001) to index 4
-
-1708478135.6332436
-Reordered Packet from ('127.0.0.1', 8001) to index 3
-
-1708478135.6992788
+1708479013.3645532
 Reordered Packet from ('127.0.0.1', 8001) to index 1
 
-1708478135.718352
+1708479013.4863915
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.4983606
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.511507
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.522396
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.531491
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.5364933
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.5494921
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.5594919
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.5704887
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.5804915
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.5954921
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.6025834
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.6160789
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.621554
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.6363683
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.6483831
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.6553807
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.6714013
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.6774006
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.692401
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.6984017
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.7094374
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.7184186
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.7309475
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.7389295
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.7514644
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.7619348
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.7679162
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.777914
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.7849407
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.7959337
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.8019364
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.8149204
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.8209395
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.8331347
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.84214
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.854143
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.8651812
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.8732908
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.881291
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.8883111
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.8993106
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.9072907
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.9172945
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.9268613
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.9368632
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.9468644
+Dropped 1 packet for 2 due to full buffer.
+
+1708479013.9615862
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.026208
+Reordered Packet from ('127.0.0.1', 8001) to index 6
+
+1708479014.084432
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.0924191
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.1033924
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.1176608
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.1265903
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.1415675
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.157587
+Reordered Packet from ('127.0.0.1', 8001) to index 1
+
+1708479014.1786907
 Dropped Packet from ('127.0.0.1', 8002)
 
-1708478135.954298
+1708479014.2780964
 Dropped Packet from ('127.0.0.1', 8001)
 
-1708478136.1377332
+1708479014.3484392
 Reordered Packet from ('127.0.0.1', 8001) to index 3
 
-1708478136.2532992
+1708479014.473061
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479014.508079
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.5161278
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.5269496
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.5401478
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.554166
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.5671468
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.58023
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.5958998
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.602884
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.6170301
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.6280737
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.6380537
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.650053
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.6620736
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.6785872
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.6936069
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.708589
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.7226098
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479014.7341394
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.7481232
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.7565582
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.7685907
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.7849953
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.7980275
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.8120654
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.8187842
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.8263276
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.8433397
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.8593402
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.8736396
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.882669
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.8936617
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.9108667
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.9197922
+Dropped 1 packet for 2 due to full buffer.
+
+1708479014.9343772
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.0098615
 Dropped Packet from ('127.0.0.1', 8001)
 
-1708478136.2612956
+1708479015.0497582
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.0658066
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.079249
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.0892665
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.096643
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.1104867
+Current Average Incoming Traffic: 93282.18148585482 bytes/sec
+
+1708479015.1165066
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.1301324
 Dropped Packet from ('127.0.0.1', 8002)
 
-1708478136.2942958
+1708479015.144324
+Reordered Packet from ('127.0.0.1', 8002) to index 3
+
+1708479015.1613176
 Dropped Packet from ('127.0.0.1', 8002)
 
-1708478136.3467708
-Reordered Packet from ('127.0.0.1', 8001) to index 5
+1708479015.1773167
+Dropped 1 packet for 2 due to full buffer.
 
-1708478136.370979
-Dropped Packet from ('127.0.0.1', 8002)
+1708479015.1863458
+Dropped 1 packet for 2 due to full buffer.
 
-1708478136.3949337
-Dropped Packet from ('127.0.0.1', 8002)
+1708479015.1933172
+Dropped 1 packet for 2 due to full buffer.
 
-1708478136.4225488
-Dropped Packet from ('127.0.0.1', 8002)
+1708479015.1993375
+Dropped 1 packet for 2 due to full buffer.
 
-1708478136.4506328
+1708479015.2133796
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.21913
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.2322106
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.2978902
 Dropped Packet from ('127.0.0.1', 8001)
 
-1708478136.5642457
+1708479015.320346
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708479015.3358712
+Reordered Packet from ('127.0.0.1', 8001) to index 4
+
+1708479015.3538704
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.3598697
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.364891
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.3803973
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.3956077
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.410607
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.4240603
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.5204208
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708479015.670789
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.6766725
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.6826713
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.690794
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.7047114
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.7167213
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.7302904
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.7433283
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.7608526
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.7668514
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.7812579
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.7963114
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.8092892
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.8167813
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.8254378
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.8439867
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.8539908
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.8659794
+Dropped 1 packet for 2 due to full buffer.
+
+1708479015.873989
+Reordered Packet from ('127.0.0.1', 8002) to index 5
+
+1708479015.934745
+Dropped Packet from ('127.0.0.1', 8001)
+
+1708479016.0147686
+Dropped 1 packet for 2 due to full buffer.
+
+1708479016.0227914
+Dropped 1 packet for 2 due to full buffer.
+
+1708479016.0539482
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479016.133643
+Reordered Packet from ('127.0.0.1', 8001) to index 4
+
+1708479016.1666274
+Dropped Packet from ('127.0.0.1', 8002)
+
+1708479016.1846325
 Test Complete. Terminating...
 
