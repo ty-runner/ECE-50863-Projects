@@ -50,7 +50,7 @@ if __name__ == '__main__':
 	max_packet_size = int(cfg.get('network', 'MAX_PACKET_SIZE'))
 	max_packet_size -= 12  # Account for the header size
 	window_size = int(cfg.get('sender', 'window_size'))
-	window_size = 10
+	#window_size = 10
 	#addr, data = send_monitor.recv(max_packet_size)
 	data = create_data_array(file_to_send, max_packet_size)
 	#print(len(data))
@@ -80,7 +80,7 @@ if __name__ == '__main__':
 			if window_end > len(data):
 				window_end = len(data) - 1
 			try:
-				addr, packet = send_monitor.recv(max_packet_size)
+				addr, packet = send_monitor.recv(max_packet_size - 500)
 			except socket.timeout:
 				#print(f'Sender: Timeout occurred. Retransmitting packet...')
 				# timeout = 0.3

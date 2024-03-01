@@ -58,11 +58,11 @@ if __name__ == '__main__':
 				else:
 					# print(f'Receiver: Duplicate packet received with sequence number {seq_num}')
 					recv_monitor.send(sender_id, b'ACK' + packet[:4])
-			else:
+			#else:
 				# print(f'Receiver: Packet received with sequence number {seq_num} is not in the window')
 				# print(received_count)
 				# print(received_list)
-				recv_monitor.send(sender_id, b'ACK' + packet[:4])
+				#recv_monitor.send(sender_id, b'ACK' + packet[:4])
 		
 	# Send end signal to sender
 	# f.close()
