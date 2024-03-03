@@ -25,15 +25,29 @@ def extract_seq_num(data):
 	""" Extracts the sequence number from the packet """
 	return int.from_bytes(data[3:7], byteorder='big')
 
-def retransmit_packets(send_monitor, receiver_id, window_start, window_end, data, ack_nums):
+def retransmit_packets(send_monitor, receiver_id, window_start, window_end, data, ack_nums, available_space):
 	""" Retransmits packets in the window """
 	for i in range(	window_start, window_end):
-		if i not in ack_nums:
-			packet = data[i]
-			if type(packet) != bytes:
-				packet = packet.to_bytes(4, byteorder='big')
-			elif packet == b'' or packet != None:
-				send_monitor.send(receiver_id, packet)
+		print(available_space)
+		if available_space != 0:
+			if i not in ack_nums:
+				packet = data[i]
+				if type(packet) != bytes:
+					packet = packet.to_bytes(4, byteorder='big')
+				elif packet == b'' or packet != None:
+					send_monitor.send(receiver_id, packet)
+					available_space -= 1
+
+def send_process(send_monitor, receiver_id, window_start, window_end, data, available_space):
+	""" Sends packets in the window """
+	for i in range(window_start, window_end):
+		if available_space == 0:
+			print(f'Sender: Window full. Waiting for acks...')
+			break
+		packet = data[i]
+		#packet = packet.to_bytes(4, byteorder='big')
+		send_monitor.send(receiver_id, packet)
+		available_space -= 1
 if __name__ == '__main__':
 	print("Sender starting up!")
 	config_path = sys.argv[1]
@@ -50,6 +64,9 @@ if __name__ == '__main__':
 	max_packet_size = int(cfg.get('network', 'MAX_PACKET_SIZE'))
 	max_packet_size -= 12  # Account for the header size
 	window_size = int(cfg.get('sender', 'window_size'))
+	window_size /= 2
+	window_size = int(window_size)
+	available_space = window_size - 15
 	#window_size = 10
 	#addr, data = send_monitor.recv(max_packet_size)
 	data = create_data_array(file_to_send, max_packet_size)
@@ -62,17 +79,7 @@ if __name__ == '__main__':
 		if window_end > len(data):
 			window_end = len(data) - 1
 		#send all packets in the window
-		for i in range(window_start, window_end):
-			packet = data[i]
-			#print(i)
-			#print(f'Packet is {packet}.')
-			#print(f'type of packet is {type(packet)}.')
-			if i not in ack_nums:
-				if type(packet) != bytes:
-					packet = packet.to_bytes(4, byteorder='big')
-				elif packet == b'' or packet != None:
-					send_monitor.send(receiver_id, packet)
-
+		send_process(send_monitor, receiver_id, window_start, window_end, data, available_space)
 		# Wait for acknowledgements
 		for i in range(window_start, window_end):
 			if window_start == len(data)-1:
@@ -81,10 +88,11 @@ if __name__ == '__main__':
 				window_end = len(data) - 1
 			try:
 				addr, packet = send_monitor.recv(max_packet_size - 500)
+				available_space += 1
 			except socket.timeout:
-				#print(f'Sender: Timeout occurred. Retransmitting packet...')
+				print(f'Sender: Timeout occurred. Retransmitting packet...')
 				# timeout = 0.3
-				retransmit_packets(send_monitor, receiver_id, window_start, window_end, data, ack_nums)
+				retransmit_packets(send_monitor, receiver_id, window_start, window_end, data, ack_nums, available_space)
 			if packet is not None:
 				# Process the acknowledgement
 				ack_seq_num = extract_seq_num(packet)
