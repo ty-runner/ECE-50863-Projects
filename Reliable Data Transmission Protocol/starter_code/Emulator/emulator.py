@@ -336,8 +336,6 @@ class SendingQueue:
 			return
 		for packet in packets:
 			drop_count = max(0, len(self._queue) + 1 - Config.MAX_PACKETS_QUEUED)
-			print(f'Queue Size: {len(self._queue)}')
-			print(Config.MAX_PACKETS_QUEUED)
 			self._queue = self._queue[:Config.MAX_PACKETS_QUEUED]
 			if drop_count > 0:
 				log(f'Dropped {drop_count} packet{"s" if drop_count > 1 else ""} for {packet.receiver_id()} due to full buffer.')
