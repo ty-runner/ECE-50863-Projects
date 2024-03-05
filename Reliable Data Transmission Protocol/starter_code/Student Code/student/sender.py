@@ -23,6 +23,7 @@ class Sender:
 		self.window_start = 0
 		self.window_end = self.window_start + self.window_size - 1
 		self.data = []
+		self.num_of_packets = 0
 	def create_data_array(self, file_to_send, max_packet_size):
 		""" Creates an array of data packets from the file to send """
 		data = []
@@ -41,39 +42,35 @@ class Sender:
 		""" Extracts the sequence number from the packet """
 		return int.from_bytes(data[3:7], byteorder='big')
 
-	def retransmit_packets(send_monitor, receiver_id, window_start, window_end, data, ack_nums, available_space):
+	def retransmit_packets(self, send_monitor, receiver_id, window_start, window_end, data, ack_nums):
 		""" Retransmits packets in the window """
 		for i in range(	window_start, window_end):
-			print(available_space)
-			if available_space != 0:
-				if i not in ack_nums:
-					packet = data[i]
-					if type(packet) != bytes:
-						packet = packet.to_bytes(4, byteorder='big')
-					elif packet == b'' or packet != None:
-						send_monitor.send(receiver_id, packet)
-						available_space -= 1
-
+			if i not in ack_nums:
+				packet = data[i]
+				print(f"Retransmitting packet {i}.")
+				send_monitor.send(receiver_id, format_packet(self.sender_id, receiver_id, packet))
 	def send_process(self) -> None:
 		""" Sends packets in the window """
 		window_start = 0
-		
 		while window_start < len(self.data) - 1:
 			window_end = window_start + self.window_size
 			if window_end > len(self.data):
 				window_end = len(self.data)
 			for seq_num in range(window_start, window_end):
 				packet = self.data[seq_num]
-				#time.sleep(0.005)
+				time.sleep(0.005)
 				print(f"Sending packet {seq_num}.")
 				self.send_monitor.send(self.receiver_id, format_packet(self.sender_id, self.receiver_id, packet))
 			for _ in range(window_start, window_end):
-				ACK = self.listen_for_ack(window_start)
+				ACK = self.listen_for_ack(window_start, self.num_of_packets)
 				print(f"Received ACK {ACK}.")
 				if ACK is not None:
 					window_start = ACK + 1
-					print(f"window_start: {window_start}")
-	def listen_for_ack(self, window_start):
+					self.ack_nums.append(ACK)
+				else:
+					print("Timeout: Retransmitting packets.")
+					self.retransmit_packets(self.send_monitor, self.receiver_id, window_start, window_end, self.data, self.ack_nums)
+	def listen_for_ack(self, window_start, num_of_packets):
 		""" Listens for an ACK """
 		while True:
 			try:
@@ -82,6 +79,8 @@ class Sender:
 				seq_id = int.from_bytes(data, byteorder='big')
 				if seq_id == window_start:
 					return seq_id
+				elif seq_id >= num_of_packets:
+					return seq_id
 			except socket.timeout:
 				return None
 			except:
@@ -89,6 +88,8 @@ class Sender:
 	def begin_send(self):
 		""" Starts the sending process """
 		self.data = self.create_data_array(self.file_to_send, self.max_packet_size)
+		self.num_of_packets = len(self.data)
+		print(f"Number of packets: {self.num_of_packets}.")
 		self.send_process()
 		time.sleep(2)
 		self.send_monitor.send_end(self.receiver_id)

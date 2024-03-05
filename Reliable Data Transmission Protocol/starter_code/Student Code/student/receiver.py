@@ -22,9 +22,9 @@ class Receiver:
 	def recv_parse(self) -> tuple[int, bytes]:
 		""" Receives packets from sender """
 		addr, packet = self.recv_monitor.recv(self.max_packet_size - 50)
-		print(f"Received {len(packet)} bytes from id {addr}.")
 		packet = unformat_packet(packet)[1]
 		seq_num = int.from_bytes(packet[:4], byteorder='big')  # Convert to correct byte order
+		#print(f"Received packet {seq_num}.")
 		return seq_num, packet[4:]
 	
 	def recv_process(self) -> None:
@@ -35,15 +35,21 @@ class Receiver:
 					recv_id, data = self.recv_parse()
 					if recv_id == self.next_seq_num:
 						f.write(data)
-						print(f"Received packet {recv_id}.")
+						print(f"Received packet {recv_id}. Looking for packet {self.next_seq_num}.")
 						self.recv_monitor.send(self.sender_id, format_packet(self.receiver_id, self.sender_id, self.next_seq_num.to_bytes(4, byteorder='big')))
 						self.next_seq_num += 1
+					elif recv_id < self.next_seq_num:
+						print(f"Duplicate packet {recv_id}. Looking for packet {self.next_seq_num}.")
+						self.recv_monitor.send(self.sender_id, format_packet(self.receiver_id, self.sender_id, recv_id.to_bytes(4, byteorder='big')))
+						if recv_id == 0:
+							break
 					elif data == b'':
 						print("Received all packets.")
+						self.recv_monitor.send(self.sender_id, format_packet(self.receiver_id, self.sender_id, self.next_seq_num.to_bytes(4, byteorder='big')))
 						break
 				except:
 					print('Receiver: Timeout')
-			self.recv_monitor.recv_end("self.write_location", self.sender_id)
+		self.recv_monitor.recv_end("self.write_location", self.sender_id)
 
 if __name__ == '__main__':
 	print("Receiver starting up!")
