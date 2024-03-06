@@ -17,7 +17,7 @@ class Receiver:
 		self.max_packet_size: int = int(self.cfg.get('network', 'MAX_PACKET_SIZE'))
 		self.write_location = self.cfg.get('receiver', 'write_location')
 		self.next_seq_num: int = 0
-		self.recv_monitor.socketfd.settimeout(3)
+		self.recv_monitor.socketfd.settimeout(1)
 
 	def recv_parse(self) -> tuple[int, bytes]:
 		""" Receives packets from sender """
@@ -35,15 +35,16 @@ class Receiver:
 					recv_id, data = self.recv_parse()
 					if recv_id == self.next_seq_num:
 						f.write(data)
-						print(f"Received packet {recv_id}. Looking for packet {self.next_seq_num}.")
+						#print(f"Received packet {recv_id}. Looking for packet {self.next_seq_num}.")
 						self.recv_monitor.send(self.sender_id, format_packet(self.receiver_id, self.sender_id, self.next_seq_num.to_bytes(4, byteorder='big')))
 						self.next_seq_num += 1
 					elif recv_id < self.next_seq_num:
-						print(f"Duplicate packet {recv_id}. Looking for packet {self.next_seq_num}.")
+						#print(f"Duplicate packet {recv_id}. Looking for packet {self.next_seq_num}.")
 						self.recv_monitor.send(self.sender_id, format_packet(self.receiver_id, self.sender_id, recv_id.to_bytes(4, byteorder='big')))
-					if data == b'':
-						print("Received all packets.")
+					if data == b'' and recv_id == self.next_seq_num - 1:
+						#print("Received all packets.")
 						self.recv_monitor.send(self.sender_id, format_packet(self.receiver_id, self.sender_id, self.next_seq_num.to_bytes(4, byteorder='big')))
+						#print(f"Sending {self.next_seq_num} to sender.")
 						#break
 					if data == b'FINAL_PACKET':
 						print("Received final packet.")
