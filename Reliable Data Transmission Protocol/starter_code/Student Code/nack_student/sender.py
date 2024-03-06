@@ -5,7 +5,7 @@ import sys
 import configparser
 import time
 import socket
-timeout = 0.6  # Timeout period in seconds
+timeout = 0.2  # Timeout period in seconds
 
 class Sender:
 	def __init__(self, config):
@@ -41,10 +41,14 @@ class Sender:
 				header_count += 1
 		return data
 	#CHANGE
-	def extract_seq_num(data):
+	def extract_seq_nums(data):
 		""" Extracts the sequence number from the packet """
 		print(len(data))
-		return int.from_bytes(data[3:7], byteorder='big')
+		chunks = len(data) / 4
+		packets_to_send = []
+		for i in range(chunks):
+			packets_to_send.append(int.from_bytes(data[i*4:(i+1)*4], byteorder='big'))
+		return packets_to_send
 	#CHANGE
 	def retransmit_packets(self, send_monitor, receiver_id, window_start, window_end, data, ack_nums):
 		""" Retransmits packets in the window """
@@ -65,28 +69,32 @@ class Sender:
 			window_end = window_start + self.window_size
 			if window_end > len(self.data):
 				window_end = len(self.data)
+			#send the window
+			#time.sleep(0.1)
 			for seq_num in range(window_start, window_end):
 				packet = self.data[seq_num]
-				#time.sleep(0.5)
+				#time.sleep(0.1)
 				print(f"Sending packet {seq_num}.")
 				self.send_monitor.send(self.receiver_id, format_packet(self.sender_id, self.receiver_id, packet))
-			NACK = self.listen_for_nack(window_start, self.num_of_packets)
+			#listen for NACK
+			NACK = self.listen_for_nack()
 			print(f"Received ACK {NACK}.")
+			#if NACK, retransmit specified packets
 			if NACK is not None:
-				self.retransmit_packets(self.send_monitor, self.receiver_id, window_start, window_end, self.data, self.ack_nums)
+				self.retransmit_packets(self.send_monitor, self.receiver_id, window_start, window_end, self.data, NACK)
 				break
 			else:
+				#move to next window
 				window_start = window_end
-				self.nack_nums.append(NACK)
+				#self.nack_nums.append(NACK)
 	def listen_for_nack(self):
 		""" Listens for an ACK """
 		try:
 			addr, data = self.send_monitor.recv(self.max_packet_size - 50)
 			data = unformat_packet(data)[1]
 			print(f"Size of data: {len(data)}.")
-			seq_id = int.from_bytes(data, byteorder='big')
-			print(f"Received NACK {seq_id}.")
-			return seq_id
+			packets_to_send = self.extract_seq_nums(data)
+			return packets_to_send
 		except socket.timeout:
 			return None
 		except:
@@ -106,6 +114,11 @@ class Sender:
 		time.sleep(1)
 		self.send_monitor.send_end(self.receiver_id)
 if __name__ == '__main__':
+	#Basic structure:
+	#1. Send window of packets
+	#2. Listen for NACK from receiver
+	#3. If none, assume got there okay and move window
+	#4. If NACK, retransmit specified packets in window
 	print("Sender starting up!")
 	config = sys.argv[1]
 	sender = Sender(config)
