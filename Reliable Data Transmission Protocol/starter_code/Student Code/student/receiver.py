@@ -51,7 +51,7 @@ class Receiver:
 				except:
 					print('Receiver: Timeout')
 		time.sleep(1)
-		self.recv_monitor.recv_end("self.write_location", self.sender_id)
+		self.recv_monitor.recv_end(self.write_location, self.sender_id)
 
 if __name__ == '__main__':
 	print("Receiver starting up!")
