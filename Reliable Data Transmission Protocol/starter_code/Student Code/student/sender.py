@@ -19,7 +19,7 @@ class Sender:
 		self.sender_id: int = int(self.cfg.get('sender', 'id'))
 		self.receiver_id: int = int(self.cfg.get('receiver', 'id'))
 		self.window_size: int = int(self.cfg.get('sender', 'window_size'))
-		#self.window_size = int(self.window_size / 1.5)
+		self.window_size =25
 		self.file_to_send = self.cfg.get('nodes', 'file_to_send')
 		self.max_packet_size = int(self.cfg.get('network', 'MAX_PACKET_SIZE'))
 		self.window_start = 0
@@ -78,15 +78,15 @@ class Sender:
 					#print(f"Time taken: {stop-start}.")
 					window_start = ACK + 1
 					self.ack_nums.append(ACK)
-					self.timeout = self.timeout / 2
-					if self.timeout < 0.00001:
-						self.timeout = 0.1
+					# self.timeout = self.timeout / 2
+					# if self.timeout < 0.00001:
+					# 	self.timeout = 0.1
 				else:
 					print("Timeout: Retransmitting packets.")
 					retransmit_stop = time.time()
 					#print(f"Time taken: {retransmit_stop-start}.")
-					self.timeout = self.timeout * 2
-					print(f"Timeout: {self.timeout}.")
+					# self.timeout = self.timeout * 2
+					# print(f"Timeout: {self.timeout}.")
 					self.retransmit_packets(self.send_monitor, self.receiver_id, window_start, window_end, self.data, self.ack_nums)
 					break
 	def listen_for_ack(self, window_start, num_of_packets):
