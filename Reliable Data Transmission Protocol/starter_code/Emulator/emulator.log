@@ -1,308 +1,278 @@
-1709850045.324424
+1709868158.4296894
 Configuration File Parsed.
-1709850045.3314943
+1709868158.4366934
 Starting network emulator on  8000.
 
-1709850050.3405116
-Current Average Incoming Traffic: 0.0 bytes/sec
-
-1709850051.3647003
+1709868161.8938184
 Dropped Packet from ('127.0.0.1', 8002)
 
-1709850054.599387
+1709868162.9503534
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850055.3462749
-Current Average Incoming Traffic: 1853.0695583586296 bytes/sec
+1709868163.4418538
+Current Average Incoming Traffic: 1439.3193451363047 bytes/sec
 
-1709850058.4860783
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850059.436676
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850060.3513954
-Current Average Incoming Traffic: 2608.71989292514 bytes/sec
-
-1709850062.0089052
+1709868164.3253329
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850065.3595166
-Current Average Incoming Traffic: 3088.8641258646826 bytes/sec
+1709868168.4455638
+Current Average Incoming Traffic: 2985.2666917577576 bytes/sec
 
-1709850065.7843974
+1709868169.0944574
+Dropped Packet from ('127.0.0.1', 8002)
+
+1709868170.578585
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850067.9329445
+1709868171.6378722
 Dropped Packet from ('127.0.0.1', 8002)
 
-1709850068.4514744
+1709868172.8081806
 Dropped Packet from ('127.0.0.1', 8002)
 
-1709850070.3652987
-Current Average Incoming Traffic: 3252.5823731246182 bytes/sec
+1709868173.45066
+Current Average Incoming Traffic: 3157.8438512161265 bytes/sec
 
-1709850073.436487
+1709868176.6922112
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850073.945207
+1709868178.455182
+Current Average Incoming Traffic: 3500.3610766589754 bytes/sec
+
+1709868179.8320823
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850074.7838287
-Dropped Packet from ('127.0.0.1', 8002)
+1709868183.4651868
+Current Average Incoming Traffic: 3665.585187330505 bytes/sec
 
-1709850075.3712788
-Current Average Incoming Traffic: 3361.9495572848796 bytes/sec
-
-1709850075.9644
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850078.8639488
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850080.3775115
-Current Average Incoming Traffic: 3470.5020484258653 bytes/sec
-
-1709850085.3832214
-Current Average Incoming Traffic: 3628.7284327219777 bytes/sec
-
-1709850087.1392062
+1709868184.9248693
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850087.7612762
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850089.1397789
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850089.975273
+1709868185.6500483
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850090.3881981
-Current Average Incoming Traffic: 3636.7736440033214 bytes/sec
+1709868188.4706714
+Current Average Incoming Traffic: 3773.8837223084493 bytes/sec
 
-1709850090.7083864
+1709868188.8944151
+Dropped Packet from ('127.0.0.1', 8002)
+
+1709868191.80585
+Dropped Packet from ('127.0.0.1', 8002)
+
+1709868193.4794765
+Current Average Incoming Traffic: 3823.2259565408485 bytes/sec
+
+1709868193.6111076
+Dropped Packet from ('127.0.0.1', 8002)
+
+1709868194.562288
+Dropped Packet from ('127.0.0.1', 8002)
+
+1709868196.8169444
+Dropped Packet from ('127.0.0.1', 8002)
+
+1709868197.2206852
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850093.6216524
+1709868198.4841087
+Current Average Incoming Traffic: 3782.752923823374 bytes/sec
+
+1709868198.6102092
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850095.3941684
-Current Average Incoming Traffic: 3684.5751274839135 bytes/sec
-
-1709850096.7556438
+1709868200.8523486
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850099.7796028
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850100.4044771
-Current Average Incoming Traffic: 3723.954126473152 bytes/sec
-
-1709850105.4098873
-Current Average Incoming Traffic: 3808.0671960718087 bytes/sec
-
-1709850106.1973426
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850106.7081752
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850109.2881796
+1709868201.5748968
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850110.4221737
-Current Average Incoming Traffic: 3815.9544775918675 bytes/sec
+1709868203.4902928
+Current Average Incoming Traffic: 3796.5432945999187 bytes/sec
 
-1709850110.6654913
+1709868206.899496
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850111.7266967
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850114.0116255
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850114.8508632
+1709868208.0599902
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850115.36454
+1709868208.4961543
+Current Average Incoming Traffic: 3848.776298356985 bytes/sec
+
+1709868211.1974142
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850115.43226
-Current Average Incoming Traffic: 3792.910439725095 bytes/sec
-
-1709850118.1804543
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850120.4428167
-Current Average Incoming Traffic: 3828.0156189742565 bytes/sec
-
-1709850120.7643466
+1709868212.14467
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850121.5956757
-Dropped Packet from ('127.0.0.1', 8002)
+1709868213.5010302
+Current Average Incoming Traffic: 3872.9709014213477 bytes/sec
 
-1709850123.310705
+1709868213.7471797
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850124.3773396
-Dropped Packet from ('127.0.0.1', 8002)
+1709868218.506921
+Current Average Incoming Traffic: 3910.707699551337 bytes/sec
 
-1709850125.4484742
-Current Average Incoming Traffic: 3807.1965891952846 bytes/sec
+1709868223.5189342
+Current Average Incoming Traffic: 3974.3055447027673 bytes/sec
 
-1709850129.2877176
-Dropped Packet from ('127.0.0.1', 8002)
+1709868228.5254471
+Current Average Incoming Traffic: 4028.3774366749853 bytes/sec
 
-1709850129.7913182
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850130.3040848
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850130.4578614
-Current Average Incoming Traffic: 3813.450519213737 bytes/sec
-
-1709850131.0465086
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850131.8865414
+1709868229.2991655
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850133.1709259
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850134.9864023
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850135.4697478
-Current Average Incoming Traffic: 3795.852918083598 bytes/sec
-
-1709850137.6835997
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850139.1739113
+1709868230.679822
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850140.4812317
-Current Average Incoming Traffic: 3823.1751581567974 bytes/sec
-
-1709850141.315664
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850145.4865983
-Current Average Incoming Traffic: 3848.221546823679 bytes/sec
-
-1709850146.6179285
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850147.892828
+1709868231.4092207
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850150.491981
-Current Average Incoming Traffic: 3870.714660365575 bytes/sec
+1709868233.5304894
+Current Average Incoming Traffic: 4020.275023470234 bytes/sec
 
-1709850154.4160526
+1709868238.5358431
+Current Average Incoming Traffic: 4065.0751574893775 bytes/sec
+
+1709868238.9953866
 Dropped Packet from ('127.0.0.1', 8002)
 
-1709850155.5044143
-Current Average Incoming Traffic: 3891.466452682467 bytes/sec
-
-1709850156.454487
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850158.9260151
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850160.0880508
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850160.509327
-Current Average Incoming Traffic: 3892.2268853301175 bytes/sec
-
-1709850163.55456
+1709868242.02115
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850164.1724954
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850165.5135093
-Current Average Incoming Traffic: 3901.6192341854594 bytes/sec
-
-1709850169.7055693
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850170.5193477
-Current Average Incoming Traffic: 3926.7487812540935 bytes/sec
-
-1709850170.648007
-Dropped Packet from ('127.0.0.1', 8002)
-
-1709850174.1193662
+1709868242.7479327
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850174.7413094
+1709868243.5469081
+Current Average Incoming Traffic: 4055.912055924622 bytes/sec
+
+1709868246.2169704
 Dropped Packet from ('127.0.0.1', 8002)
 
-1709850175.5292077
-Current Average Incoming Traffic: 3926.1344115411857 bytes/sec
+1709868248.553865
+Current Average Incoming Traffic: 4081.9884633630318 bytes/sec
 
-1709850175.7036204
+1709868250.0105834
 Dropped Packet from ('127.0.0.1', 8002)
 
-1709850177.2044132
+1709868251.2879615
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850180.5410159
-Current Average Incoming Traffic: 3933.0561087973347 bytes/sec
+1709868253.5609512
+Current Average Incoming Traffic: 4083.8938949865606 bytes/sec
 
-1709850180.90301
+1709868253.9719713
+Dropped Packet from ('127.0.0.1', 8001)
+
+1709868257.3116534
+Dropped Packet from ('127.0.0.1', 8001)
+
+1709868258.5723724
+Current Average Incoming Traffic: 4085.3988852110247 bytes/sec
+
+1709868258.805383
 Dropped Packet from ('127.0.0.1', 8002)
 
-1709850185.5468462
-Current Average Incoming Traffic: 3946.9617797698224 bytes/sec
+1709868260.3052297
+Dropped Packet from ('127.0.0.1', 8001)
 
-1709850186.9155848
+1709868263.5854073
+Current Average Incoming Traffic: 4096.306464953645 bytes/sec
+
+1709868265.40217
+Dropped Packet from ('127.0.0.1', 8001)
+
+1709868268.3159492
+Dropped Packet from ('127.0.0.1', 8001)
+
+1709868268.5903244
+Current Average Incoming Traffic: 4097.05778715619 bytes/sec
+
+1709868270.6705465
 Dropped Packet from ('127.0.0.1', 8002)
 
-1709850190.5551605
-Current Average Incoming Traffic: 3967.0102267795937 bytes/sec
-
-1709850192.5896628
-Dropped Packet from ('127.0.0.1', 8001)
-
-1709850193.536582
-Dropped Packet from ('127.0.0.1', 8001)
-
-1709850195.5641122
-Current Average Incoming Traffic: 3971.9091971196426 bytes/sec
-
-1709850197.586704
-Dropped Packet from ('127.0.0.1', 8001)
-
-1709850198.878266
+1709868272.4892821
 Dropped Packet from ('127.0.0.1', 8002)
 
-1709850200.2754543
+1709868273.5947106
+Current Average Incoming Traffic: 4098.048419441659 bytes/sec
+
+1709868274.86047
+Dropped Packet from ('127.0.0.1', 8001)
+
+1709868278.601138
+Current Average Incoming Traffic: 4115.884834641979 bytes/sec
+
+1709868280.2745905
 Dropped Packet from ('127.0.0.1', 8002)
 
-1709850200.5734727
-Current Average Incoming Traffic: 3969.855013896376 bytes/sec
-
-1709850205.5804408
-Current Average Incoming Traffic: 3987.3543525199552 bytes/sec
-
-1709850206.3924136
+1709868282.6499789
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850207.7736855
+1709868283.606965
+Current Average Incoming Traffic: 4116.019479595993 bytes/sec
+
+1709868286.8730917
 Dropped Packet from ('127.0.0.1', 8001)
 
-1709850210.5917306
-Current Average Incoming Traffic: 3981.684789304424 bytes/sec
+1709868287.4953337
+Dropped Packet from ('127.0.0.1', 8002)
 
-1709850211.728668
+1709868288.6192238
+Current Average Incoming Traffic: 4116.063033884433 bytes/sec
+
+1709868289.7472334
+Dropped Packet from ('127.0.0.1', 8002)
+
+1709868290.3755653
+Dropped Packet from ('127.0.0.1', 8001)
+
+1709868291.002892
+Dropped Packet from ('127.0.0.1', 8002)
+
+1709868292.617034
+Dropped Packet from ('127.0.0.1', 8002)
+
+1709868293.6233058
+Current Average Incoming Traffic: 4100.614827564093 bytes/sec
+
+1709868297.6951299
+Dropped Packet from ('127.0.0.1', 8002)
+
+1709868298.538229
+Dropped Packet from ('127.0.0.1', 8001)
+
+1709868298.629319
+Current Average Incoming Traffic: 4108.642711743274 bytes/sec
+
+1709868301.8742368
+Dropped Packet from ('127.0.0.1', 8001)
+
+1709868303.6352408
+Current Average Incoming Traffic: 4115.966949905506 bytes/sec
+
+1709868304.4578166
+Dropped Packet from ('127.0.0.1', 8002)
+
+1709868306.5133379
+Dropped Packet from ('127.0.0.1', 8002)
+
+1709868308.1171286
+Dropped Packet from ('127.0.0.1', 8002)
+
+1709868308.6411817
+Current Average Incoming Traffic: 4109.213294363963 bytes/sec
+
+1709868308.8479667
+Dropped Packet from ('127.0.0.1', 8002)
+
+1709868313.6470337
+Current Average Incoming Traffic: 4116.241673797561 bytes/sec
+
+1709868314.3572712
+Dropped Packet from ('127.0.0.1', 8002)
+
+1709868317.7793286
 Test Complete. Terminating...
 

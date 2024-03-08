@@ -9,7 +9,7 @@ import socket
 
 class Sender:
 	def __init__(self, config):
-		self.timeout = 0.2
+		self.timeout = 0.3
 		self.config = config
 		self.send_monitor = Monitor(config, 'sender')
 		self.cfg = configparser.RawConfigParser(allow_no_value=True)
