@@ -6,6 +6,7 @@ from typing import List
 # Do not touch the client message class!
 # ======================================================================================================================
 
+# BBA-2 Implementation
 
 class ClientMessage:
 	"""
