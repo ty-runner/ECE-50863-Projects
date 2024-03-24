@@ -96,10 +96,13 @@ def student_entrypoint(client_message: ClientMessage):
 	# If the buffer is full, increase the quality level.
 	print(f"Buffer current fill: {client_message.quality_levels}")
 	print(f"Buffer max size: {client_message.buffer_max_size}")
-	print(f"Buffer current fill: {client_message.buffer_current_fill}")
-	print(f"Buffer seconds until empty: {client_message.buffer_seconds_until_empty}")
+	# print(f"Buffer current fill: {client_message.buffer_current_fill}")
+	# print(f"Buffer seconds until empty: {client_message.buffer_seconds_until_empty}")
 	
-	if client_message.buffer_current_fill >= client_message.buffer_max_size:
+	# if client_message.buffer_current_fill >= client_message.buffer_max_size:
+	# 	return min(client_message.quality_levels - 1, client_message.quality_levels - 1)
+	client_message.buffer_current_fill = 0
+	if client_message.buffer_current_fill:
+		client_message.buffer_current_fill +=1
 		return min(client_message.quality_levels - 1, client_message.quality_levels - 1)
-	
-	return 1  # Let's see what happens if we select the lowest bitrate every time
+	return 0  # Let's see what happens if we select the lowest bitrate every time
