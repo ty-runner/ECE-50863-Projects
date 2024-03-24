@@ -85,4 +85,21 @@ def student_entrypoint(client_message: ClientMessage):
 
 	:return: float Your quality choice. Must be one in the range [0 ... quality_levels - 1] inclusive.
 	"""
-	return 0  # Let's see what happens if we select the lowest bitrate every time
+	# Implement the BBA-2 algorithm
+	# 1. If the buffer is full, increase the quality level.
+	# 2. If the buffer is empty, decrease the quality level.
+	# 3. If the buffer is neither full nor empty, keep the quality level the same.
+	# 4. If the buffer is full and the quality level is at its maximum, do not increase the quality level.
+	# 5. If the buffer is empty and the quality level is at its minimum, do not decrease the quality level.
+	# 6. If the buffer is full and the quality level is at its maximum, do not increase the quality level.
+
+	# If the buffer is full, increase the quality level.
+	print(f"Buffer current fill: {client_message.quality_levels}")
+	print(f"Buffer max size: {client_message.buffer_max_size}")
+	print(f"Buffer current fill: {client_message.buffer_current_fill}")
+	print(f"Buffer seconds until empty: {client_message.buffer_seconds_until_empty}")
+	
+	if client_message.buffer_current_fill >= client_message.buffer_max_size:
+		return min(client_message.quality_levels - 1, client_message.quality_levels - 1)
+	
+	return 1  # Let's see what happens if we select the lowest bitrate every time
