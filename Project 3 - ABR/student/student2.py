@@ -6,8 +6,21 @@ from typing import List
 # Do not touch the client message class!
 # ======================================================================================================================
 
-# MPCSigcomm15 Implementation
+# RobustMPC Implementation
 
+#  High level overview of workflow:
+# Initialize
+# for k = 1 to K do:
+# 	if player is in startup phase then:
+# 		ThroughputEstimation
+# 		MPC predict for startup time and Bitrate
+# 		start playback after startup time seconds
+# 	else if playback has started then:
+# 		ThroughputEstimation
+# 		MPC predict for current time and Bitrate
+# 	end if
+# 	Download chunk k with bitrate Rk, wait till finished
+# end for
 class ClientMessage:
 	"""
 	This class will be filled out and passed to student_entrypoint for your algorithm.
