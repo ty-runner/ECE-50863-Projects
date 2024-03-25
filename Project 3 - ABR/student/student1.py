@@ -1,5 +1,5 @@
 from typing import List
-
+import math
 # Adapted from code by Zach Peats
 
 # ======================================================================================================================
@@ -63,7 +63,17 @@ class ClientMessage:
 # Your helper functions, variables, classes here. You may also write initialization routines to be called
 # when this script is first imported and anything else you wish.
 
+def determine_best_rate(client_message: ClientMessage, current_rate: int, calculated_rate: float):
+	# If the buffer is full, increase the quality level.
+	differences = {}
+	for rate in range (client_message.quality_levels):
+		difference = abs(client_message.quality_bitrates[rate] - calculated_rate)
+		differences[rate] = difference
+	min_rate = min(differences, key=differences.get)
+	return min_rate
 
+last_rate = 0
+last_buffer_occupancy = 0
 def student_entrypoint(client_message: ClientMessage):
 	"""
 	Your mission, if you choose to accept it, is to build an algorithm for chunk bitrate selection that provides
@@ -85,25 +95,26 @@ def student_entrypoint(client_message: ClientMessage):
 
 	:return: float Your quality choice. Must be one in the range [0 ... quality_levels - 1] inclusive.
 	"""
-	# Implement the BBA-2 algorithm
-	# 1. If the buffer is full, increase the quality level.
-	# 2. If the buffer is empty, decrease the quality level.
-	# 3. If the buffer is neither full nor empty, keep the quality level the same.
-	# 4. If the buffer is full and the quality level is at its maximum, do not increase the quality level.
-	# 5. If the buffer is empty and the quality level is at its minimum, do not decrease the quality level.
-	# 6. If the buffer is full and the quality level is at its maximum, do not increase the quality level.
-
-	# If the buffer is full, increase the quality level.
-	# print(f"Buffer current fill: {client_message.quality_levels}")
-	# print(f"Buffer max size: {client_message.buffer_max_size}")
-	# print(f"Buffer current fill: {client_message.buffer_current_fill}")
-	# print(f"Buffer seconds until empty: {client_message.buffer_seconds_until_empty}")
-	
-	# if client_message.buffer_current_fill >= client_message.buffer_max_size:
-	# 	return min(client_message.quality_levels - 1, client_message.quality_levels - 1)
-	client_message.buffer_current_fill = 0
-	client_message.buffer_current_fill +=1
-	print(f"Buffer current fill: {client_message.buffer_current_fill}")
+	global last_rate
+	global last_buffer_occupancy
+	#BBA-0 Algo
+	#print(f"Quality levels: {client_message.quality_bitrates}")
+	#print(f"Previous throughput: {client_message.previous_throughput}")
+	reservior = client_message.buffer_max_size * 0.375
+	if client_message.buffer_seconds_until_empty >= client_message.buffer_max_size * 0.9:
+		#steady state
+		return 2
+	elif client_message.buffer_seconds_until_empty < reservior:
+		return 0
+	else:
+		#something to think about is the fact that the function could converge to a middle value when theres more available.
+		if last_buffer_occupancy < client_message.buffer_seconds_until_empty:
+			if last_rate < client_message.quality_levels - 1:
+				#print("Increasing rate")
+				last_rate += 1
+		#print(last_buffer_occupancy)
+		last_rate = determine_best_rate(client_message, last_rate, client_message.previous_throughput)
+		#print(f"Last rate: {last_rate}")
+		last_buffer_occupancy = client_message.buffer_seconds_until_empty
+		return last_rate
 	#return min(client_message.quality_levels - 1, client_message.quality_levels - 1)
-	return 1
-	#return 0  # Let's see what happens if we select the lowest bitrate every time
