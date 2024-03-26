@@ -73,8 +73,18 @@ def determine_best_rate(client_message: ClientMessage, current_rate: int, calcul
 	# if min_rate > current_rate:
 	# 	print("Increasing rate - transient")
 	return min_rate
-# def next_highest_rate(client_message: ClientMessage, current_rate: int):
-# 	for rate in range(client_message.quality_bitrates):
+def next_highest_rate(client_message: ClientMessage, current_rate: int):
+	differences = []
+	for rate in client_message.quality_bitrates:
+		difference = rate - current_rate
+		differences.append(difference)
+	#print(differences)
+	if all(difference < 0 for difference in differences):
+		return current_rate
+	else:
+		smallest_index = min([i for i, val in enumerate(differences) if val >= 0])
+		return smallest_index
+	
 
 def more_aggressive_startup(client_message: ClientMessage, previous_buffer_occupancy: float, previous_rate: int):
 	# At time = 0, since the buffer is empty, BBA-2 only picks the next highest video rate if change in buffer increases by more than 0.875 * chunk seconds
@@ -122,7 +132,9 @@ def student_entrypoint(client_message: ClientMessage):
 	elif client_message.buffer_seconds_until_empty < reservior:
 		#startup
 		# return more_aggressive_startup(client_message, last_buffer_occupancy, last_quality)
-		last_quality = 0
+		index = next_highest_rate(client_message, last_quality)
+		#print(f"Index: {index}")
+		last_quality = index
 	else:
 		#transient state, linearly increase quality level f(B)
 		#print(last_buffer_occupancy)
