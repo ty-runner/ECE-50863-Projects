@@ -70,6 +70,8 @@ def determine_best_rate(client_message: ClientMessage, current_rate: int, calcul
 		difference = abs(client_message.quality_bitrates[rate] - calculated_rate)
 		differences[rate] = difference
 	min_rate = min(differences, key=differences.get)
+	if min_rate > current_rate:
+		print("Increasing rate")
 	return min_rate
 
 last_rate = 0
@@ -105,14 +107,12 @@ def student_entrypoint(client_message: ClientMessage):
 		#steady state
 		return 2
 	elif client_message.buffer_seconds_until_empty < reservior:
+		#startup
 		return 0
 	else:
-		#something to think about is the fact that the function could converge to a middle value when theres more available.
-		if last_buffer_occupancy < client_message.buffer_seconds_until_empty:
-			if last_rate < client_message.quality_levels - 1:
-				#print("Increasing rate")
-				last_rate += 1
+		#transient state, linearly increase quality level f(B)
 		#print(last_buffer_occupancy)
+		#print(last_rate, client_message.previous_throughput)
 		last_rate = determine_best_rate(client_message, last_rate, client_message.previous_throughput)
 		#print(f"Last rate: {last_rate}")
 		last_buffer_occupancy = client_message.buffer_seconds_until_empty
