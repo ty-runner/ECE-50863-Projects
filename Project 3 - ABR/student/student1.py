@@ -110,7 +110,7 @@ def student_entrypoint(client_message: ClientMessage):
 	reservior = client_message.buffer_max_size * 0.375
 	if client_message.buffer_seconds_until_empty >= client_message.buffer_max_size * 0.9:
 		#steady state
-		calc_chunk_size(client_message, last_rate)
+		#calc_chunk_size(client_message, last_rate)
 		return 2
 	elif client_message.buffer_seconds_until_empty < reservior:
 		#startup
