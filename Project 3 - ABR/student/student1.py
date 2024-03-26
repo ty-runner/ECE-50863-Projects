@@ -70,17 +70,23 @@ def determine_best_rate(client_message: ClientMessage, current_rate: int, calcul
 		difference = abs(client_message.quality_bitrates[rate] - calculated_rate)
 		differences[rate] = difference
 	min_rate = min(differences, key=differences.get)
-	if min_rate > current_rate:
-		print("Increasing rate")
+	# if min_rate > current_rate:
+	# 	print("Increasing rate - transient")
 	return min_rate
+# def next_highest_rate(client_message: ClientMessage, current_rate: int):
+# 	for rate in range(client_message.quality_bitrates):
 
-# def calc_chunk_size(client_message: ClientMessage, rate: int):
-# 	# Total size = base chunk size * chunk size ratio * 2 ^ (quality level - 1)
-# 	print(client_message.buffer_seconds_per_chunk)
-# 	return client_message.buffer_seconds_per_chunk * 1 * 2 ** rate
+def more_aggressive_startup(client_message: ClientMessage, previous_buffer_occupancy: float, previous_rate: int):
+	# At time = 0, since the buffer is empty, BBA-2 only picks the next highest video rate if change in buffer increases by more than 0.875 * chunk seconds
+	if client_message.buffer_seconds_until_empty - previous_buffer_occupancy > 0.875 * client_message.buffer_seconds_per_chunk:
+		#print("Increasing rate - startup")
+		return previous_rate + 1
+	return previous_rate
+	
 
-last_rate = 0
+last_quality = 0
 last_buffer_occupancy = 0
+last_bitrate = 0
 def student_entrypoint(client_message: ClientMessage):
 	"""
 	Your mission, if you choose to accept it, is to build an algorithm for chunk bitrate selection that provides
@@ -102,7 +108,8 @@ def student_entrypoint(client_message: ClientMessage):
 
 	:return: float Your quality choice. Must be one in the range [0 ... quality_levels - 1] inclusive.
 	"""
-	global last_rate
+	global last_quality
+	global last_bitrate
 	global last_buffer_occupancy
 	#BBA-0 Algo
 	#print(f"Quality levels: {client_message.quality_bitrates}")
@@ -111,16 +118,19 @@ def student_entrypoint(client_message: ClientMessage):
 	if client_message.buffer_seconds_until_empty >= client_message.buffer_max_size * 0.9:
 		#steady state
 		#calc_chunk_size(client_message, last_rate)
-		return 2
+		last_quality = 2
 	elif client_message.buffer_seconds_until_empty < reservior:
 		#startup
-		return 0
+		# return more_aggressive_startup(client_message, last_buffer_occupancy, last_quality)
+		last_quality = 0
 	else:
 		#transient state, linearly increase quality level f(B)
 		#print(last_buffer_occupancy)
 		#print(last_rate, client_message.previous_throughput)
-		last_rate = determine_best_rate(client_message, last_rate, client_message.previous_throughput)
+		last_quality = determine_best_rate(client_message, last_quality, client_message.previous_throughput)
 		#print(f"Last rate: {last_rate}")
+		# last_bitrate
 		last_buffer_occupancy = client_message.buffer_seconds_until_empty
-		return last_rate
+	current_quality = last_quality
+	return current_quality
 	#return min(client_message.quality_levels - 1, client_message.quality_levels - 1)
