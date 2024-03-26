@@ -74,6 +74,11 @@ def determine_best_rate(client_message: ClientMessage, current_rate: int, calcul
 		print("Increasing rate")
 	return min_rate
 
+# def calc_chunk_size(client_message: ClientMessage, rate: int):
+# 	# Total size = base chunk size * chunk size ratio * 2 ^ (quality level - 1)
+# 	print(client_message.buffer_seconds_per_chunk)
+# 	return client_message.buffer_seconds_per_chunk * 1 * 2 ** rate
+
 last_rate = 0
 last_buffer_occupancy = 0
 def student_entrypoint(client_message: ClientMessage):
@@ -105,6 +110,7 @@ def student_entrypoint(client_message: ClientMessage):
 	reservior = client_message.buffer_max_size * 0.375
 	if client_message.buffer_seconds_until_empty >= client_message.buffer_max_size * 0.9:
 		#steady state
+		calc_chunk_size(client_message, last_rate)
 		return 2
 	elif client_message.buffer_seconds_until_empty < reservior:
 		#startup
