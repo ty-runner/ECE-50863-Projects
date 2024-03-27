@@ -90,8 +90,8 @@ def more_aggressive_startup(client_message: ClientMessage, previous_buffer_occup
 	# At time = 0, since the buffer is empty, BBA-2 only picks the next highest video rate if change in buffer increases by more than 0.875 * chunk seconds
 	if client_message.buffer_seconds_until_empty - previous_buffer_occupancy > 0.875 * client_message.buffer_seconds_per_chunk:
 		#print("Increasing rate - startup")
-		return previous_rate + 1
-	return previous_rate
+		return next_highest_rate(client_message, previous_rate)
+	return determine_best_rate(client_message, previous_rate, client_message.previous_throughput)
 	
 
 last_quality = 0
@@ -131,7 +131,7 @@ def student_entrypoint(client_message: ClientMessage):
 		last_quality = 2
 	elif client_message.buffer_seconds_until_empty < reservior:
 		#startup
-		# return more_aggressive_startup(client_message, last_buffer_occupancy, last_quality)
+		return more_aggressive_startup(client_message, last_buffer_occupancy, last_quality)
 		index = next_highest_rate(client_message, last_quality)
 		#print(f"Index: {index}")
 		last_quality = index

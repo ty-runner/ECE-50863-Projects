@@ -25,3 +25,17 @@ Testing student algorithm 1
 
         Average QoE over all tests: 1.73
 Prototype BBA-1, slightly better performance with the lo's
+
+Testing student algorithm 1
+        Test hi_avg_hi_var.ini: Total Quality   353.00, Total Variation    24.00, Rebuffer Time     0.33, Total QoE     2.84
+        Test hi_avg_lo_var.ini: Total Quality   368.00, Total Variation    50.00, Rebuffer Time     0.47, Total QoE     2.85
+        Test hi_avg_mi_var.ini: Total Quality   376.00, Total Variation    38.00, Rebuffer Time     0.33, Total QoE     2.98
+        Test lo_avg_hi_var.ini: Total Quality   154.00, Total Variation    56.00, Rebuffer Time     1.12, Total QoE     1.02
+        Test lo_avg_lo_var.ini: Total Quality   112.00, Total Variation    32.00, Rebuffer Time     7.61, Total QoE     0.55
+        Test lo_avg_mi_var.ini: Total Quality    84.00, Total Variation    38.00, Rebuffer Time     0.48, Total QoE     0.53
+        Test mi_avg_hi_var.ini: Total Quality   248.00, Total Variation    55.00, Rebuffer Time     0.40, Total QoE     1.83
+        Test mi_avg_lo_var.ini: Total Quality   221.00, Total Variation    52.00, Rebuffer Time     0.50, Total QoE     1.62
+        Test mi_avg_mi_var.ini: Total Quality   198.00, Total Variation    38.00, Rebuffer Time     0.50, Total QoE     1.48
+
+        Average QoE over all tests: 1.74
+Aggressive startup but greatly increased rebuffering in lo lo
