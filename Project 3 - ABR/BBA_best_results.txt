@@ -39,3 +39,17 @@ Testing student algorithm 1
 
         Average QoE over all tests: 1.74
 Aggressive startup but greatly increased rebuffering in lo lo
+
+Testing student algorithm 1
+        Test hi_avg_hi_var.ini: Total Quality   371.00, Total Variation    30.00, Rebuffer Time     0.33, Total QoE     2.97
+        Test hi_avg_lo_var.ini: Total Quality   378.00, Total Variation    48.00, Rebuffer Time     0.57, Total QoE     2.94
+        Test hi_avg_mi_var.ini: Total Quality   397.00, Total Variation    30.00, Rebuffer Time     0.33, Total QoE     3.19
+        Test lo_avg_hi_var.ini: Total Quality   150.00, Total Variation    62.00, Rebuffer Time     8.11, Total QoE     0.72
+        Test lo_avg_lo_var.ini: Total Quality   117.00, Total Variation    43.00, Rebuffer Time    12.80, Total QoE     0.37
+        Test lo_avg_mi_var.ini: Total Quality   120.00, Total Variation    41.00, Rebuffer Time    16.87, Total QoE     0.27
+        Test mi_avg_hi_var.ini: Total Quality   266.00, Total Variation    53.00, Rebuffer Time     3.90, Total QoE     1.87
+        Test mi_avg_lo_var.ini: Total Quality   247.00, Total Variation    45.00, Rebuffer Time     0.68, Total QoE     1.86
+        Test mi_avg_mi_var.ini: Total Quality   208.00, Total Variation    38.00, Rebuffer Time     0.50, Total QoE     1.56
+
+        Average QoE over all tests: 1.75
+Increased buffering in lo datasets but heightened QoE in the 2 other sets

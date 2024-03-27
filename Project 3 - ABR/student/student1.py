@@ -80,16 +80,19 @@ def next_highest_rate(client_message: ClientMessage, current_rate: int):
 		differences.append(difference)
 	#print(differences)
 	if all(difference < 0 for difference in differences):
-		return current_rate
+		return determine_best_rate(client_message, current_rate, client_message.previous_throughput)
 	else:
 		smallest_index = min([i for i, val in enumerate(differences) if val >= 0])
 		return smallest_index
 	
 
-def more_aggressive_startup(client_message: ClientMessage, previous_buffer_occupancy: float, previous_rate: int):
+def more_aggressive_startup(client_message: ClientMessage, previous_buffer_occupancy: float, previous_rate: int, previous_throughput: float):
 	# At time = 0, since the buffer is empty, BBA-2 only picks the next highest video rate if change in buffer increases by more than 0.875 * chunk seconds
 	if client_message.buffer_seconds_until_empty - previous_buffer_occupancy > 0.875 * client_message.buffer_seconds_per_chunk:
 		#print("Increasing rate - startup")
+		# print(f"Last rate: {previous_throughput}")
+		# print(f"Det best rate: {determine_best_rate(client_message, previous_rate, client_message.previous_throughput)} , {client_message.quality_bitrates[determine_best_rate(client_message, previous_rate, client_message.previous_throughput)]}")
+		# print(f"Next highest: {next_highest_rate(client_message, previous_rate)} , {client_message.quality_bitrates[next_highest_rate(client_message, previous_rate)]}")
 		return next_highest_rate(client_message, previous_rate)
 	return determine_best_rate(client_message, previous_rate, client_message.previous_throughput)
 	
@@ -131,18 +134,18 @@ def student_entrypoint(client_message: ClientMessage):
 		last_quality = 2
 	elif client_message.buffer_seconds_until_empty < reservior:
 		#startup
-		return more_aggressive_startup(client_message, last_buffer_occupancy, last_quality)
-		index = next_highest_rate(client_message, last_quality)
-		#print(f"Index: {index}")
-		last_quality = index
+		#print(client_message.quality_bitrates[more_aggressive_startup(client_message, last_buffer_occupancy, last_quality, client_message.previous_throughput)])
+		last_quality = more_aggressive_startup(client_message, last_buffer_occupancy, last_quality, client_message.previous_throughput)
+		# index = next_highest_rate(client_message, last_quality)
+		# #print(f"Index: {index}")
+		# last_quality = index
 	else:
 		#transient state, linearly increase quality level f(B)
-		#print(last_buffer_occupancy)
-		#print(last_rate, client_message.previous_throughput)
 		last_quality = determine_best_rate(client_message, last_quality, client_message.previous_throughput)
-		#print(f"Last rate: {last_rate}")
 		# last_bitrate
-		last_buffer_occupancy = client_message.buffer_seconds_until_empty
 	current_quality = last_quality
+	print(last_buffer_occupancy)
+	last_buffer_occupancy = client_message.buffer_seconds_until_empty
+
 	return current_quality
 	#return min(client_message.quality_levels - 1, client_message.quality_levels - 1)
