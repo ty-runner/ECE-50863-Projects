@@ -177,4 +177,5 @@ def student_entrypoint(client_message: ClientMessage):
 	last_bitrate = R
 	last_buffer_occupancy = client_message.buffer_seconds_until_empty
 	#print(f"Predicted Quality: {predicted_quality}, Selected Bitrate: {R}")
+	#print(f"Difference between predicted throughput and actual throughput: {abs(client_message.previous_throughput - C)}")
 	return predicted_quality
