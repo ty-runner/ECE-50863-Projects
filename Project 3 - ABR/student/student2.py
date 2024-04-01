@@ -75,7 +75,53 @@ class ClientMessage:
 
 # Your helper functions, variables, classes here. You may also write initialization routines to be called
 # when this script is first imported and anything else you wish.
+past_throughputs = []
+last_bitrate = 0
+last_buffer_occupancy = 0
+def throughput_prediction(client_message: ClientMessage, past_throughputs: List[float]):
+	"""
+	Throughput prediction function
+	"""
+	# if past_throughputs is empty then return the previous throughput
+	if len(past_throughputs) == 0:
+		return 0.5
 
+	# if past_throughputs is not empty then return the average throughput
+	#print(f"Past Throughputs: {past_throughputs}")
+	return sum(past_throughputs) / len(past_throughputs)
+	
+def MPC(client_message: ClientMessage, last_bitrate: float, estimated_throughput: float, last_buffer_occupancy) -> float:
+    """
+    MPC function for selecting bitrate of next chunk
+    
+    Args:
+        client_message (ClientMessage): Object containing client parameters
+        last_bitrate (float): Bitrate of the last downloaded chunk
+        estimated_throughput (float): Estimated throughput based on past data
+        
+    Returns:
+        float: Selected bitrate for the next chunk
+    """
+    # Constants for MPC control
+    alpha = 0.5  # Weight for throughput estimation
+    beta = 0.5   # Weight for buffer occupancy
+    
+    # Calculate predicted buffer occupancy after downloading next chunk
+    predicted_buffer_occupancy = client_message.buffer_seconds_until_empty - last_bitrate * client_message.buffer_seconds_per_chunk + estimated_throughput
+    
+    # Calculate predicted rebuffering time (if any)
+    predicted_rebuffer_time = max(0, client_message.buffer_seconds_until_empty - last_buffer_occupancy / estimated_throughput)
+    
+    # Calculate predicted quality level
+    predicted_quality = int((alpha * estimated_throughput + beta * predicted_buffer_occupancy) / client_message.quality_bitrates[0])
+    
+    # Adjust predicted quality to ensure it's within the available quality levels
+    predicted_quality = min(max(predicted_quality, 0), client_message.quality_levels - 1)
+    
+    # Select bitrate based on predicted quality level
+    selected_bitrate = client_message.quality_bitrates[int(predicted_quality)]
+    #print(f"Predicted Quality: {predicted_quality}, Selected Bitrate: {selected_bitrate}")
+    return selected_bitrate, predicted_quality
 
 def student_entrypoint(client_message: ClientMessage):
 	"""
@@ -98,4 +144,37 @@ def student_entrypoint(client_message: ClientMessage):
 
 	:return: float Your quality choice. Must be one in the range [0 ... quality_levels - 1] inclusive.
 	"""
-	return client_message.quality_levels - 1  # Let's see what happens if we select the highest bitrate every time
+	global past_throughputs
+	global last_bitrate
+	global last_buffer_occupancy
+	# if in startup phase then:
+	# 	C[tk, tk+N] = ThroughputPRediction(C[t1,tk])
+	# 	R, T = MPC(C, R[t1,tk])
+	# 	start playback after T seconds
+	# else if playback has started then:
+	# 	C = ThroughputPRediction(C[t1,tk])
+	# 	R = MPC(R[t1,tk], Bk, C[tk, tk+N])
+	# end if
+	# Download chunk k with bitrate Rk, wait till finished
+	# end for
+	if client_message.total_seconds_elapsed < 10:
+		# startup phase
+		C = throughput_prediction(client_message, past_throughputs)
+		#print(f"Throughput Prediction: {C}")
+		# MPC predict for startup time and Bitrate
+		R, predicted_quality = MPC(client_message, last_bitrate, C, last_buffer_occupancy)
+		# start playback after startup time seconds
+	else:
+		# playback has started
+		C = throughput_prediction(client_message, past_throughputs)
+		#print(f"Throughput Prediction: {C}")
+		# MPC predict for current time and Bitrate
+		R, predicted_quality = MPC(client_message, last_bitrate, C, last_buffer_occupancy)
+	if (client_message.previous_throughput != 0):
+		past_throughputs.append(client_message.previous_throughput)
+	else:
+		past_throughputs.append(0.1)
+	last_bitrate = R
+	last_buffer_occupancy = client_message.buffer_seconds_until_empty
+	#print(f"Predicted Quality: {predicted_quality}, Selected Bitrate: {R}")
+	return predicted_quality
