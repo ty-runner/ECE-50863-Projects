@@ -10,3 +10,16 @@ Testing student algorithm 2
         Test mi_avg_mi_var.ini: Total Quality   290.00, Total Variation   136.00, Rebuffer Time    53.91, Total QoE     0.05
 
         Average QoE over all tests: 0.80
+
+Testing student algorithm 2
+        Test hi_avg_hi_var.ini: Total Quality   417.00, Total Variation    30.00, Rebuffer Time     9.30, Total QoE     3.05
+        Test hi_avg_lo_var.ini: Total Quality   421.00, Total Variation     6.00, Rebuffer Time    17.68, Total QoE     2.91
+        Test hi_avg_mi_var.ini: Total Quality   443.00, Total Variation    20.00, Rebuffer Time    11.54, Total QoE     3.24
+        Test lo_avg_hi_var.ini: Total Quality   272.00, Total Variation    78.00, Rebuffer Time    99.51, Total QoE    -1.38
+        Test lo_avg_lo_var.ini: Total Quality   223.00, Total Variation    83.00, Rebuffer Time    72.26, Total QoE    -0.90
+        Test lo_avg_mi_var.ini: Total Quality   181.00, Total Variation    98.00, Rebuffer Time    78.68, Total QoE    -1.53
+        Test mi_avg_hi_var.ini: Total Quality   359.00, Total Variation    36.00, Rebuffer Time    47.69, Total QoE     1.26
+        Test mi_avg_lo_var.ini: Total Quality   323.00, Total Variation    61.00, Rebuffer Time    46.21, Total QoE     0.90
+        Test mi_avg_mi_var.ini: Total Quality   311.00, Total Variation    50.00, Rebuffer Time    60.66, Total QoE     0.36
+
+        Average QoE over all tests: 0.88, more like the QOE maximization problem given.

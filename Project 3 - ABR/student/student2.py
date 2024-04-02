@@ -103,15 +103,15 @@ def MPC(client_message: ClientMessage, last_bitrate: float, estimated_throughput
         float: Selected bitrate for the next chunk
     """
     # Constants for MPC control
-    alpha = 0.5  # Weight for throughput estimation
-    beta = 0.5   # Weight for buffer occupancy
+    alpha = 0.6  # Weight for throughput estimation
+    beta = 0.4   # Weight for buffer occupancy
     
     # Calculate predicted buffer occupancy after downloading next chunk
-    predicted_buffer_occupancy = client_message.buffer_seconds_until_empty - last_bitrate * client_message.buffer_seconds_per_chunk + estimated_throughput
+    predicted_buffer_occupancy = last_buffer_occupancy - (last_bitrate / estimated_throughput) + client_message.buffer_seconds_per_chunk
     
     # Calculate predicted rebuffering time (if any)
+    predicted_buffer_occupancy = min(predicted_buffer_occupancy, client_message.buffer_max_size)
     predicted_rebuffer_time = max(0, client_message.buffer_seconds_until_empty - last_buffer_occupancy / estimated_throughput)
-    
     # Calculate predicted quality level
     predicted_quality = int((alpha * estimated_throughput + beta * predicted_buffer_occupancy) / client_message.quality_bitrates[0])
     
@@ -173,7 +173,7 @@ def student_entrypoint(client_message: ClientMessage):
 	if (client_message.previous_throughput != 0):
 		past_throughputs.append(client_message.previous_throughput)
 	else:
-		past_throughputs.append(0.1)
+		past_throughputs.append(0.5)
 	last_bitrate = R
 	last_buffer_occupancy = client_message.buffer_seconds_until_empty
 	#print(f"Predicted Quality: {predicted_quality}, Selected Bitrate: {R}")
