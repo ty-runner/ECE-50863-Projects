@@ -8,19 +8,6 @@ from typing import List
 
 # RobustMPC Implementation
 
-#  High level overview of workflow:
-# Initialize
-# for k = 1 to K do:
-# 	if player is in startup phase then:
-# 		ThroughputEstimation
-# 		MPC predict for startup time and Bitrate
-# 		start playback after startup time seconds
-# 	else if playback has started then:
-# 		ThroughputEstimation
-# 		MPC predict for current time and Bitrate
-# 	end if
-# 	Download chunk k with bitrate Rk, wait till finished
-# end for
 class ClientMessage:
 	"""
 	This class will be filled out and passed to student_entrypoint for your algorithm.
@@ -157,7 +144,7 @@ def student_entrypoint(client_message: ClientMessage):
 	# end if
 	# Download chunk k with bitrate Rk, wait till finished
 	# end for
-	if client_message.total_seconds_elapsed < 10:
+	if client_message.total_seconds_elapsed < 20:
 		# startup phase
 		C = throughput_prediction(client_message, past_throughputs)
 		#print(f"Throughput Prediction: {C}")
