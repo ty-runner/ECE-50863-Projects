@@ -65,6 +65,7 @@ class ClientMessage:
 past_throughputs = [0.5, 1, 0.5, 1]
 last_bitrate = 0
 last_buffer_occupancy = 0
+last_throughput_difference = 0
 prediction_model = None
 class throughput_prediction:
 	"""
@@ -78,6 +79,7 @@ class throughput_prediction:
 		self.b1 = 0
 		self.num_chunks_list = [1]
 		self.num_chunks = 1
+		self.difference = last_throughput_difference
 
 	def update_coefficients(self, new_x, new_y):
 		mean_x = sum(new_x) / len(new_x)
@@ -149,6 +151,7 @@ def student_entrypoint(client_message: ClientMessage):
 	global last_bitrate
 	global last_buffer_occupancy
 	global prediction_model
+	global last_throughput_difference
 	if prediction_model is None:
 		initialize_prediction_model()
 	# if in startup phase then:
@@ -184,7 +187,8 @@ def student_entrypoint(client_message: ClientMessage):
 	last_buffer_occupancy = client_message.buffer_seconds_until_empty
 	#print(f"Predicted Quality: {predicted_quality}, Selected Bitrate: {R}")
 	#print(f"Difference between predicted throughput and actual throughput: {abs(client_message.previous_throughput - C)}")
-	print(f"Actual throughput: {client_message.previous_throughput}")
-	print(f"Predicted throughputs: {C}")
 	#print(f"Upcoming Quality Bitrates: {client_message.upcoming_quality_bitrates}")
+	last_throughput_difference = C[0] - client_message.previous_throughput
+	prediction_model.difference = last_throughput_difference
+	print(f"Last Throughput Difference: {last_throughput_difference}")
 	return predicted_quality
