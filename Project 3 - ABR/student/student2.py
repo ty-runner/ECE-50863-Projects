@@ -62,53 +62,67 @@ class ClientMessage:
 
 # Your helper functions, variables, classes here. You may also write initialization routines to be called
 # when this script is first imported and anything else you wish.
-past_throughputs = []
+past_throughputs = [0.5, 1, 0.5, 1]
 last_bitrate = 0
 last_buffer_occupancy = 0
-def throughput_prediction(client_message: ClientMessage, past_throughputs: List[float]):
+prediction_model = None
+class throughput_prediction:
 	"""
-	Throughput prediction function
+	Throughput Prediction
 	"""
-	# if past_throughputs is empty then return the previous throughput
-	if len(past_throughputs) == 0:
-		return 0.5
+	def __init__(self):
+		"""
+		Throughput Prediction
+		"""
+		self.b0 = 0
+		self.b1 = 0
+		self.num_chunks_list = [1]
+		self.num_chunks = 1
 
-	# if past_throughputs is not empty then return the average throughput
-	#print(f"Past Throughputs: {past_throughputs}")
-	return sum(past_throughputs) / len(past_throughputs)
+	def update_coefficients(self, new_x, new_y):
+		mean_x = sum(new_x) / len(new_x)
+		mean_y = sum(new_y) / len(new_y)
+
+		old_sum_x = mean_x - self.num_chunks * (self.num_chunks + 1)/ 2
+		old_sum_y = sum(new_y) - mean_y / 2
+		new_x = [self.num_chunks]
+		numerator_b1 = sum([(x - old_sum_x) * (y - old_sum_y) for x, y in zip(new_x, new_y)])
+		denominator_b1 = sum([(x - old_sum_x) ** 2 for x in new_x])
+		b1 = (self.b1 * denominator_b1 + numerator_b1) / (denominator_b1 + sum([(x - old_sum_x) ** 2 for x in new_x]))
+		b0 = mean_y - b1 * mean_x
+		return b0, b1
 	
+	def update(self, new_y):
+		new_x = self.num_chunks_list
+		self.b0, self.b1 = self.update_coefficients(new_x, [new_y])
+		self.num_chunks += 1
+		self.num_chunks_list.append(self.num_chunks)
+	
+	def predict(self, num_predictions):
+		future_indices = range(self.num_chunks, self.num_chunks + num_predictions)
+		future_predictions = [self.b0 + self.b1 * i for i in future_indices]
+		return future_predictions
+
+def initialize_prediction_model():
+	global prediction_model
+	prediction_model = throughput_prediction()
+
 def MPC(client_message: ClientMessage, last_bitrate: float, estimated_throughput: float, last_buffer_occupancy) -> float:
-    """
-    MPC function for selecting bitrate of next chunk
-    
-    Args:
-        client_message (ClientMessage): Object containing client parameters
-        last_bitrate (float): Bitrate of the last downloaded chunk
-        estimated_throughput (float): Estimated throughput based on past data
-        
-    Returns:
-        float: Selected bitrate for the next chunk
-    """
-    # Constants for MPC control
-    alpha = 0.6  # Weight for throughput estimation
-    beta = 0.4   # Weight for buffer occupancy
-    
-    # Calculate predicted buffer occupancy after downloading next chunk
-    predicted_buffer_occupancy = last_buffer_occupancy - (last_bitrate / estimated_throughput) + client_message.buffer_seconds_per_chunk
-    
-    # Calculate predicted rebuffering time (if any)
-    predicted_buffer_occupancy = min(predicted_buffer_occupancy, client_message.buffer_max_size)
-    predicted_rebuffer_time = max(0, client_message.buffer_seconds_until_empty - last_buffer_occupancy / estimated_throughput)
-    # Calculate predicted quality level
-    predicted_quality = int((alpha * estimated_throughput + beta * predicted_buffer_occupancy) / client_message.quality_bitrates[0])
-    
-    # Adjust predicted quality to ensure it's within the available quality levels
-    predicted_quality = min(max(predicted_quality, 0), client_message.quality_levels - 1)
-    
-    # Select bitrate based on predicted quality level
-    selected_bitrate = client_message.quality_bitrates[int(predicted_quality)]
-    #print(f"Predicted Quality: {predicted_quality}, Selected Bitrate: {selected_bitrate}")
-    return selected_bitrate, predicted_quality
+	"""
+	MPC function
+	"""
+	#dk(Rk) / C(k)
+	expected_download_time = last_bitrate / estimated_throughput
+	#print(f"Expected Download Time: {expected_download_time}")
+	#Equation 4 of paper
+	delta_t = ((client_message.buffer_seconds_until_empty - expected_download_time) + client_message.buffer_seconds_per_chunk - client_message.buffer_max_size)
+	delta_t = max(0, delta_t)
+	#print(f"Delta_t: {delta_t}")
+	#Equation 1 of paper
+	wait_time = delta_t + expected_download_time
+	#print(f"Wait Time: {wait_time}")
+	#Equation 2 of paper
+	return 1, 1
 
 def student_entrypoint(client_message: ClientMessage):
 	"""
@@ -134,6 +148,9 @@ def student_entrypoint(client_message: ClientMessage):
 	global past_throughputs
 	global last_bitrate
 	global last_buffer_occupancy
+	global prediction_model
+	if prediction_model is None:
+		initialize_prediction_model()
 	# if in startup phase then:
 	# 	C[tk, tk+N] = ThroughputPRediction(C[t1,tk])
 	# 	R, T = MPC(C, R[t1,tk])
@@ -144,19 +161,21 @@ def student_entrypoint(client_message: ClientMessage):
 	# end if
 	# Download chunk k with bitrate Rk, wait till finished
 	# end for
-	if client_message.total_seconds_elapsed < 20:
+	if client_message.total_seconds_elapsed < 2:
 		# startup phase
-		C = throughput_prediction(client_message, past_throughputs)
-		#print(f"Throughput Prediction: {C}")
+		for throughput in past_throughputs:
+			print(f"Throughput: {throughput}")
+			prediction_model.update(throughput)
+		C = prediction_model.predict(5)
 		# MPC predict for startup time and Bitrate
-		R, predicted_quality = MPC(client_message, last_bitrate, C, last_buffer_occupancy)
+		R, predicted_quality = MPC(client_message, last_bitrate, C[0], last_buffer_occupancy)
 		# start playback after startup time seconds
 	else:
 		# playback has started
-		C = throughput_prediction(client_message, past_throughputs)
-		#print(f"Throughput Prediction: {C}")
+		prediction_model.update(client_message.previous_throughput)
+		C = prediction_model.predict(5)
 		# MPC predict for current time and Bitrate
-		R, predicted_quality = MPC(client_message, last_bitrate, C, last_buffer_occupancy)
+		R, predicted_quality = MPC(client_message, last_bitrate, C[0], last_buffer_occupancy)
 	if (client_message.previous_throughput != 0):
 		past_throughputs.append(client_message.previous_throughput)
 	else:
@@ -165,4 +184,7 @@ def student_entrypoint(client_message: ClientMessage):
 	last_buffer_occupancy = client_message.buffer_seconds_until_empty
 	#print(f"Predicted Quality: {predicted_quality}, Selected Bitrate: {R}")
 	#print(f"Difference between predicted throughput and actual throughput: {abs(client_message.previous_throughput - C)}")
+	print(f"Actual throughput: {client_message.previous_throughput}")
+	print(f"Predicted throughputs: {C}")
+	#print(f"Upcoming Quality Bitrates: {client_message.upcoming_quality_bitrates}")
 	return predicted_quality
