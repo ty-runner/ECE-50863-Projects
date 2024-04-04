@@ -147,6 +147,6 @@ def student_entrypoint(client_message: ClientMessage):
 		# last_bitrate
 	current_quality = last_quality
 	last_buffer_occupancy = client_message.buffer_seconds_until_empty
-	#print(f"Current bitrate {client_message.quality_bitrates[current_quality]}")
+ 
 	return current_quality
 	#return min(client_message.quality_levels - 1, client_message.quality_levels - 1)

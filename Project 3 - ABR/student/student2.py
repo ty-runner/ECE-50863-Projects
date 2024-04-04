@@ -126,18 +126,23 @@ def MPC(client_message: ClientMessage, last_bitrate: float, estimated_throughput
 	# #print(f"Wait Time: {wait_time}")
 	# #Equation 2 of paper
 	# return 1, 1
-	alpha = 0.5
-	beta = 0.5
+	alpha = 0.9
+	beta = 0.1
 	predicted_buffer_occupancy = last_buffer_occupancy - (last_bitrate / estimated_throughput) + client_message.buffer_seconds_per_chunk
 	expected_download_time = last_bitrate / estimated_throughput
-	predicted_buffer_occupancy = min(predicted_buffer_occupancy, client_message.buffer_max_size)
 	predicted_rebuffer_time = max(0, client_message.buffer_seconds_until_empty - last_buffer_occupancy / estimated_throughput)
 	# print(f"Predicted rebuffer time: {predicted_rebuffer_time}")
+	# if predicted_rebuffer_time > 0:
+	# 	return client_message.quality_bitrates[0], 0
 	# print(f"Predicted Buffer Occupancy: {predicted_buffer_occupancy}")
 	# print(f"Actual buffer occupancy: {client_message.buffer_seconds_until_empty}")
 	predicted_quality = int((alpha * estimated_throughput + beta * predicted_buffer_occupancy) / client_message.quality_bitrates[0])
 	predicted_quality = min(max(predicted_quality, 0), client_message.quality_levels - 1)
-	selected_bitrate = client_message.quality_bitrates[int(predicted_quality)]
+	predicted_quality = int(predicted_quality)
+	if predicted_rebuffer_time > 0 and predicted_quality > 0:
+		predicted_quality -= 1
+
+	selected_bitrate = client_message.quality_bitrates[predicted_quality]
 	return selected_bitrate, predicted_quality
 
 def student_entrypoint(client_message: ClientMessage):
