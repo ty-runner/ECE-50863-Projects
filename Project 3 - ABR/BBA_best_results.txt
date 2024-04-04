@@ -93,4 +93,4 @@ Testing student algorithm 1
         Test mi_avg_lo_var.ini: Total Quality   239.00, Total Variation    55.00, Rebuffer Time     0.50, Total QoE     1.75
         Test mi_avg_mi_var.ini: Total Quality   197.00, Total Variation    42.00, Rebuffer Time     0.50, Total QoE     1.46
 
-        Average QoE over all tests: 1.84, lowered the upper threshold to select highest bitrate.
+        Average QoE over all tests: 1.84, lowered the upper threshold to select highest bitrate. Checkpoint stops here.

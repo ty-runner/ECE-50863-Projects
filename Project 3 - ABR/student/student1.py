@@ -101,7 +101,7 @@ def more_aggressive_startup(client_message: ClientMessage, previous_buffer_occup
 
 last_quality = 0
 last_buffer_occupancy = 0
-last_bitrate = 0
+last_bitrate = 0.1
 def student_entrypoint(client_message: ClientMessage):
 	"""
 	Your mission, if you choose to accept it, is to build an algorithm for chunk bitrate selection that provides
@@ -129,7 +129,7 @@ def student_entrypoint(client_message: ClientMessage):
 	#BBA-0 Algo
 	#print(f"Quality levels: {client_message.quality_bitrates}")
 	#print(f"Previous throughput: {client_message.previous_throughput}")
-	reservior = client_message.buffer_max_size * 0.2
+	reservior = client_message.buffer_max_size * 0.1
 	if client_message.buffer_seconds_until_empty >= client_message.buffer_max_size * 0.6:
 		#steady state
 		#calc_chunk_size(client_message, last_rate)
