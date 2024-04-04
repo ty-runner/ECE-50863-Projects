@@ -130,7 +130,7 @@ def student_entrypoint(client_message: ClientMessage):
 	#print(f"Quality levels: {client_message.quality_bitrates}")
 	#print(f"Previous throughput: {client_message.previous_throughput}")
 	reservior = client_message.buffer_max_size * 0.2
-	if client_message.buffer_seconds_until_empty >= client_message.buffer_max_size * 0.9:
+	if client_message.buffer_seconds_until_empty >= client_message.buffer_max_size * 0.6:
 		#steady state
 		#calc_chunk_size(client_message, last_rate)
 		last_quality = 2
@@ -138,7 +138,7 @@ def student_entrypoint(client_message: ClientMessage):
 		#startup
 		#print(client_message.quality_bitrates[more_aggressive_startup(client_message, last_buffer_occupancy, last_quality, client_message.previous_throughput)])
 		#last_quality = more_aggressive_startup(client_message, last_buffer_occupancy, last_quality, client_message.previous_throughput, last_bitrate)
-		index = next_highest_rate(client_message, last_quality)
+		index = next_highest_rate(client_message, last_bitrate)
 		# #print(f"Index: {index}")
 		last_quality = index
 	else:
