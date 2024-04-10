@@ -7,7 +7,7 @@ import math
 # ======================================================================================================================
 
 # My own Implementation
-#stronger feedback loop when predicted rates negatively impact buffer occupancy
+#stronger feedback loop when predicted rates negatively impact buffer occupancy to an extreme degree, and vice versa
 
 class ClientMessage:
 	"""
@@ -127,4 +127,10 @@ def student_entrypoint(client_message: ClientMessage):
 	global last_quality
 	global last_bitrate
 	global last_buffer_occupancy
+	# IF buffer occupancy < x: we are in startup phase
+        #startup = safe
+    # IF buffer occupancy > y: we are in steady state phase
+        #steady = aggressive
+	# if we are in between, we are in the transient phase
+        #transient = either?
 	return 1
