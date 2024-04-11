@@ -1,5 +1,5 @@
 from typing import List
-
+import statistics
 # Adapted from code by Zach Peats
 
 # ======================================================================================================================
@@ -71,9 +71,8 @@ previous_throughput_est = 0
 
 def harmonic_mean(past_throughputs):
 	num_of_entries = min(3, len(past_throughputs))
-	if num_of_entries == 0:
-		return 0.5
-	return num_of_entries / sum([1 / throughput for throughput in past_throughputs[:num_of_entries]])
+	#print(num_of_entries / sum([1 / throughput for throughput in past_throughputs[:num_of_entries]]))
+	return statistics.harmonic_mean(past_throughputs[:num_of_entries])
 def MPC(client_message: ClientMessage, last_bitrate: float, estimated_throughput: float, last_buffer_occupancy) -> float:
 	"""
 	MPC function
