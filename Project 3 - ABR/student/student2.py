@@ -68,49 +68,9 @@ last_buffer_occupancy = 0
 last_throughput_difference = 0
 prediction_model = None
 previous_throughput_est = 0
-class throughput_prediction:
-	"""
-	Throughput Prediction
-	"""
-	def __init__(self):
-		"""
-		Throughput Prediction
-		"""
-		self.b0 = 0
-		self.b1 = 0
-		self.num_chunks_list = [1]
-		self.num_chunks = 1
-		self.difference = last_throughput_difference
 
-	def update_coefficients(self, new_x, new_y):
-		mean_x = sum(new_x) / len(new_x)
-		mean_y = sum(new_y) / len(new_y)
-
-		old_sum_x = mean_x - self.num_chunks * (self.num_chunks + 1)/ 2
-		old_sum_y = sum(new_y) - mean_y / 2
-		new_x = [self.num_chunks]
-		numerator_b1 = sum([(x - old_sum_x) * (y - old_sum_y) for x, y in zip(new_x, new_y)])
-		denominator_b1 = sum([(x - old_sum_x) ** 2 for x in new_x])
-		b1 = (self.b1 * denominator_b1 + numerator_b1) / (denominator_b1 + sum([(x - old_sum_x) ** 2 for x in new_x]))
-		b0 = mean_y - b1 * mean_x
-		return b0, b1
-	
-	def update(self, new_y):
-		new_x = self.num_chunks_list
-		self.b0, self.b1 = self.update_coefficients(new_x, [new_y])
-		self.num_chunks += 1
-		self.num_chunks_list.append(self.num_chunks)
-	
-	def predict(self, num_predictions):
-		future_indices = range(self.num_chunks, self.num_chunks + num_predictions)
-		future_predictions = [self.b0 + self.b1 * i for i in future_indices]
-		return future_predictions
-
-def initialize_prediction_model():
-	global prediction_model
-	prediction_model = throughput_prediction()
 def harmonic_mean(past_throughputs):
-	num_of_entries = min(5, len(past_throughputs))
+	num_of_entries = min(3, len(past_throughputs))
 	if num_of_entries == 0:
 		return 0.5
 	return num_of_entries / sum([1 / throughput for throughput in past_throughputs[:num_of_entries]])
@@ -131,8 +91,8 @@ def MPC(client_message: ClientMessage, last_bitrate: float, estimated_throughput
 	predicted_quality = int((alpha * estimated_throughput + beta * predicted_buffer_occupancy) / client_message.quality_bitrates[0])
 	predicted_quality = min(max(predicted_quality, 0), client_message.quality_levels - 1)
 	predicted_quality = int(predicted_quality)
-	if predicted_rebuffer_time > 0 and predicted_quality > 0:
-		predicted_quality -= 1
+	# if predicted_rebuffer_time > 0 and predicted_quality > 0:
+	# 	predicted_quality -= 1
 	
 	selected_bitrate = client_message.quality_bitrates[predicted_quality]
 	return selected_bitrate, predicted_quality
@@ -164,8 +124,6 @@ def student_entrypoint(client_message: ClientMessage):
 	global prediction_model
 	global last_throughput_difference
 	global previous_throughput_est
-	if prediction_model is None:
-		initialize_prediction_model()
 	# if in startup phase then:
 	# 	C[tk, tk+N] = ThroughputPRediction(C[t1,tk])
 	# 	R, T = MPC(C, R[t1,tk])
@@ -178,18 +136,11 @@ def student_entrypoint(client_message: ClientMessage):
 	# end for
 	if client_message.total_seconds_elapsed < 1:
 		# startup phase
-		# for throughput in past_throughputs:
-		# 	#print(f"Throughput: {throughput}")
-		# 	prediction_model.update(throughput)
-		# C = prediction_model.predict(5)
 		C = harmonic_mean(past_throughputs)
 		# MPC predict for startup time and Bitrate
 		R, predicted_quality = MPC(client_message, last_bitrate, C, last_buffer_occupancy)
 		# start playback after startup time seconds
 	else:
-		# playback has started
-		prediction_model.update(client_message.previous_throughput)
-		#C = prediction_model.predict(5)
 		C = harmonic_mean(past_throughputs)
 		# MPC predict for current time and Bitrate
 		R, predicted_quality = MPC(client_message, last_bitrate, C, last_buffer_occupancy)
@@ -205,7 +156,7 @@ def student_entrypoint(client_message: ClientMessage):
 	#print(f"C0: {C[0]}")
 	#print(f"Previous guess {previous_throughput_est}")
 	last_throughput_difference = previous_throughput_est - client_message.previous_throughput
-	prediction_model.difference = last_throughput_difference
 	previous_throughput_est = C
 	#print(f"Last Throughput Difference: {last_throughput_difference}")
+	#print(f"Predicted Quality: {predicted_quality}")
 	return predicted_quality
