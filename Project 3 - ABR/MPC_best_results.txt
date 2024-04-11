@@ -36,3 +36,18 @@ Testing student algorithm 2
         Test mi_avg_mi_var.ini: Total Quality   266.00, Total Variation    45.00, Rebuffer Time    38.57, Total QoE     0.75
 
         Average QoE over all tests: 1.25, accurate throughput est, less rebuffering but very aggressive for the lo and mid avg
+
+$ py tester.py 2
+
+Testing student algorithm 2
+        Test hi_avg_hi_var.ini: Total Quality   351.00, Total Variation    54.00, Rebuffer Time     0.33, Total QoE     2.70
+        Test hi_avg_lo_var.ini: Total Quality   372.00, Total Variation    26.00, Rebuffer Time     0.47, Total QoE     2.99
+        Test hi_avg_mi_var.ini: Total Quality   385.00, Total Variation    46.00, Rebuffer Time     0.33, Total QoE     3.02
+        Test lo_avg_hi_var.ini: Total Quality   181.00, Total Variation    59.00, Rebuffer Time    19.04, Total QoE     0.63
+        Test lo_avg_lo_var.ini: Total Quality   132.00, Total Variation    45.00, Rebuffer Time    20.04, Total QoE     0.25
+        Test lo_avg_mi_var.ini: Total Quality   102.00, Total Variation    59.00, Rebuffer Time     9.90, Total QoE     0.28
+        Test mi_avg_hi_var.ini: Total Quality   274.00, Total Variation    61.00, Rebuffer Time     3.27, Total QoE     1.93
+        Test mi_avg_lo_var.ini: Total Quality   252.00, Total Variation    69.00, Rebuffer Time     0.50, Total QoE     1.80
+        Test mi_avg_mi_var.ini: Total Quality   218.00, Total Variation    32.00, Rebuffer Time     7.05, Total QoE     1.45
+
+        Average QoE over all tests: 1.67, used harmonic mean for throughput estimation instead of lin reg

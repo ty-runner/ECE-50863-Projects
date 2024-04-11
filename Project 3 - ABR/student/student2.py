@@ -109,23 +109,15 @@ class throughput_prediction:
 def initialize_prediction_model():
 	global prediction_model
 	prediction_model = throughput_prediction()
-
+def harmonic_mean(past_throughputs):
+	num_of_entries = min(5, len(past_throughputs))
+	if num_of_entries == 0:
+		return 0.5
+	return num_of_entries / sum([1 / throughput for throughput in past_throughputs[:num_of_entries]])
 def MPC(client_message: ClientMessage, last_bitrate: float, estimated_throughput: float, last_buffer_occupancy) -> float:
 	"""
 	MPC function
 	"""
-	# #dk(Rk) / C(k)
-	# expected_download_time = last_bitrate / estimated_throughput
-	# #print(f"Expected Download Time: {expected_download_time}")
-	# #Equation 4 of paper
-	# delta_t = ((client_message.buffer_seconds_until_empty - expected_download_time) + client_message.buffer_seconds_per_chunk - client_message.buffer_max_size)
-	# delta_t = max(0, delta_t)
-	# #print(f"Delta_t: {delta_t}")
-	# #Equation 1 of paper
-	# wait_time = delta_t + expected_download_time
-	# #print(f"Wait Time: {wait_time}")
-	# #Equation 2 of paper
-	# return 1, 1
 	alpha = 0.9
 	beta = 0.1
 	predicted_buffer_occupancy = last_buffer_occupancy - (last_bitrate / estimated_throughput) + client_message.buffer_seconds_per_chunk
@@ -141,7 +133,7 @@ def MPC(client_message: ClientMessage, last_bitrate: float, estimated_throughput
 	predicted_quality = int(predicted_quality)
 	if predicted_rebuffer_time > 0 and predicted_quality > 0:
 		predicted_quality -= 1
-
+	
 	selected_bitrate = client_message.quality_bitrates[predicted_quality]
 	return selected_bitrate, predicted_quality
 
@@ -186,19 +178,21 @@ def student_entrypoint(client_message: ClientMessage):
 	# end for
 	if client_message.total_seconds_elapsed < 1:
 		# startup phase
-		for throughput in past_throughputs:
-			#print(f"Throughput: {throughput}")
-			prediction_model.update(throughput)
-		C = prediction_model.predict(5)
+		# for throughput in past_throughputs:
+		# 	#print(f"Throughput: {throughput}")
+		# 	prediction_model.update(throughput)
+		# C = prediction_model.predict(5)
+		C = harmonic_mean(past_throughputs)
 		# MPC predict for startup time and Bitrate
-		R, predicted_quality = MPC(client_message, last_bitrate, C[0], last_buffer_occupancy)
+		R, predicted_quality = MPC(client_message, last_bitrate, C, last_buffer_occupancy)
 		# start playback after startup time seconds
 	else:
 		# playback has started
 		prediction_model.update(client_message.previous_throughput)
-		C = prediction_model.predict(5)
+		#C = prediction_model.predict(5)
+		C = harmonic_mean(past_throughputs)
 		# MPC predict for current time and Bitrate
-		R, predicted_quality = MPC(client_message, last_bitrate, C[0], last_buffer_occupancy)
+		R, predicted_quality = MPC(client_message, last_bitrate, C, last_buffer_occupancy)
 	if (client_message.previous_throughput != 0):
 		past_throughputs.append(client_message.previous_throughput)
 	else:
@@ -212,6 +206,6 @@ def student_entrypoint(client_message: ClientMessage):
 	#print(f"Previous guess {previous_throughput_est}")
 	last_throughput_difference = previous_throughput_est - client_message.previous_throughput
 	prediction_model.difference = last_throughput_difference
-	previous_throughput_est = C[0]
+	previous_throughput_est = C
 	#print(f"Last Throughput Difference: {last_throughput_difference}")
 	return predicted_quality
