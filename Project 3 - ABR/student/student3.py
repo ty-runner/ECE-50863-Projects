@@ -64,7 +64,7 @@ class ClientMessage:
 # Your helper functions, variables, classes here. You may also write initialization routines to be called
 # when this script is first imported and anything else you wish.
 
-def determine_best_rate(client_message: ClientMessage, current_rate: int, calculated_rate: float):
+def determine_best_rate(client_message: ClientMessage, calculated_rate: float):
 	# If the buffer is full, increase the quality level.
 	differences = {}
 	for rate in range (client_message.quality_levels):
@@ -81,25 +81,23 @@ def next_highest_rate(client_message: ClientMessage, current_rate: int):
 		differences.append(difference)
 	#print(differences)
 	if all(difference < 0 for difference in differences):
-		return determine_best_rate(client_message, current_rate, client_message.previous_throughput)
+		return determine_best_rate(client_message, client_message.previous_throughput)
 	else:
 		smallest_index = min([i for i, val in enumerate(differences) if val >= 0])
 		return smallest_index
 	
-
-def more_aggressive_startup(client_message: ClientMessage, previous_buffer_occupancy: float, previous_rate: int, previous_throughput: float, last_bitrate):
-	# At time = 0, since the buffer is empty, BBA-2 only picks the next highest video rate if change in buffer increases by more than 0.875 * chunk seconds
-	if client_message.buffer_seconds_until_empty - previous_buffer_occupancy > 0.01 * client_message.buffer_seconds_per_chunk:
-		#print("Increasing rate - startup")
-		# print(f"Last rate: {previous_throughput}")
-		# print(f"Det best rate: {determine_best_rate(client_message, previous_rate, client_message.previous_throughput)} , {client_message.quality_bitrates[determine_best_rate(client_message, previous_rate, client_message.previous_throughput)]}")
-		# print(f"Next highest: {next_highest_rate(client_message, previous_rate)} , {client_message.quality_bitrates[next_highest_rate(client_message, previous_rate)]}")
-		#print(f"next highest rate {client_message.quality_bitrates[next_highest_rate(client_message, previous_rate)]}")
-		return next_highest_rate(client_message, previous_rate)
-	#print(f"Best rate {client_message.quality_bitrates[determine_best_rate(client_message, previous_rate, client_message.previous_throughput)]}")
-	return determine_best_rate(client_message, previous_rate, client_message.previous_throughput)
 	
-
+def process(client_message: ClientMessage, previous_rate: int):
+	# If the buffer is full, increase the quality level.
+	if client_message.buffer_seconds_until_empty >= client_message.buffer_max_size * 0.6:
+		return next_highest_rate(client_message, previous_rate)
+	# If the buffer is empty, decrease the quality level.
+	if client_message.buffer_seconds_until_empty <= client_message.buffer_max_size * 0.3:
+		#print("Decreasing rate - steady")
+		return 0
+	else:
+		return next_highest_rate(client_message, previous_rate)
+	# If the buffer is neither full nor empty, keep the quality level the same.
 last_quality = 0
 last_buffer_occupancy = 0
 last_bitrate = 0.1
@@ -129,8 +127,10 @@ def student_entrypoint(client_message: ClientMessage):
 	global last_buffer_occupancy
 	# IF buffer occupancy < x: we are in startup phase
         #startup = safe
+	last_quality = process(client_message, last_bitrate)
+	last_bitrate = client_message.quality_bitrates[last_quality]
     # IF buffer occupancy > y: we are in steady state phase
         #steady = aggressive
 	# if we are in between, we are in the transient phase
         #transient = either?
-	return 1
+	return last_quality
