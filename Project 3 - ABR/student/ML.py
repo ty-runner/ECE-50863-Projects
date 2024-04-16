@@ -81,8 +81,9 @@ def prepare_data(config_files_dir):
 		if config_file.endswith(".ini"):
 			chunk_qualities, chunk_length, throughputs = read_test(config_files_dir + config_file, print_output=False)
 			print(f"Loaded data from {config_file}")
-			print(f"Chunk qualities: {throughputs}")
-			data_list.append(np.array(throughputs))
+			print(f"Throughputs: {throughputs}")
+			print(f"Dimensions of throughputs: {len(throughputs)}")
+			data_list.append(throughputs)
 	with open('throughputs.txt', 'w') as file:
 		for data in data_list:
 			file.write(str(data) + '\n')
@@ -94,11 +95,17 @@ def prepare_data(config_files_dir):
 # Sample usage
 config_files_dir = "../tests/"
 data = prepare_data(config_files_dir)
-padded_data = pad_sequences(data, maxlen=211, padding='post')
+tailored_data = []
+min_sequence_length = min(len(seq) for seq in data)
+for seq in data:
+	tailored_data.append(seq[:min_sequence_length])
+data = tailored_data[0]
 X = np.array(data)
 y = np.array(data)
-X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
-model = RandomForestRegressor(n_estimators=100, random_state=42)
+print(X.shape)
+print(X)
+X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.3, random_state=42)
+model = RandomForestRegressor(n_estimators=5, random_state=42)
 model.fit(X_train, y_train)
 train_predictions = model.predict(X_train)
 val_predictions = model.predict(X_val)
