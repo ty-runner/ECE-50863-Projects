@@ -9,6 +9,7 @@ import math
 # My own Implementation
 #stronger feedback loop when predicted rates negatively impact buffer occupancy to an extreme degree, and vice versa
 
+# Algorithm that determines the future state of the buffer and "when" the buffer will be full or empty
 class ClientMessage:
 	"""
 	This class will be filled out and passed to student_entrypoint for your algorithm.
