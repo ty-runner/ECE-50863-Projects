@@ -130,6 +130,10 @@ def student_entrypoint(client_message: ClientMessage):
         #startup = safe
 	last_quality = process(client_message, last_bitrate)
 	last_bitrate = client_message.quality_bitrates[last_quality]
+	print(client_message.upcoming_quality_bitrates)
+	print(client_message.quality_bitrates)
+	# Total size = chunk size * chunk size ratio * 2 ^ (quality level - 1)
+
     # IF buffer occupancy > y: we are in steady state phase
         #steady = aggressive
 	# if we are in between, we are in the transient phase
