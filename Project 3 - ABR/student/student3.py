@@ -99,9 +99,22 @@ def process(client_message: ClientMessage, previous_rate: int):
 	else:
 		return next_highest_rate(client_message, previous_rate)
 	# If the buffer is neither full nor empty, keep the quality level the same.
+def estimate_throughput(client_message: ClientMessage, past_throughputs: List[float]):
+	# Estimate the throughput for the next chunk.
+	# Use the harmonic mean of the past throughputs.
+	throughput = 0
+	for past_throughput in past_throughputs:
+		if past_throughput != 0:
+			throughput += 1 / past_throughput
+		else:
+			throughput += 1 / 0.5
+	throughput = len(past_throughputs) / throughput
+	return throughput
+
 last_quality = 0
 last_buffer_occupancy = 0
 last_bitrate = 0.1
+past_throughputs = []
 def student_entrypoint(client_message: ClientMessage):
 	"""
 	Your mission, if you choose to accept it, is to build an algorithm for chunk bitrate selection that provides
@@ -126,6 +139,7 @@ def student_entrypoint(client_message: ClientMessage):
 	global last_quality
 	global last_bitrate
 	global last_buffer_occupancy
+	global past_throughputs
 	# Buffer based rate control with some predictive elements
 	
 	"""
@@ -135,4 +149,13 @@ def student_entrypoint(client_message: ClientMessage):
 	- How much time is left in the session
 	- Upcoming qualities
 	"""
-	return last_quality
+	past_throughputs.append(client_message.previous_throughput)
+	if len(past_throughputs) > 5:
+		past_throughputs.pop(0)
+	est_throughput = estimate_throughput(client_message, past_throughputs)
+	print(f"Previous throughput: {client_message.previous_throughput}")
+	print(f"Estimated throughput: {est_throughput}")
+
+	quality = 1
+	last_quality = quality
+	return quality
