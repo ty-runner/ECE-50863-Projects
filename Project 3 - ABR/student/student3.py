@@ -126,16 +126,13 @@ def student_entrypoint(client_message: ClientMessage):
 	global last_quality
 	global last_bitrate
 	global last_buffer_occupancy
-	# IF buffer occupancy < x: we are in startup phase
-        #startup = safe
-	last_quality = process(client_message, last_bitrate)
-	last_bitrate = client_message.quality_bitrates[last_quality]
-	print(client_message.upcoming_quality_bitrates)
-	print(client_message.quality_bitrates)
-	# Total size = chunk size * chunk size ratio * 2 ^ (quality level - 1)
-
-    # IF buffer occupancy > y: we are in steady state phase
-        #steady = aggressive
-	# if we are in between, we are in the transient phase
-        #transient = either?
+	# Buffer based rate control with some predictive elements
+	
+	"""
+	Make each quality decision based on the following:
+	- Estimated throughput: Harmonic mean on BBA?
+	- Current buffer occupancy
+	- How much time is left in the session
+	- Upcoming qualities
+	"""
 	return last_quality
