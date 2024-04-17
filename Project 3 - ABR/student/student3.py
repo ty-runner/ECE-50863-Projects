@@ -155,7 +155,6 @@ def student_entrypoint(client_message: ClientMessage):
 	est_throughput = estimate_throughput(client_message, past_throughputs)
 	print(f"Previous throughput: {client_message.previous_throughput}")
 	print(f"Estimated throughput: {est_throughput}")
-
 	quality = 1
 	last_quality = quality
 	return quality
