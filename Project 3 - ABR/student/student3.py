@@ -155,6 +155,8 @@ def student_entrypoint(client_message: ClientMessage):
 	est_throughput = estimate_throughput(client_message, past_throughputs)
 	print(f"Previous throughput: {client_message.previous_throughput}")
 	print(f"Estimated throughput: {est_throughput}")
+	download_time = (client_message.quality_bitrates[1] * 1000) / est_throughput
+	print(f"Download time: {download_time}")
 	quality = 1
 	last_quality = quality
 	return quality
