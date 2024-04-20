@@ -148,6 +148,7 @@ last_quality = 0
 last_buffer_occupancy = 0
 last_bitrate = 0.5
 past_throughputs = []
+buffer_deltas = []
 def student_entrypoint(client_message: ClientMessage):
 	"""
 	Your mission, if you choose to accept it, is to build an algorithm for chunk bitrate selection that provides
@@ -173,6 +174,7 @@ def student_entrypoint(client_message: ClientMessage):
 	global last_bitrate
 	global last_buffer_occupancy
 	global past_throughputs
+	global buffer_deltas
 	#global 
 	# Buffer based rate control with some predictive elements
 	
@@ -183,24 +185,32 @@ def student_entrypoint(client_message: ClientMessage):
 	- How much time is left in the session
 	- Upcoming qualities
 	"""
-	reservior = client_message.buffer_max_size * 0.2
+	reservior = client_message.buffer_max_size * 0.3
 	past_throughputs.append(client_message.previous_throughput)
 	if len(past_throughputs) > 5:
 		past_throughputs.pop(0)
 	est_throughput = estimate_throughput(client_message, past_throughputs)
-	# print(f"Previous throughput: {client_message.previous_throughput}")
-	# print(f"Estimated throughput: {est_throughput}")
-	#print(f"Buffer occupancy: {client_message.buffer_seconds_until_empty}, {client_message.quality_bitrates[last_quality]}, Previous throughput: {client_message.previous_throughput}")
 	if client_message.buffer_seconds_until_empty <= reservior:
 		process_flag = 0
-	elif client_message.buffer_seconds_until_empty >= client_message.buffer_max_size * 0.7:
+	elif client_message.buffer_seconds_until_empty >= client_message.buffer_max_size * 0.6:
 		process_flag = 2
 	else:
 		process_flag = 1
-	#print(f"Process flag: {process_flag}")
 	quality = buffer_based_decision(client_message, est_throughput, process_flag)
-	#print(f"Quality: {quality}")
 	quality = variation_control(last_quality, quality)
+	buffer_deltas.append(client_message.buffer_seconds_until_empty - last_buffer_occupancy)
+	last_buffer_occupancy = client_message.buffer_seconds_until_empty
+
+	worst_loss = min(buffer_deltas)
+	if worst_loss == 0:
+		worst_loss = 1
+	delta_avg = sum(buffer_deltas) / len(buffer_deltas)
+	if worst_loss < 0:
+		#print("Increasing rate - steady")
+		worst_loss = abs(worst_loss)
+		if (client_message.buffer_seconds_until_empty / worst_loss) >= (240 - client_message.total_seconds_elapsed):
+			quality = 2
+		else:
+			quality = 1
 	last_quality = quality
-	#print(f"Quality: {quality}")
 	return quality
