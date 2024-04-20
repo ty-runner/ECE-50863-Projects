@@ -116,6 +116,34 @@ def estimate_throughput(client_message: ClientMessage, past_throughputs: List[fl
 		est_throughput = 0.5
 	return est_throughput
 
+def buffer_based_decision(client_message: ClientMessage, est_throughput: float, process_flag: int):
+	# if 0, prioritize increasing buffer occupancy
+	# if 1, ?????
+	# if 2, MAX QUALITY
+	if process_flag >= 0 and process_flag <= 2:
+		download_times = []
+		for quality in range(client_message.quality_levels):
+				download_time = (client_message.quality_bitrates[quality]) / (est_throughput)
+				download_times.append(download_time)
+		if process_flag == 0:
+			return download_times.index(min(download_times))
+		if process_flag == 1:
+			for download_time in download_times:
+				actual = client_message.buffer_seconds_per_chunk - download_time
+				if actual > 0:
+					return download_times.index(download_time)
+			return client_message.quality_levels - 2
+		if process_flag == 2:
+			return client_message.quality_levels - 1
+
+def variation_control(last_quality: int, current_quality: int):
+	#Make sure if there is a change in quality, it is only 1 tier up or down
+	if abs(last_quality - current_quality) > 1:
+		if last_quality > current_quality:
+			return last_quality - 1
+		else:
+			return last_quality + 1
+	return current_quality
 last_quality = 0
 last_buffer_occupancy = 0
 last_bitrate = 0.5
@@ -155,17 +183,24 @@ def student_entrypoint(client_message: ClientMessage):
 	- How much time is left in the session
 	- Upcoming qualities
 	"""
+	reservior = client_message.buffer_max_size * 0.2
 	past_throughputs.append(client_message.previous_throughput)
 	if len(past_throughputs) > 5:
 		past_throughputs.pop(0)
 	est_throughput = estimate_throughput(client_message, past_throughputs)
 	# print(f"Previous throughput: {client_message.previous_throughput}")
 	# print(f"Estimated throughput: {est_throughput}")
-	print(f"Buffer occupancy: {client_message.buffer_seconds_until_empty}, {client_message.quality_bitrates[last_quality]}, Previous throughput: {client_message.previous_throughput}")
-	quality = 0
+	#print(f"Buffer occupancy: {client_message.buffer_seconds_until_empty}, {client_message.quality_bitrates[last_quality]}, Previous throughput: {client_message.previous_throughput}")
+	if client_message.buffer_seconds_until_empty <= reservior:
+		process_flag = 0
+	elif client_message.buffer_seconds_until_empty >= client_message.buffer_max_size * 0.7:
+		process_flag = 2
+	else:
+		process_flag = 1
+	#print(f"Process flag: {process_flag}")
+	quality = buffer_based_decision(client_message, est_throughput, process_flag)
+	#print(f"Quality: {quality}")
+	quality = variation_control(last_quality, quality)
 	last_quality = quality
-	if client_message.previous_throughput == 0:
-		client_message.previous_throughput = 0.5
-	download_time = (client_message.quality_bitrates[quality]) / (est_throughput)
-	print(f"Buffer delta: {client_message.buffer_seconds_per_chunk - download_time}")
+	#print(f"Quality: {quality}")
 	return quality
