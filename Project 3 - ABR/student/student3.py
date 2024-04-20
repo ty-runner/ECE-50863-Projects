@@ -102,18 +102,23 @@ def process(client_message: ClientMessage, previous_rate: int):
 def estimate_throughput(client_message: ClientMessage, past_throughputs: List[float]):
 	# Estimate the throughput for the next chunk.
 	# Use the harmonic mean of the past throughputs.
-	throughput = 0
-	for past_throughput in past_throughputs:
-		if past_throughput != 0:
-			throughput += 1 / past_throughput
-		else:
-			throughput += 1 / 0.5
-	throughput = len(past_throughputs) / throughput
-	return throughput
+	past_throughputs = past_throughputs[-5:]
+	sum_inverse_throughputs = 0
+	count_nonzero_throughputs = 0
+
+	for throughput in past_throughputs:
+		if throughput != 0:
+			sum_inverse_throughputs += 1 / throughput
+			count_nonzero_throughputs += 1
+	if count_nonzero_throughputs > 0:
+		est_throughput = count_nonzero_throughputs / sum_inverse_throughputs
+	else:
+		est_throughput = 0.5
+	return est_throughput
 
 last_quality = 0
 last_buffer_occupancy = 0
-last_bitrate = 0.1
+last_bitrate = 0.5
 past_throughputs = []
 def student_entrypoint(client_message: ClientMessage):
 	"""
@@ -140,6 +145,7 @@ def student_entrypoint(client_message: ClientMessage):
 	global last_bitrate
 	global last_buffer_occupancy
 	global past_throughputs
+	#global 
 	# Buffer based rate control with some predictive elements
 	
 	"""
@@ -153,10 +159,13 @@ def student_entrypoint(client_message: ClientMessage):
 	if len(past_throughputs) > 5:
 		past_throughputs.pop(0)
 	est_throughput = estimate_throughput(client_message, past_throughputs)
-	print(f"Previous throughput: {client_message.previous_throughput}")
-	print(f"Estimated throughput: {est_throughput}")
-	download_time = (client_message.quality_bitrates[1] * 1000) / est_throughput
-	print(f"Download time: {download_time}")
-	quality = 1
+	# print(f"Previous throughput: {client_message.previous_throughput}")
+	# print(f"Estimated throughput: {est_throughput}")
+	print(f"Buffer occupancy: {client_message.buffer_seconds_until_empty}, {client_message.quality_bitrates[last_quality]}, Previous throughput: {client_message.previous_throughput}")
+	quality = 0
 	last_quality = quality
+	if client_message.previous_throughput == 0:
+		client_message.previous_throughput = 0.5
+	download_time = (client_message.quality_bitrates[quality]) / (est_throughput)
+	print(f"Buffer delta: {client_message.buffer_seconds_per_chunk - download_time}")
 	return quality
