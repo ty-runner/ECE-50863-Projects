@@ -1,5 +1,4 @@
 
-
 Testing student algorithm 3
         Test hi_avg_hi_var.ini: Total Quality   332.00, Total Variation    60.00, Rebuffer Time     0.33, Total QoE     2.52
         Test hi_avg_lo_var.ini: Total Quality   337.00, Total Variation    54.00, Rebuffer Time     0.47, Total QoE     2.58
@@ -12,3 +11,16 @@ Testing student algorithm 3
         Test mi_avg_mi_var.ini: Total Quality   137.00, Total Variation    40.00, Rebuffer Time     4.27, Total QoE     0.84
 
         Average QoE over all tests: 1.31
+
+Testing student algorithm 3
+        Test hi_avg_hi_var.ini: Total Quality   347.00, Total Variation    57.00, Rebuffer Time     0.33, Total QoE     2.65
+        Test hi_avg_lo_var.ini: Total Quality   345.00, Total Variation    46.00, Rebuffer Time     0.47, Total QoE     2.68
+        Test hi_avg_mi_var.ini: Total Quality   370.00, Total Variation    38.00, Rebuffer Time     0.33, Total QoE     2.93
+        Test lo_avg_hi_var.ini: Total Quality    94.00, Total Variation    56.00, Rebuffer Time     1.12, Total QoE     0.51
+        Test lo_avg_lo_var.ini: Total Quality   105.00, Total Variation    38.00, Rebuffer Time    32.54, Total QoE    -0.37
+        Test lo_avg_mi_var.ini: Total Quality    46.00, Total Variation    34.00, Rebuffer Time     1.36, Total QoE     0.20
+        Test mi_avg_hi_var.ini: Total Quality   200.00, Total Variation    62.00, Rebuffer Time     0.40, Total QoE     1.40
+        Test mi_avg_lo_var.ini: Total Quality   198.00, Total Variation    86.00, Rebuffer Time     0.50, Total QoE     1.28
+        Test mi_avg_mi_var.ini: Total Quality   155.00, Total Variation    34.00, Rebuffer Time     3.73, Total QoE     1.03
+
+        Average QoE over all tests: 1.37

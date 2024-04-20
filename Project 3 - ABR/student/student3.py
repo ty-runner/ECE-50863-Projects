@@ -197,7 +197,6 @@ def student_entrypoint(client_message: ClientMessage):
 	else:
 		process_flag = 1
 	quality = buffer_based_decision(client_message, est_throughput, process_flag)
-	quality = variation_control(last_quality, quality)
 	buffer_deltas.append(client_message.buffer_seconds_until_empty - last_buffer_occupancy)
 	last_buffer_occupancy = client_message.buffer_seconds_until_empty
 
@@ -208,9 +207,9 @@ def student_entrypoint(client_message: ClientMessage):
 	if worst_loss < 0:
 		#print("Increasing rate - steady")
 		worst_loss = abs(worst_loss)
-		if (client_message.buffer_seconds_until_empty / worst_loss) >= (240 - client_message.total_seconds_elapsed):
+		if (client_message.buffer_seconds_until_empty > (240 - client_message.total_seconds_elapsed)):
 			quality = 2
-		else:
-			quality = 1
+	quality = variation_control(last_quality, quality)
 	last_quality = quality
+	#print(f"Quality: {quality}")
 	return quality
