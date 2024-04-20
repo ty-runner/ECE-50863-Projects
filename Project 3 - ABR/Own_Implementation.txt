@@ -23,4 +23,4 @@ Testing student algorithm 3
         Test mi_avg_lo_var.ini: Total Quality   198.00, Total Variation    86.00, Rebuffer Time     0.50, Total QoE     1.28
         Test mi_avg_mi_var.ini: Total Quality   155.00, Total Variation    34.00, Rebuffer Time     3.73, Total QoE     1.03
 
-        Average QoE over all tests: 1.37
+        Average QoE over all tests: 1.37, anomaly with lo lo having such a massive rebuffer time. Starting to look good
