@@ -68,7 +68,7 @@ class ClientMessage:
 def estimate_throughput(client_message: ClientMessage, past_throughputs: List[float]):
 	# Estimate the throughput for the next chunk.
 	# Use the harmonic mean of the past throughputs.
-	throughputs = past_throughputs[-3:]
+	throughputs = past_throughputs[-5:]
 	sum_inverse_throughputs = 0
 	count_nonzero_throughputs = 0
 
@@ -83,23 +83,16 @@ def estimate_throughput(client_message: ClientMessage, past_throughputs: List[fl
 	return est_throughput
 
 def buffer_based_decision(client_message: ClientMessage, est_throughput: float, process_flag: int):
-	# if 0, prioritize increasing buffer occupancy
-	# if 1, ?????
-	# if 2, MAX QUALITY
 	if process_flag >= 0 and process_flag <= 2:
 		download_times = []
+		differences = []
 		for quality in range(client_message.quality_levels):
 				download_time = (client_message.quality_bitrates[quality]) / (est_throughput)
 				download_times.append(download_time)
 		if process_flag == 0:
-			return download_times.index(min(download_times))
+			closest_value = min(download_times, key=lambda x:abs(x - 0.75))
+			return download_times.index(closest_value)
 		if process_flag == 1:
-			for download_time in download_times:
-				actual = client_message.buffer_seconds_per_chunk - download_time
-				if actual > 0:
-					return download_times.index(download_time)
-			return client_message.quality_levels - 3
-		if process_flag == 2:
 			return client_message.quality_levels - 1
 
 def variation_control(last_quality: int, current_quality: int):
@@ -140,8 +133,7 @@ def student_entrypoint(client_message: ClientMessage):
 	global last_bitrate
 	global last_buffer_occupancy
 	global past_throughputs
-	global buffer_deltas
-	#global 
+	global buffer_deltas 
 	# Buffer based rate control with some predictive elements
 	
 	"""
@@ -152,20 +144,23 @@ def student_entrypoint(client_message: ClientMessage):
 	- Upcoming qualities
 	"""
 	lower_reservior = client_message.buffer_max_size * 0.3
-	upper_reservior = client_message.buffer_max_size * 0.7
+	upper_reservior = client_message.buffer_max_size * 0.6
 	past_throughputs.append(client_message.previous_throughput)
 	est_throughput = estimate_throughput(client_message, past_throughputs)
 	average_throughput = sum(past_throughputs) / len(past_throughputs)
 	#print(f"Avg throughput: {average_throughput}")
-	if average_throughput > 2:
-		lower_reservior = client_message.buffer_max_size * 0.1
+	#we should scale this based on the average throughput
+ 
+	if average_throughput > 1.6:
+		lower_reservior = client_message.buffer_max_size * 0.15
 		upper_reservior = client_message.buffer_max_size * 0.3
+
 	if client_message.buffer_seconds_until_empty <= lower_reservior:
 		process_flag = 0
 	elif client_message.buffer_seconds_until_empty >= upper_reservior:
-		process_flag = 2
-	else:
 		process_flag = 1
+	else:
+		process_flag = 0
 	quality = buffer_based_decision(client_message, est_throughput, process_flag)
 	buffer_deltas.append(client_message.buffer_seconds_until_empty - last_buffer_occupancy)
 	last_buffer_occupancy = client_message.buffer_seconds_until_empty
@@ -173,7 +168,6 @@ def student_entrypoint(client_message: ClientMessage):
 	worst_loss = min(buffer_deltas)
 	if worst_loss == 0:
 		worst_loss = 1
-	delta_avg = sum(buffer_deltas) / len(buffer_deltas)
 	if worst_loss < 0:
 		#print("Increasing rate - steady")
 		worst_loss = abs(worst_loss)
