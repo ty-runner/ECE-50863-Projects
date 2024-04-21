@@ -133,7 +133,7 @@ def student_entrypoint(client_message: ClientMessage):
 	# end if
 	# Download chunk k with bitrate Rk, wait till finished
 	# end for
-	if client_message.total_seconds_elapsed < 1:
+	if client_message.total_seconds_elapsed < 10:
 		# startup phase
 		C = harmonic_mean(past_throughputs)
 		# MPC predict for startup time and Bitrate

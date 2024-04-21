@@ -157,7 +157,7 @@ def student_entrypoint(client_message: ClientMessage):
 	est_throughput = estimate_throughput(client_message, past_throughputs)
 	average_throughput = sum(past_throughputs) / len(past_throughputs)
 	#print(f"Avg throughput: {average_throughput}")
-	if average_throughput > 2.5:
+	if average_throughput > 2:
 		lower_reservior = client_message.buffer_max_size * 0.1
 		upper_reservior = client_message.buffer_max_size * 0.3
 	if client_message.buffer_seconds_until_empty <= lower_reservior:
