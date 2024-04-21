@@ -64,41 +64,7 @@ class ClientMessage:
 
 # Your helper functions, variables, classes here. You may also write initialization routines to be called
 # when this script is first imported and anything else you wish.
-
-def determine_best_rate(client_message: ClientMessage, calculated_rate: float):
-	# If the buffer is full, increase the quality level.
-	differences = {}
-	for rate in range (client_message.quality_levels):
-		difference = abs(client_message.quality_bitrates[rate] - calculated_rate)
-		differences[rate] = difference
-	min_rate = min(differences, key=differences.get)
-	# if min_rate > current_rate:
-	# 	print("Increasing rate - transient")
-	return min_rate
-def next_highest_rate(client_message: ClientMessage, current_rate: int):
-	differences = []
-	for rate in client_message.quality_bitrates:
-		difference = rate - current_rate
-		differences.append(difference)
-	#print(differences)
-	if all(difference < 0 for difference in differences):
-		return determine_best_rate(client_message, client_message.previous_throughput)
-	else:
-		smallest_index = min([i for i, val in enumerate(differences) if val >= 0])
-		return smallest_index
 	
-	
-def process(client_message: ClientMessage, previous_rate: int):
-	# If the buffer is full, increase the quality level.
-	if client_message.buffer_seconds_until_empty >= client_message.buffer_max_size * 0.6:
-		return next_highest_rate(client_message, previous_rate)
-	# If the buffer is empty, decrease the quality level.
-	if client_message.buffer_seconds_until_empty <= client_message.buffer_max_size * 0.3:
-		#print("Decreasing rate - steady")
-		return 0
-	else:
-		return next_highest_rate(client_message, previous_rate)
-	# If the buffer is neither full nor empty, keep the quality level the same.
 def estimate_throughput(client_message: ClientMessage, past_throughputs: List[float]):
 	# Estimate the throughput for the next chunk.
 	# Use the harmonic mean of the past throughputs.
@@ -132,7 +98,7 @@ def buffer_based_decision(client_message: ClientMessage, est_throughput: float, 
 				actual = client_message.buffer_seconds_per_chunk - download_time
 				if actual > 0:
 					return download_times.index(download_time)
-			return client_message.quality_levels - 2
+			return client_message.quality_levels - 3
 		if process_flag == 2:
 			return client_message.quality_levels - 1
 
@@ -146,7 +112,7 @@ def variation_control(last_quality: int, current_quality: int):
 	return current_quality
 last_quality = 0
 last_buffer_occupancy = 0
-last_bitrate = 0.5
+last_bitrate = 1
 past_throughputs = []
 buffer_deltas = []
 def student_entrypoint(client_message: ClientMessage):
