@@ -68,11 +68,11 @@ class ClientMessage:
 def estimate_throughput(client_message: ClientMessage, past_throughputs: List[float]):
 	# Estimate the throughput for the next chunk.
 	# Use the harmonic mean of the past throughputs.
-	past_throughputs = past_throughputs[-5:]
+	throughputs = past_throughputs[-3:]
 	sum_inverse_throughputs = 0
 	count_nonzero_throughputs = 0
 
-	for throughput in past_throughputs:
+	for throughput in throughputs:
 		if throughput != 0:
 			sum_inverse_throughputs += 1 / throughput
 			count_nonzero_throughputs += 1
@@ -151,14 +151,18 @@ def student_entrypoint(client_message: ClientMessage):
 	- How much time is left in the session
 	- Upcoming qualities
 	"""
-	reservior = client_message.buffer_max_size * 0.3
+	lower_reservior = client_message.buffer_max_size * 0.3
+	upper_reservior = client_message.buffer_max_size * 0.7
 	past_throughputs.append(client_message.previous_throughput)
-	if len(past_throughputs) > 5:
-		past_throughputs.pop(0)
 	est_throughput = estimate_throughput(client_message, past_throughputs)
-	if client_message.buffer_seconds_until_empty <= reservior:
+	average_throughput = sum(past_throughputs) / len(past_throughputs)
+	#print(f"Avg throughput: {average_throughput}")
+	if average_throughput > 2.5:
+		lower_reservior = client_message.buffer_max_size * 0.1
+		upper_reservior = client_message.buffer_max_size * 0.3
+	if client_message.buffer_seconds_until_empty <= lower_reservior:
 		process_flag = 0
-	elif client_message.buffer_seconds_until_empty >= client_message.buffer_max_size * 0.6:
+	elif client_message.buffer_seconds_until_empty >= upper_reservior:
 		process_flag = 2
 	else:
 		process_flag = 1
@@ -177,5 +181,6 @@ def student_entrypoint(client_message: ClientMessage):
 			quality = 2
 	quality = variation_control(last_quality, quality)
 	last_quality = quality
-	#print(f"Quality: {quality}")
+	# print(f"Buffer occupancy: {client_message.buffer_seconds_until_empty}")
+	# print(f"Quality: {quality}")
 	return quality
